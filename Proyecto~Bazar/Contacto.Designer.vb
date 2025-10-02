@@ -125,6 +125,7 @@ Partial Class Contacto
         'ContactoToolStripMenuItem
         '
         Me.ContactoToolStripMenuItem.Font = New System.Drawing.Font("Liberation Mono", 25.0!, System.Drawing.FontStyle.Bold)
+        Me.ContactoToolStripMenuItem.ForeColor = System.Drawing.Color.DeepSkyBlue
         Me.ContactoToolStripMenuItem.Name = "ContactoToolStripMenuItem"
         Me.ContactoToolStripMenuItem.Padding = New System.Windows.Forms.Padding(52, 0, 0, 50)
         Me.ContactoToolStripMenuItem.Size = New System.Drawing.Size(233, 92)

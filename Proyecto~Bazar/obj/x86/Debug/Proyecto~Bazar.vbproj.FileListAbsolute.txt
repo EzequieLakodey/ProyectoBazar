@@ -12,3 +12,4 @@ E:\Dev\Proyects\Proyecto~Bazar\Proyecto~Bazar\obj\x86\Debug\Proyecto_Bazar.Venta
 E:\Dev\Proyects\Proyecto~Bazar\Proyecto~Bazar\obj\x86\Debug\Proyecto~Bazar.exe
 E:\Dev\Proyects\Proyecto~Bazar\Proyecto~Bazar\obj\x86\Debug\Proyecto~Bazar.xml
 E:\Dev\Proyects\Proyecto~Bazar\Proyecto~Bazar\obj\x86\Debug\Proyecto~Bazar.pdb
+E:\Dev\Proyects\Proyecto~Bazar\Proyecto~Bazar\obj\x86\Debug\Proyecto_Bazar.Contacto.resources

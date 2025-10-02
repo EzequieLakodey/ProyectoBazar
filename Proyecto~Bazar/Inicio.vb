@@ -1,5 +1,9 @@
 ﻿Public Class Inicio
 
+    Private Sub Inicio_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
+
+    End Sub
+
     Private Sub VentasToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles VentasToolStripMenuItem.Click
         Me.Hide()
         Ventas.Show()
@@ -23,4 +27,5 @@
     Private Sub SalirToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles SalirToolStripMenuItem.Click
         End
     End Sub
+
 End Class

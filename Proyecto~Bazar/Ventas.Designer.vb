@@ -35,6 +35,10 @@ Partial Class Ventas
         Dim LabelBuscar As System.Windows.Forms.Label
         Me.Panel = New System.Windows.Forms.Panel()
         Me.SplitContainer1 = New System.Windows.Forms.SplitContainer()
+        Me.ButtonSiguiente = New System.Windows.Forms.Button()
+        Me.ButtonBuscar = New System.Windows.Forms.Button()
+        Me.ButtonAnterior = New System.Windows.Forms.Button()
+        Me.TextBoxConsulta = New System.Windows.Forms.TextBox()
         Me.ButtonPurgar = New System.Windows.Forms.Button()
         Me.ButtonEliminar = New System.Windows.Forms.Button()
         Me.ButtonCrear = New System.Windows.Forms.Button()
@@ -71,17 +75,13 @@ Partial Class Ventas
         Me.TopMenu = New System.Windows.Forms.MenuStrip()
         Me.InicioToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.VentasToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ClientesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ComprasToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ProductosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ContactoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SalirToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.VentasTableAdapter = New Proyecto_Bazar.BazarDataSetTableAdapters.VentasTableAdapter()
         Me.TableAdapterManager = New Proyecto_Bazar.BazarDataSetTableAdapters.TableAdapterManager()
         Me.ProductosTableAdapter = New Proyecto_Bazar.BazarDataSetTableAdapters.ProductosTableAdapter()
-        Me.ButtonSiguiente = New System.Windows.Forms.Button()
-        Me.ButtonBuscar = New System.Windows.Forms.Button()
-        Me.ButtonAnterior = New System.Windows.Forms.Button()
-        Me.TextBoxConsulta = New System.Windows.Forms.TextBox()
         ID_ClienteLabel = New System.Windows.Forms.Label()
         ID_VentaLabel = New System.Windows.Forms.Label()
         ID_ProductoLabel = New System.Windows.Forms.Label()
@@ -190,6 +190,17 @@ Partial Class Ventas
         TotalLabel.TabIndex = 16
         TotalLabel.Text = "Total:"
         '
+        'LabelBuscar
+        '
+        LabelBuscar.AutoSize = True
+        LabelBuscar.BackColor = System.Drawing.Color.Transparent
+        LabelBuscar.ForeColor = System.Drawing.Color.White
+        LabelBuscar.Location = New System.Drawing.Point(293, 339)
+        LabelBuscar.Name = "LabelBuscar"
+        LabelBuscar.Size = New System.Drawing.Size(120, 17)
+        LabelBuscar.TabIndex = 94
+        LabelBuscar.Text = "Buscar Cliente"
+        '
         'Panel
         '
         Me.Panel.BackColor = System.Drawing.Color.DarkSlateGray
@@ -246,6 +257,49 @@ Partial Class Ventas
         Me.SplitContainer1.Size = New System.Drawing.Size(1274, 599)
         Me.SplitContainer1.SplitterDistance = 637
         Me.SplitContainer1.TabIndex = 1
+        '
+        'ButtonSiguiente
+        '
+        Me.ButtonSiguiente.BackColor = System.Drawing.Color.Black
+        Me.ButtonSiguiente.ForeColor = System.Drawing.Color.White
+        Me.ButtonSiguiente.Location = New System.Drawing.Point(377, 391)
+        Me.ButtonSiguiente.Name = "ButtonSiguiente"
+        Me.ButtonSiguiente.Size = New System.Drawing.Size(80, 41)
+        Me.ButtonSiguiente.TabIndex = 97
+        Me.ButtonSiguiente.Text = ">"
+        Me.ButtonSiguiente.UseVisualStyleBackColor = False
+        '
+        'ButtonBuscar
+        '
+        Me.ButtonBuscar.BackColor = System.Drawing.Color.Cyan
+        Me.ButtonBuscar.ForeColor = System.Drawing.Color.Black
+        Me.ButtonBuscar.Location = New System.Drawing.Point(117, 350)
+        Me.ButtonBuscar.Name = "ButtonBuscar"
+        Me.ButtonBuscar.Size = New System.Drawing.Size(135, 41)
+        Me.ButtonBuscar.TabIndex = 96
+        Me.ButtonBuscar.Text = "Buscar"
+        Me.ButtonBuscar.UseVisualStyleBackColor = False
+        '
+        'ButtonAnterior
+        '
+        Me.ButtonAnterior.BackColor = System.Drawing.Color.Black
+        Me.ButtonAnterior.ForeColor = System.Drawing.Color.White
+        Me.ButtonAnterior.Location = New System.Drawing.Point(257, 391)
+        Me.ButtonAnterior.Name = "ButtonAnterior"
+        Me.ButtonAnterior.Size = New System.Drawing.Size(80, 41)
+        Me.ButtonAnterior.TabIndex = 95
+        Me.ButtonAnterior.Text = "<"
+        Me.ButtonAnterior.UseVisualStyleBackColor = False
+        '
+        'TextBoxConsulta
+        '
+        Me.TextBoxConsulta.BackColor = System.Drawing.Color.White
+        Me.TextBoxConsulta.ForeColor = System.Drawing.Color.Black
+        Me.TextBoxConsulta.Location = New System.Drawing.Point(257, 359)
+        Me.TextBoxConsulta.Name = "TextBoxConsulta"
+        Me.TextBoxConsulta.Size = New System.Drawing.Size(200, 26)
+        Me.TextBoxConsulta.TabIndex = 93
+        Me.TextBoxConsulta.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'ButtonPurgar
         '
@@ -395,7 +449,7 @@ Partial Class Ventas
         Me.SplitContainer2.Panel2.AutoScroll = True
         Me.SplitContainer2.Panel2.Controls.Add(Me.ProductosDataGridView)
         Me.SplitContainer2.Size = New System.Drawing.Size(633, 599)
-        Me.SplitContainer2.SplitterDistance = 311
+        Me.SplitContainer2.SplitterDistance = 310
         Me.SplitContainer2.TabIndex = 0
         '
         'VentasDataGridView
@@ -407,7 +461,7 @@ Partial Class Ventas
         Me.VentasDataGridView.Dock = System.Windows.Forms.DockStyle.Fill
         Me.VentasDataGridView.Location = New System.Drawing.Point(0, 0)
         Me.VentasDataGridView.Name = "VentasDataGridView"
-        Me.VentasDataGridView.Size = New System.Drawing.Size(631, 309)
+        Me.VentasDataGridView.Size = New System.Drawing.Size(631, 308)
         Me.VentasDataGridView.TabIndex = 0
         '
         'DataGridViewTextBoxColumn1
@@ -474,7 +528,7 @@ Partial Class Ventas
         Me.ProductosDataGridView.Dock = System.Windows.Forms.DockStyle.Fill
         Me.ProductosDataGridView.Location = New System.Drawing.Point(0, 0)
         Me.ProductosDataGridView.Name = "ProductosDataGridView"
-        Me.ProductosDataGridView.Size = New System.Drawing.Size(631, 282)
+        Me.ProductosDataGridView.Size = New System.Drawing.Size(631, 283)
         Me.ProductosDataGridView.TabIndex = 0
         '
         'DataGridViewTextBoxColumn10
@@ -516,7 +570,7 @@ Partial Class Ventas
         'TopMenu
         '
         Me.TopMenu.Font = New System.Drawing.Font("Liberation Mono", 20.0!, System.Drawing.FontStyle.Bold)
-        Me.TopMenu.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.InicioToolStripMenuItem, Me.VentasToolStripMenuItem, Me.ClientesToolStripMenuItem, Me.ProductosToolStripMenuItem, Me.ContactoToolStripMenuItem, Me.SalirToolStripMenuItem})
+        Me.TopMenu.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.InicioToolStripMenuItem, Me.VentasToolStripMenuItem, Me.ComprasToolStripMenuItem, Me.ProductosToolStripMenuItem, Me.ContactoToolStripMenuItem, Me.SalirToolStripMenuItem})
         Me.TopMenu.Location = New System.Drawing.Point(0, 0)
         Me.TopMenu.Name = "TopMenu"
         Me.TopMenu.Padding = New System.Windows.Forms.Padding(15, 0, 0, 0)
@@ -528,47 +582,49 @@ Partial Class Ventas
         '
         Me.InicioToolStripMenuItem.Font = New System.Drawing.Font("Liberation Mono", 25.0!, System.Drawing.FontStyle.Bold)
         Me.InicioToolStripMenuItem.Name = "InicioToolStripMenuItem"
-        Me.InicioToolStripMenuItem.Padding = New System.Windows.Forms.Padding(21, 25, 21, 25)
-        Me.InicioToolStripMenuItem.Size = New System.Drawing.Size(183, 92)
+        Me.InicioToolStripMenuItem.Padding = New System.Windows.Forms.Padding(52, 0, 0, 50)
+        Me.InicioToolStripMenuItem.Size = New System.Drawing.Size(193, 92)
         Me.InicioToolStripMenuItem.Text = "Inicio"
         '
         'VentasToolStripMenuItem
         '
         Me.VentasToolStripMenuItem.Font = New System.Drawing.Font("Liberation Mono", 25.0!, System.Drawing.FontStyle.Bold)
+        Me.VentasToolStripMenuItem.ForeColor = System.Drawing.Color.DeepSkyBlue
         Me.VentasToolStripMenuItem.Name = "VentasToolStripMenuItem"
-        Me.VentasToolStripMenuItem.Size = New System.Drawing.Size(149, 92)
+        Me.VentasToolStripMenuItem.Padding = New System.Windows.Forms.Padding(52, 0, 0, 50)
+        Me.VentasToolStripMenuItem.Size = New System.Drawing.Size(193, 92)
         Me.VentasToolStripMenuItem.Text = "Ventas"
         '
-        'ClientesToolStripMenuItem
+        'ComprasToolStripMenuItem
         '
-        Me.ClientesToolStripMenuItem.Font = New System.Drawing.Font("Liberation Mono", 25.0!, System.Drawing.FontStyle.Bold)
-        Me.ClientesToolStripMenuItem.Name = "ClientesToolStripMenuItem"
-        Me.ClientesToolStripMenuItem.Padding = New System.Windows.Forms.Padding(21, 25, 21, 25)
-        Me.ClientesToolStripMenuItem.Size = New System.Drawing.Size(203, 92)
-        Me.ClientesToolStripMenuItem.Text = "Compras"
+        Me.ComprasToolStripMenuItem.Font = New System.Drawing.Font("Liberation Mono", 25.0!, System.Drawing.FontStyle.Bold)
+        Me.ComprasToolStripMenuItem.Name = "ComprasToolStripMenuItem"
+        Me.ComprasToolStripMenuItem.Padding = New System.Windows.Forms.Padding(52, 0, 0, 50)
+        Me.ComprasToolStripMenuItem.Size = New System.Drawing.Size(213, 92)
+        Me.ComprasToolStripMenuItem.Text = "Compras"
         '
         'ProductosToolStripMenuItem
         '
         Me.ProductosToolStripMenuItem.Font = New System.Drawing.Font("Liberation Mono", 25.0!, System.Drawing.FontStyle.Bold)
         Me.ProductosToolStripMenuItem.Name = "ProductosToolStripMenuItem"
-        Me.ProductosToolStripMenuItem.Padding = New System.Windows.Forms.Padding(21, 25, 21, 25)
-        Me.ProductosToolStripMenuItem.Size = New System.Drawing.Size(243, 92)
+        Me.ProductosToolStripMenuItem.Padding = New System.Windows.Forms.Padding(52, 0, 0, 50)
+        Me.ProductosToolStripMenuItem.Size = New System.Drawing.Size(253, 92)
         Me.ProductosToolStripMenuItem.Text = "Productos"
         '
         'ContactoToolStripMenuItem
         '
         Me.ContactoToolStripMenuItem.Font = New System.Drawing.Font("Liberation Mono", 25.0!, System.Drawing.FontStyle.Bold)
         Me.ContactoToolStripMenuItem.Name = "ContactoToolStripMenuItem"
-        Me.ContactoToolStripMenuItem.Padding = New System.Windows.Forms.Padding(21, 25, 21, 25)
-        Me.ContactoToolStripMenuItem.Size = New System.Drawing.Size(223, 92)
+        Me.ContactoToolStripMenuItem.Padding = New System.Windows.Forms.Padding(52, 0, 0, 50)
+        Me.ContactoToolStripMenuItem.Size = New System.Drawing.Size(233, 92)
         Me.ContactoToolStripMenuItem.Text = "Contacto"
         '
         'SalirToolStripMenuItem
         '
         Me.SalirToolStripMenuItem.Font = New System.Drawing.Font("Liberation Mono", 25.0!, System.Drawing.FontStyle.Bold)
         Me.SalirToolStripMenuItem.Name = "SalirToolStripMenuItem"
-        Me.SalirToolStripMenuItem.Padding = New System.Windows.Forms.Padding(21, 25, 21, 25)
-        Me.SalirToolStripMenuItem.Size = New System.Drawing.Size(163, 92)
+        Me.SalirToolStripMenuItem.Padding = New System.Windows.Forms.Padding(52, 0, 0, 50)
+        Me.SalirToolStripMenuItem.Size = New System.Drawing.Size(173, 92)
         Me.SalirToolStripMenuItem.Text = "Salir"
         '
         'VentasTableAdapter
@@ -586,60 +642,6 @@ Partial Class Ventas
         'ProductosTableAdapter
         '
         Me.ProductosTableAdapter.ClearBeforeFill = True
-        '
-        'ButtonSiguiente
-        '
-        Me.ButtonSiguiente.BackColor = System.Drawing.Color.Black
-        Me.ButtonSiguiente.ForeColor = System.Drawing.Color.White
-        Me.ButtonSiguiente.Location = New System.Drawing.Point(377, 391)
-        Me.ButtonSiguiente.Name = "ButtonSiguiente"
-        Me.ButtonSiguiente.Size = New System.Drawing.Size(80, 41)
-        Me.ButtonSiguiente.TabIndex = 97
-        Me.ButtonSiguiente.Text = ">"
-        Me.ButtonSiguiente.UseVisualStyleBackColor = False
-        '
-        'ButtonBuscar
-        '
-        Me.ButtonBuscar.BackColor = System.Drawing.Color.Cyan
-        Me.ButtonBuscar.ForeColor = System.Drawing.Color.Black
-        Me.ButtonBuscar.Location = New System.Drawing.Point(117, 350)
-        Me.ButtonBuscar.Name = "ButtonBuscar"
-        Me.ButtonBuscar.Size = New System.Drawing.Size(135, 41)
-        Me.ButtonBuscar.TabIndex = 96
-        Me.ButtonBuscar.Text = "Buscar"
-        Me.ButtonBuscar.UseVisualStyleBackColor = False
-        '
-        'ButtonAnterior
-        '
-        Me.ButtonAnterior.BackColor = System.Drawing.Color.Black
-        Me.ButtonAnterior.ForeColor = System.Drawing.Color.White
-        Me.ButtonAnterior.Location = New System.Drawing.Point(257, 391)
-        Me.ButtonAnterior.Name = "ButtonAnterior"
-        Me.ButtonAnterior.Size = New System.Drawing.Size(80, 41)
-        Me.ButtonAnterior.TabIndex = 95
-        Me.ButtonAnterior.Text = "<"
-        Me.ButtonAnterior.UseVisualStyleBackColor = False
-        '
-        'LabelBuscar
-        '
-        LabelBuscar.AutoSize = True
-        LabelBuscar.BackColor = System.Drawing.Color.Transparent
-        LabelBuscar.ForeColor = System.Drawing.Color.White
-        LabelBuscar.Location = New System.Drawing.Point(293, 339)
-        LabelBuscar.Name = "LabelBuscar"
-        LabelBuscar.Size = New System.Drawing.Size(120, 17)
-        LabelBuscar.TabIndex = 94
-        LabelBuscar.Text = "Buscar Cliente"
-        '
-        'TextBoxConsulta
-        '
-        Me.TextBoxConsulta.BackColor = System.Drawing.Color.White
-        Me.TextBoxConsulta.ForeColor = System.Drawing.Color.Black
-        Me.TextBoxConsulta.Location = New System.Drawing.Point(257, 359)
-        Me.TextBoxConsulta.Name = "TextBoxConsulta"
-        Me.TextBoxConsulta.Size = New System.Drawing.Size(200, 26)
-        Me.TextBoxConsulta.TabIndex = 93
-        Me.TextBoxConsulta.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'Ventas
         '
@@ -677,15 +679,8 @@ Partial Class Ventas
 
     End Sub
     Friend WithEvents Panel As System.Windows.Forms.Panel
-    Friend WithEvents TopMenu As System.Windows.Forms.MenuStrip
-    Friend WithEvents ClientesToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents ProductosToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents ContactoToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents InicioToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents SalirToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents SplitContainer1 As System.Windows.Forms.SplitContainer
     Friend WithEvents SplitContainer2 As System.Windows.Forms.SplitContainer
-    Friend WithEvents VentasToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents BazarDataSet As Proyecto_Bazar.BazarDataSet
     Friend WithEvents VentasBindingSource As System.Windows.Forms.BindingSource
     Friend WithEvents VentasTableAdapter As Proyecto_Bazar.BazarDataSetTableAdapters.VentasTableAdapter
@@ -725,4 +720,11 @@ Partial Class Ventas
     Friend WithEvents ButtonBuscar As System.Windows.Forms.Button
     Friend WithEvents ButtonAnterior As System.Windows.Forms.Button
     Friend WithEvents TextBoxConsulta As System.Windows.Forms.TextBox
+    Friend WithEvents TopMenu As System.Windows.Forms.MenuStrip
+    Friend WithEvents InicioToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents VentasToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ComprasToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ProductosToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ContactoToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents SalirToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 End Class
