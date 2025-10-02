@@ -33,9 +33,6 @@
 
     End Function
 
-
-
-
     Private Sub ButtonAnterior_Click(sender As System.Object, e As System.EventArgs) Handles ButtonAnterior.Click
         Me.ProductosBindingSource.MovePrevious()
     End Sub
@@ -55,7 +52,13 @@
     End Sub
 
     Private Sub ButtonCrear_Click(sender As System.Object, e As System.EventArgs) Handles ButtonCrear.Click
+        Me.ProductosBindingSource.EndEdit()
 
+        Me.TableAdapterManager.UpdateAll(Me.BazarDataSet)
+
+        Me.ProductosTableAdapter.Fill(Me.BazarDataSet.Productos)
+
+        Me.ProductosBindingSource.AddNew()
     End Sub
 
     Private Sub ButtonModificar_Click(sender As System.Object, e As System.EventArgs) Handles ButtonModificar.Click
@@ -80,7 +83,7 @@
         Ventas.Show()
     End Sub
 
-    Private Sub ComprasToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs)
+    Private Sub ComprasToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles ComprasToolStripMenuItem.Click
         Me.Hide()
         Compras.Show()
     End Sub

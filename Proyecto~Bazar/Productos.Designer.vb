@@ -179,6 +179,7 @@ Partial Class Productos
         'SplitContainer1.Panel2
         '
         Me.SplitContainer1.Panel2.Controls.Add(Me.ProductosDataGridView)
+        Me.SplitContainer1.Panel2.ForeColor = System.Drawing.Color.Black
         Me.SplitContainer1.Size = New System.Drawing.Size(1274, 599)
         Me.SplitContainer1.SplitterDistance = 637
         Me.SplitContainer1.TabIndex = 1
@@ -323,6 +324,7 @@ Partial Class Productos
         '
         'ProductosDataGridView
         '
+        Me.ProductosDataGridView.AllowUserToAddRows = False
         Me.ProductosDataGridView.AutoGenerateColumns = False
         Me.ProductosDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.ProductosDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn2, Me.DataGridViewTextBoxColumn3, Me.DataGridViewTextBoxColumn4, Me.DataGridViewTextBoxColumn5})
@@ -449,7 +451,7 @@ Partial Class Productos
         Me.Name = "Productos"
         Me.ShowIcon = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "Inicio"
+        Me.Text = "Productos"
         Me.Panel.ResumeLayout(False)
         Me.Panel.PerformLayout()
         Me.SplitContainer1.Panel1.ResumeLayout(False)

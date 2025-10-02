@@ -663,7 +663,7 @@ Partial Class Compras
         Me.Name = "Compras"
         Me.ShowIcon = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "Inicio"
+        Me.Text = "Compras"
         Me.Panel.ResumeLayout(False)
         Me.Panel.PerformLayout()
         Me.SplitContainer1.Panel1.ResumeLayout(False)

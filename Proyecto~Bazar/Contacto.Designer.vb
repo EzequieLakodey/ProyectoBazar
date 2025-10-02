@@ -152,7 +152,7 @@ Partial Class Contacto
         Me.Name = "Contacto"
         Me.ShowIcon = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "Inicio"
+        Me.Text = "Contacto"
         Me.Panel.ResumeLayout(False)
         Me.Panel.PerformLayout()
         Me.SplitContainer1.Panel2.ResumeLayout(False)

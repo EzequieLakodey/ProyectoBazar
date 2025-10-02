@@ -656,7 +656,7 @@ Partial Class Ventas
         Me.Name = "Ventas"
         Me.ShowIcon = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "Inicio"
+        Me.Text = "Ventas"
         Me.Panel.ResumeLayout(False)
         Me.Panel.PerformLayout()
         Me.SplitContainer1.Panel1.ResumeLayout(False)
