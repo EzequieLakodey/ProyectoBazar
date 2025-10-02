@@ -22,17 +22,8 @@ Partial Class Contacto
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.LabelBuscarProveedor = New System.Windows.Forms.Label()
         Me.Panel = New System.Windows.Forms.Panel()
         Me.SplitContainer1 = New System.Windows.Forms.SplitContainer()
-        Me.ButtonBuscar = New System.Windows.Forms.Button()
-        Me.ButtonSiguiente = New System.Windows.Forms.Button()
-        Me.ButtonAnterior = New System.Windows.Forms.Button()
-        Me.TextBoxConsulta = New System.Windows.Forms.TextBox()
-        Me.ButtonPurgar = New System.Windows.Forms.Button()
-        Me.ButtonEliminar = New System.Windows.Forms.Button()
-        Me.ButtonCrear = New System.Windows.Forms.Button()
-        Me.ButtonModificar = New System.Windows.Forms.Button()
         Me.SplitContainer2 = New System.Windows.Forms.SplitContainer()
         Me.TopMenu = New System.Windows.Forms.MenuStrip()
         Me.InicioToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -43,24 +34,12 @@ Partial Class Contacto
         Me.SalirToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.Panel.SuspendLayout()
         CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.SplitContainer1.Panel1.SuspendLayout()
         Me.SplitContainer1.Panel2.SuspendLayout()
         Me.SplitContainer1.SuspendLayout()
         CType(Me.SplitContainer2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SplitContainer2.SuspendLayout()
         Me.TopMenu.SuspendLayout()
         Me.SuspendLayout()
-        '
-        'LabelBuscarProveedor
-        '
-        Me.LabelBuscarProveedor.AutoSize = True
-        Me.LabelBuscarProveedor.BackColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.LabelBuscarProveedor.ForeColor = System.Drawing.Color.White
-        Me.LabelBuscarProveedor.Location = New System.Drawing.Point(184, 412)
-        Me.LabelBuscarProveedor.Name = "LabelBuscarProveedor"
-        Me.LabelBuscarProveedor.Size = New System.Drawing.Size(147, 17)
-        Me.LabelBuscarProveedor.TabIndex = 32
-        Me.LabelBuscarProveedor.Text = "Buscar Proveedor"
         '
         'Panel
         '
@@ -82,104 +61,12 @@ Partial Class Contacto
         Me.SplitContainer1.Location = New System.Drawing.Point(0, 92)
         Me.SplitContainer1.Name = "SplitContainer1"
         '
-        'SplitContainer1.Panel1
-        '
-        Me.SplitContainer1.Panel1.Controls.Add(Me.ButtonBuscar)
-        Me.SplitContainer1.Panel1.Controls.Add(Me.ButtonSiguiente)
-        Me.SplitContainer1.Panel1.Controls.Add(Me.ButtonAnterior)
-        Me.SplitContainer1.Panel1.Controls.Add(Me.LabelBuscarProveedor)
-        Me.SplitContainer1.Panel1.Controls.Add(Me.TextBoxConsulta)
-        Me.SplitContainer1.Panel1.Controls.Add(Me.ButtonPurgar)
-        Me.SplitContainer1.Panel1.Controls.Add(Me.ButtonEliminar)
-        Me.SplitContainer1.Panel1.Controls.Add(Me.ButtonCrear)
-        Me.SplitContainer1.Panel1.Controls.Add(Me.ButtonModificar)
-        '
         'SplitContainer1.Panel2
         '
         Me.SplitContainer1.Panel2.Controls.Add(Me.SplitContainer2)
         Me.SplitContainer1.Size = New System.Drawing.Size(1274, 599)
         Me.SplitContainer1.SplitterDistance = 637
         Me.SplitContainer1.TabIndex = 1
-        '
-        'ButtonBuscar
-        '
-        Me.ButtonBuscar.BackColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.ButtonBuscar.Location = New System.Drawing.Point(374, 423)
-        Me.ButtonBuscar.Name = "ButtonBuscar"
-        Me.ButtonBuscar.Size = New System.Drawing.Size(135, 41)
-        Me.ButtonBuscar.TabIndex = 35
-        Me.ButtonBuscar.Text = "Buscar"
-        Me.ButtonBuscar.UseVisualStyleBackColor = False
-        '
-        'ButtonSiguiente
-        '
-        Me.ButtonSiguiente.BackColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.ButtonSiguiente.Location = New System.Drawing.Point(268, 464)
-        Me.ButtonSiguiente.Name = "ButtonSiguiente"
-        Me.ButtonSiguiente.Size = New System.Drawing.Size(100, 41)
-        Me.ButtonSiguiente.TabIndex = 34
-        Me.ButtonSiguiente.Text = ">"
-        Me.ButtonSiguiente.UseVisualStyleBackColor = False
-        '
-        'ButtonAnterior
-        '
-        Me.ButtonAnterior.BackColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.ButtonAnterior.Location = New System.Drawing.Point(142, 464)
-        Me.ButtonAnterior.Name = "ButtonAnterior"
-        Me.ButtonAnterior.Size = New System.Drawing.Size(100, 41)
-        Me.ButtonAnterior.TabIndex = 33
-        Me.ButtonAnterior.Text = "<"
-        Me.ButtonAnterior.UseVisualStyleBackColor = False
-        '
-        'TextBoxConsulta
-        '
-        Me.TextBoxConsulta.BackColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.TextBoxConsulta.Location = New System.Drawing.Point(142, 432)
-        Me.TextBoxConsulta.Name = "TextBoxConsulta"
-        Me.TextBoxConsulta.Size = New System.Drawing.Size(226, 26)
-        Me.TextBoxConsulta.TabIndex = 31
-        Me.TextBoxConsulta.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'ButtonPurgar
-        '
-        Me.ButtonPurgar.BackColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.ButtonPurgar.Location = New System.Drawing.Point(426, 297)
-        Me.ButtonPurgar.Name = "ButtonPurgar"
-        Me.ButtonPurgar.Size = New System.Drawing.Size(135, 41)
-        Me.ButtonPurgar.TabIndex = 30
-        Me.ButtonPurgar.Text = "Purgar"
-        Me.ButtonPurgar.UseVisualStyleBackColor = False
-        '
-        'ButtonEliminar
-        '
-        Me.ButtonEliminar.BackColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.ButtonEliminar.Location = New System.Drawing.Point(426, 251)
-        Me.ButtonEliminar.Name = "ButtonEliminar"
-        Me.ButtonEliminar.Size = New System.Drawing.Size(135, 41)
-        Me.ButtonEliminar.TabIndex = 29
-        Me.ButtonEliminar.Text = "Eliminar"
-        Me.ButtonEliminar.UseVisualStyleBackColor = False
-        '
-        'ButtonCrear
-        '
-        Me.ButtonCrear.BackColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.ButtonCrear.ForeColor = System.Drawing.Color.White
-        Me.ButtonCrear.Location = New System.Drawing.Point(426, 88)
-        Me.ButtonCrear.Name = "ButtonCrear"
-        Me.ButtonCrear.Size = New System.Drawing.Size(135, 41)
-        Me.ButtonCrear.TabIndex = 28
-        Me.ButtonCrear.Text = "Crear"
-        Me.ButtonCrear.UseVisualStyleBackColor = False
-        '
-        'ButtonModificar
-        '
-        Me.ButtonModificar.BackColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.ButtonModificar.Location = New System.Drawing.Point(426, 135)
-        Me.ButtonModificar.Name = "ButtonModificar"
-        Me.ButtonModificar.Size = New System.Drawing.Size(135, 41)
-        Me.ButtonModificar.TabIndex = 27
-        Me.ButtonModificar.Text = "Modificar"
-        Me.ButtonModificar.UseVisualStyleBackColor = False
         '
         'SplitContainer2
         '
@@ -267,8 +154,6 @@ Partial Class Contacto
         Me.Text = "Inicio"
         Me.Panel.ResumeLayout(False)
         Me.Panel.PerformLayout()
-        Me.SplitContainer1.Panel1.ResumeLayout(False)
-        Me.SplitContainer1.Panel1.PerformLayout()
         Me.SplitContainer1.Panel2.ResumeLayout(False)
         CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.SplitContainer1.ResumeLayout(False)
@@ -288,14 +173,5 @@ Partial Class Contacto
     Friend WithEvents SalirToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents SplitContainer1 As System.Windows.Forms.SplitContainer
     Friend WithEvents SplitContainer2 As System.Windows.Forms.SplitContainer
-    Friend WithEvents ButtonBuscar As System.Windows.Forms.Button
-    Friend WithEvents ButtonSiguiente As System.Windows.Forms.Button
-    Friend WithEvents ButtonAnterior As System.Windows.Forms.Button
-    Friend WithEvents TextBoxConsulta As System.Windows.Forms.TextBox
-    Friend WithEvents ButtonPurgar As System.Windows.Forms.Button
-    Friend WithEvents ButtonEliminar As System.Windows.Forms.Button
-    Friend WithEvents ButtonCrear As System.Windows.Forms.Button
-    Friend WithEvents ButtonModificar As System.Windows.Forms.Button
-    Friend WithEvents LabelBuscarProveedor As System.Windows.Forms.Label
     Friend WithEvents VentasToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 End Class
