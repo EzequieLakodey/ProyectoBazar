@@ -206,57 +206,52 @@ Partial Class Contacto
         'InicioToolStripMenuItem
         '
         Me.InicioToolStripMenuItem.Font = New System.Drawing.Font("Liberation Mono", 25.0!, System.Drawing.FontStyle.Bold)
-        Me.InicioToolStripMenuItem.Margin = New System.Windows.Forms.Padding(15, 0, 0, 0)
         Me.InicioToolStripMenuItem.Name = "InicioToolStripMenuItem"
-        Me.InicioToolStripMenuItem.Padding = New System.Windows.Forms.Padding(21, 25, 21, 25)
-        Me.InicioToolStripMenuItem.Size = New System.Drawing.Size(183, 92)
+        Me.InicioToolStripMenuItem.Padding = New System.Windows.Forms.Padding(52, 0, 0, 50)
+        Me.InicioToolStripMenuItem.Size = New System.Drawing.Size(193, 92)
         Me.InicioToolStripMenuItem.Text = "Inicio"
         '
         'VentasToolStripMenuItem
         '
         Me.VentasToolStripMenuItem.Font = New System.Drawing.Font("Liberation Mono", 25.0!, System.Drawing.FontStyle.Bold)
-        Me.VentasToolStripMenuItem.Margin = New System.Windows.Forms.Padding(15, 0, 0, 0)
         Me.VentasToolStripMenuItem.Name = "VentasToolStripMenuItem"
-        Me.VentasToolStripMenuItem.Size = New System.Drawing.Size(149, 92)
+        Me.VentasToolStripMenuItem.Padding = New System.Windows.Forms.Padding(52, 0, 0, 50)
+        Me.VentasToolStripMenuItem.Size = New System.Drawing.Size(193, 92)
         Me.VentasToolStripMenuItem.Text = "Ventas"
         '
         'ComprasToolStripMenuItem
         '
         Me.ComprasToolStripMenuItem.Font = New System.Drawing.Font("Liberation Mono", 25.0!, System.Drawing.FontStyle.Bold)
-        Me.ComprasToolStripMenuItem.Margin = New System.Windows.Forms.Padding(15, 0, 0, 0)
         Me.ComprasToolStripMenuItem.Name = "ComprasToolStripMenuItem"
-        Me.ComprasToolStripMenuItem.Padding = New System.Windows.Forms.Padding(21, 25, 21, 25)
-        Me.ComprasToolStripMenuItem.Size = New System.Drawing.Size(203, 92)
+        Me.ComprasToolStripMenuItem.Padding = New System.Windows.Forms.Padding(52, 0, 0, 50)
+        Me.ComprasToolStripMenuItem.Size = New System.Drawing.Size(213, 92)
         Me.ComprasToolStripMenuItem.Text = "Compras"
         '
         'ProductosToolStripMenuItem
         '
         Me.ProductosToolStripMenuItem.Font = New System.Drawing.Font("Liberation Mono", 25.0!, System.Drawing.FontStyle.Bold)
-        Me.ProductosToolStripMenuItem.Margin = New System.Windows.Forms.Padding(15, 0, 0, 0)
         Me.ProductosToolStripMenuItem.Name = "ProductosToolStripMenuItem"
-        Me.ProductosToolStripMenuItem.Padding = New System.Windows.Forms.Padding(21, 25, 21, 25)
-        Me.ProductosToolStripMenuItem.Size = New System.Drawing.Size(243, 92)
+        Me.ProductosToolStripMenuItem.Padding = New System.Windows.Forms.Padding(52, 0, 0, 50)
+        Me.ProductosToolStripMenuItem.Size = New System.Drawing.Size(253, 92)
         Me.ProductosToolStripMenuItem.Text = "Productos"
         '
         'ContactoToolStripMenuItem
         '
         Me.ContactoToolStripMenuItem.Font = New System.Drawing.Font("Liberation Mono", 25.0!, System.Drawing.FontStyle.Bold)
-        Me.ContactoToolStripMenuItem.Margin = New System.Windows.Forms.Padding(15, 0, 0, 0)
         Me.ContactoToolStripMenuItem.Name = "ContactoToolStripMenuItem"
-        Me.ContactoToolStripMenuItem.Padding = New System.Windows.Forms.Padding(21, 25, 21, 25)
-        Me.ContactoToolStripMenuItem.Size = New System.Drawing.Size(223, 92)
+        Me.ContactoToolStripMenuItem.Padding = New System.Windows.Forms.Padding(52, 0, 0, 50)
+        Me.ContactoToolStripMenuItem.Size = New System.Drawing.Size(233, 92)
         Me.ContactoToolStripMenuItem.Text = "Contacto"
         '
         'SalirToolStripMenuItem
         '
         Me.SalirToolStripMenuItem.Font = New System.Drawing.Font("Liberation Mono", 25.0!, System.Drawing.FontStyle.Bold)
-        Me.SalirToolStripMenuItem.Margin = New System.Windows.Forms.Padding(15, 0, 0, 0)
         Me.SalirToolStripMenuItem.Name = "SalirToolStripMenuItem"
-        Me.SalirToolStripMenuItem.Padding = New System.Windows.Forms.Padding(21, 25, 21, 25)
-        Me.SalirToolStripMenuItem.Size = New System.Drawing.Size(163, 92)
+        Me.SalirToolStripMenuItem.Padding = New System.Windows.Forms.Padding(52, 0, 0, 50)
+        Me.SalirToolStripMenuItem.Size = New System.Drawing.Size(173, 92)
         Me.SalirToolStripMenuItem.Text = "Salir"
         '
-        'Inicio
+        'Contacto
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
         Me.ClientSize = New System.Drawing.Size(1274, 691)
@@ -266,7 +261,7 @@ Partial Class Contacto
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.MainMenuStrip = Me.TopMenu
         Me.Margin = New System.Windows.Forms.Padding(5, 4, 5, 4)
-        Me.Name = "Inicio"
+        Me.Name = "Contacto"
         Me.ShowIcon = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Inicio"

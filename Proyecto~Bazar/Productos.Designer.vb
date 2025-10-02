@@ -142,47 +142,48 @@ Partial Class Productos
         '
         Me.InicioToolStripMenuItem.Font = New System.Drawing.Font("Liberation Mono", 25.0!, System.Drawing.FontStyle.Bold)
         Me.InicioToolStripMenuItem.Name = "InicioToolStripMenuItem"
-        Me.InicioToolStripMenuItem.Padding = New System.Windows.Forms.Padding(21, 25, 21, 25)
-        Me.InicioToolStripMenuItem.Size = New System.Drawing.Size(183, 92)
+        Me.InicioToolStripMenuItem.Padding = New System.Windows.Forms.Padding(52, 0, 0, 50)
+        Me.InicioToolStripMenuItem.Size = New System.Drawing.Size(193, 92)
         Me.InicioToolStripMenuItem.Text = "Inicio"
         '
         'VentasToolStripMenuItem
         '
         Me.VentasToolStripMenuItem.Font = New System.Drawing.Font("Liberation Mono", 25.0!, System.Drawing.FontStyle.Bold)
         Me.VentasToolStripMenuItem.Name = "VentasToolStripMenuItem"
-        Me.VentasToolStripMenuItem.Size = New System.Drawing.Size(149, 92)
+        Me.VentasToolStripMenuItem.Padding = New System.Windows.Forms.Padding(52, 0, 0, 50)
+        Me.VentasToolStripMenuItem.Size = New System.Drawing.Size(193, 92)
         Me.VentasToolStripMenuItem.Text = "Ventas"
         '
         'ClientesToolStripMenuItem
         '
         Me.ClientesToolStripMenuItem.Font = New System.Drawing.Font("Liberation Mono", 25.0!, System.Drawing.FontStyle.Bold)
         Me.ClientesToolStripMenuItem.Name = "ClientesToolStripMenuItem"
-        Me.ClientesToolStripMenuItem.Padding = New System.Windows.Forms.Padding(21, 25, 21, 25)
-        Me.ClientesToolStripMenuItem.Size = New System.Drawing.Size(203, 92)
+        Me.ClientesToolStripMenuItem.Padding = New System.Windows.Forms.Padding(52, 0, 0, 50)
+        Me.ClientesToolStripMenuItem.Size = New System.Drawing.Size(213, 92)
         Me.ClientesToolStripMenuItem.Text = "Compras"
         '
         'ProductosToolStripMenuItem
         '
         Me.ProductosToolStripMenuItem.Font = New System.Drawing.Font("Liberation Mono", 25.0!, System.Drawing.FontStyle.Bold)
         Me.ProductosToolStripMenuItem.Name = "ProductosToolStripMenuItem"
-        Me.ProductosToolStripMenuItem.Padding = New System.Windows.Forms.Padding(21, 25, 21, 25)
-        Me.ProductosToolStripMenuItem.Size = New System.Drawing.Size(243, 92)
+        Me.ProductosToolStripMenuItem.Padding = New System.Windows.Forms.Padding(52, 0, 0, 50)
+        Me.ProductosToolStripMenuItem.Size = New System.Drawing.Size(253, 92)
         Me.ProductosToolStripMenuItem.Text = "Productos"
         '
         'ContactoToolStripMenuItem
         '
         Me.ContactoToolStripMenuItem.Font = New System.Drawing.Font("Liberation Mono", 25.0!, System.Drawing.FontStyle.Bold)
         Me.ContactoToolStripMenuItem.Name = "ContactoToolStripMenuItem"
-        Me.ContactoToolStripMenuItem.Padding = New System.Windows.Forms.Padding(21, 25, 21, 25)
-        Me.ContactoToolStripMenuItem.Size = New System.Drawing.Size(223, 92)
+        Me.ContactoToolStripMenuItem.Padding = New System.Windows.Forms.Padding(52, 0, 0, 50)
+        Me.ContactoToolStripMenuItem.Size = New System.Drawing.Size(233, 92)
         Me.ContactoToolStripMenuItem.Text = "Contacto"
         '
         'SalirToolStripMenuItem
         '
         Me.SalirToolStripMenuItem.Font = New System.Drawing.Font("Liberation Mono", 25.0!, System.Drawing.FontStyle.Bold)
         Me.SalirToolStripMenuItem.Name = "SalirToolStripMenuItem"
-        Me.SalirToolStripMenuItem.Padding = New System.Windows.Forms.Padding(21, 25, 21, 25)
-        Me.SalirToolStripMenuItem.Size = New System.Drawing.Size(163, 92)
+        Me.SalirToolStripMenuItem.Padding = New System.Windows.Forms.Padding(52, 0, 0, 50)
+        Me.SalirToolStripMenuItem.Size = New System.Drawing.Size(173, 92)
         Me.SalirToolStripMenuItem.Text = "Salir"
         '
         'BazarDataSet
@@ -262,6 +263,7 @@ Partial Class Productos
         'ID_ProductoTextBox
         '
         Me.ID_ProductoTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ProductosBindingSource, "ID_Producto", True))
+        Me.ID_ProductoTextBox.Enabled = False
         Me.ID_ProductoTextBox.Location = New System.Drawing.Point(241, 91)
         Me.ID_ProductoTextBox.Name = "ID_ProductoTextBox"
         Me.ID_ProductoTextBox.Size = New System.Drawing.Size(200, 26)

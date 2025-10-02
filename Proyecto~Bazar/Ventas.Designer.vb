@@ -294,6 +294,7 @@ Partial Class Ventas
         'ID_ClienteTextBox
         '
         Me.ID_ClienteTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.VentasBindingSource, "ID_Cliente", True))
+        Me.ID_ClienteTextBox.Enabled = False
         Me.ID_ClienteTextBox.Location = New System.Drawing.Point(257, 25)
         Me.ID_ClienteTextBox.Name = "ID_ClienteTextBox"
         Me.ID_ClienteTextBox.Size = New System.Drawing.Size(200, 26)
@@ -312,6 +313,7 @@ Partial Class Ventas
         'ID_VentaTextBox
         '
         Me.ID_VentaTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.VentasBindingSource, "ID_Venta", True))
+        Me.ID_VentaTextBox.Enabled = False
         Me.ID_VentaTextBox.Location = New System.Drawing.Point(257, 57)
         Me.ID_VentaTextBox.Name = "ID_VentaTextBox"
         Me.ID_VentaTextBox.Size = New System.Drawing.Size(200, 26)
@@ -360,6 +362,7 @@ Partial Class Ventas
         'SubTotalTextBox
         '
         Me.SubTotalTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.VentasBindingSource, "SubTotal", True))
+        Me.SubTotalTextBox.Enabled = False
         Me.SubTotalTextBox.Location = New System.Drawing.Point(257, 249)
         Me.SubTotalTextBox.Name = "SubTotalTextBox"
         Me.SubTotalTextBox.Size = New System.Drawing.Size(200, 26)
@@ -368,6 +371,7 @@ Partial Class Ventas
         'TotalTextBox
         '
         Me.TotalTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.VentasBindingSource, "Total", True))
+        Me.TotalTextBox.Enabled = False
         Me.TotalTextBox.Location = New System.Drawing.Point(257, 281)
         Me.TotalTextBox.Name = "TotalTextBox"
         Me.TotalTextBox.Size = New System.Drawing.Size(200, 26)

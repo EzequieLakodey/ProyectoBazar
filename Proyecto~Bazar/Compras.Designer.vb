@@ -72,7 +72,6 @@ Partial Class Compras
         Me.ComprasTableAdapter = New Proyecto_Bazar.BazarDataSetTableAdapters.ComprasTableAdapter()
         Me.TableAdapterManager = New Proyecto_Bazar.BazarDataSetTableAdapters.TableAdapterManager()
         Me.ProductosTableAdapter = New Proyecto_Bazar.BazarDataSetTableAdapters.ProductosTableAdapter()
-        Me.ComprasBindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
         Me.ID_ProveedorTextBox = New System.Windows.Forms.TextBox()
         Me.ID_CompraTextBox = New System.Windows.Forms.TextBox()
         Me.ID_ProductoTextBox = New System.Windows.Forms.TextBox()
@@ -83,6 +82,7 @@ Partial Class Compras
         Me.SubTotalTextBox = New System.Windows.Forms.TextBox()
         Me.TotalTextBox = New System.Windows.Forms.TextBox()
         Me.ButtonSiguiente = New System.Windows.Forms.Button()
+        Me.ComprasBindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
         LabelBuscar = New System.Windows.Forms.Label()
         ID_ProveedorLabel = New System.Windows.Forms.Label()
         ID_CompraLabel = New System.Windows.Forms.Label()
@@ -416,47 +416,48 @@ Partial Class Compras
         '
         Me.InicioToolStripMenuItem.Font = New System.Drawing.Font("Liberation Mono", 25.0!, System.Drawing.FontStyle.Bold)
         Me.InicioToolStripMenuItem.Name = "InicioToolStripMenuItem"
-        Me.InicioToolStripMenuItem.Padding = New System.Windows.Forms.Padding(21, 25, 21, 25)
-        Me.InicioToolStripMenuItem.Size = New System.Drawing.Size(183, 92)
+        Me.InicioToolStripMenuItem.Padding = New System.Windows.Forms.Padding(52, 0, 0, 50)
+        Me.InicioToolStripMenuItem.Size = New System.Drawing.Size(193, 92)
         Me.InicioToolStripMenuItem.Text = "Inicio"
         '
         'VentasToolStripMenuItem
         '
         Me.VentasToolStripMenuItem.Font = New System.Drawing.Font("Liberation Mono", 25.0!, System.Drawing.FontStyle.Bold)
         Me.VentasToolStripMenuItem.Name = "VentasToolStripMenuItem"
-        Me.VentasToolStripMenuItem.Size = New System.Drawing.Size(149, 92)
+        Me.VentasToolStripMenuItem.Padding = New System.Windows.Forms.Padding(52, 0, 0, 50)
+        Me.VentasToolStripMenuItem.Size = New System.Drawing.Size(193, 92)
         Me.VentasToolStripMenuItem.Text = "Ventas"
         '
         'ClientesToolStripMenuItem
         '
         Me.ClientesToolStripMenuItem.Font = New System.Drawing.Font("Liberation Mono", 25.0!, System.Drawing.FontStyle.Bold)
         Me.ClientesToolStripMenuItem.Name = "ClientesToolStripMenuItem"
-        Me.ClientesToolStripMenuItem.Padding = New System.Windows.Forms.Padding(21, 25, 21, 25)
-        Me.ClientesToolStripMenuItem.Size = New System.Drawing.Size(203, 92)
+        Me.ClientesToolStripMenuItem.Padding = New System.Windows.Forms.Padding(52, 0, 0, 50)
+        Me.ClientesToolStripMenuItem.Size = New System.Drawing.Size(213, 92)
         Me.ClientesToolStripMenuItem.Text = "Compras"
         '
         'ProductosToolStripMenuItem
         '
         Me.ProductosToolStripMenuItem.Font = New System.Drawing.Font("Liberation Mono", 25.0!, System.Drawing.FontStyle.Bold)
         Me.ProductosToolStripMenuItem.Name = "ProductosToolStripMenuItem"
-        Me.ProductosToolStripMenuItem.Padding = New System.Windows.Forms.Padding(21, 25, 21, 25)
-        Me.ProductosToolStripMenuItem.Size = New System.Drawing.Size(243, 92)
+        Me.ProductosToolStripMenuItem.Padding = New System.Windows.Forms.Padding(52, 0, 0, 50)
+        Me.ProductosToolStripMenuItem.Size = New System.Drawing.Size(253, 92)
         Me.ProductosToolStripMenuItem.Text = "Productos"
         '
         'ContactoToolStripMenuItem
         '
         Me.ContactoToolStripMenuItem.Font = New System.Drawing.Font("Liberation Mono", 25.0!, System.Drawing.FontStyle.Bold)
         Me.ContactoToolStripMenuItem.Name = "ContactoToolStripMenuItem"
-        Me.ContactoToolStripMenuItem.Padding = New System.Windows.Forms.Padding(21, 25, 21, 25)
-        Me.ContactoToolStripMenuItem.Size = New System.Drawing.Size(223, 92)
+        Me.ContactoToolStripMenuItem.Padding = New System.Windows.Forms.Padding(52, 0, 0, 50)
+        Me.ContactoToolStripMenuItem.Size = New System.Drawing.Size(233, 92)
         Me.ContactoToolStripMenuItem.Text = "Contacto"
         '
         'SalirToolStripMenuItem
         '
         Me.SalirToolStripMenuItem.Font = New System.Drawing.Font("Liberation Mono", 25.0!, System.Drawing.FontStyle.Bold)
         Me.SalirToolStripMenuItem.Name = "SalirToolStripMenuItem"
-        Me.SalirToolStripMenuItem.Padding = New System.Windows.Forms.Padding(21, 25, 21, 25)
-        Me.SalirToolStripMenuItem.Size = New System.Drawing.Size(163, 92)
+        Me.SalirToolStripMenuItem.Padding = New System.Windows.Forms.Padding(52, 0, 0, 50)
+        Me.SalirToolStripMenuItem.Size = New System.Drawing.Size(173, 92)
         Me.SalirToolStripMenuItem.Text = "Salir"
         '
         'ComprasTableAdapter
@@ -475,11 +476,6 @@ Partial Class Compras
         '
         Me.ProductosTableAdapter.ClearBeforeFill = True
         '
-        'ComprasBindingSource1
-        '
-        Me.ComprasBindingSource1.DataMember = "FK_Compras_Productos"
-        Me.ComprasBindingSource1.DataSource = Me.ProductosBindingSource
-        '
         'ID_ProveedorLabel
         '
         ID_ProveedorLabel.AutoSize = True
@@ -492,6 +488,7 @@ Partial Class Compras
         'ID_ProveedorTextBox
         '
         Me.ID_ProveedorTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ComprasBindingSource1, "ID_Proveedor", True))
+        Me.ID_ProveedorTextBox.Enabled = False
         Me.ID_ProveedorTextBox.Location = New System.Drawing.Point(257, 24)
         Me.ID_ProveedorTextBox.Name = "ID_ProveedorTextBox"
         Me.ID_ProveedorTextBox.Size = New System.Drawing.Size(200, 26)
@@ -509,6 +506,7 @@ Partial Class Compras
         'ID_CompraTextBox
         '
         Me.ID_CompraTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ComprasBindingSource1, "ID_Compra", True))
+        Me.ID_CompraTextBox.Enabled = False
         Me.ID_CompraTextBox.Location = New System.Drawing.Point(257, 56)
         Me.ID_CompraTextBox.Name = "ID_CompraTextBox"
         Me.ID_CompraTextBox.Size = New System.Drawing.Size(200, 26)
@@ -611,6 +609,7 @@ Partial Class Compras
         'SubTotalTextBox
         '
         Me.SubTotalTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ComprasBindingSource1, "SubTotal", True))
+        Me.SubTotalTextBox.Enabled = False
         Me.SubTotalTextBox.Location = New System.Drawing.Point(257, 248)
         Me.SubTotalTextBox.Name = "SubTotalTextBox"
         Me.SubTotalTextBox.Size = New System.Drawing.Size(200, 26)
@@ -628,6 +627,7 @@ Partial Class Compras
         'TotalTextBox
         '
         Me.TotalTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ComprasBindingSource1, "Total", True))
+        Me.TotalTextBox.Enabled = False
         Me.TotalTextBox.Location = New System.Drawing.Point(257, 280)
         Me.TotalTextBox.Name = "TotalTextBox"
         Me.TotalTextBox.Size = New System.Drawing.Size(200, 26)
@@ -643,6 +643,11 @@ Partial Class Compras
         Me.ButtonSiguiente.TabIndex = 92
         Me.ButtonSiguiente.Text = ">"
         Me.ButtonSiguiente.UseVisualStyleBackColor = False
+        '
+        'ComprasBindingSource1
+        '
+        Me.ComprasBindingSource1.DataMember = "FK_Compras_Productos"
+        Me.ComprasBindingSource1.DataSource = Me.ProductosBindingSource
         '
         'Compras
         '

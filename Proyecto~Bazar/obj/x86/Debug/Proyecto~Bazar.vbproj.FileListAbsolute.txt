@@ -3,3 +3,12 @@ E:\Dev\Proyects\Proyecto~Bazar\Proyecto~Bazar\obj\x86\Debug\Proyecto_Bazar.Inici
 E:\Dev\Proyects\Proyecto~Bazar\Proyecto~Bazar\obj\x86\Debug\Proyecto_Bazar.Resources.resources
 E:\Dev\Proyects\Proyecto~Bazar\Proyecto~Bazar\obj\x86\Debug\Proyecto~Bazar.vbproj.GenerateResource.Cache
 E:\Dev\Proyects\Proyecto~Bazar\Proyecto~Bazar\bin\Debug\Proyecto~Bazar.exe.config
+E:\Dev\Proyects\Proyecto~Bazar\Proyecto~Bazar\bin\Debug\Bazar.sdf
+E:\Dev\Proyects\Proyecto~Bazar\Proyecto~Bazar\bin\Debug\Proyecto~Bazar.exe
+E:\Dev\Proyects\Proyecto~Bazar\Proyecto~Bazar\bin\Debug\Proyecto~Bazar.pdb
+E:\Dev\Proyects\Proyecto~Bazar\Proyecto~Bazar\bin\Debug\Proyecto~Bazar.xml
+E:\Dev\Proyects\Proyecto~Bazar\Proyecto~Bazar\obj\x86\Debug\Proyecto_Bazar.Productos.resources
+E:\Dev\Proyects\Proyecto~Bazar\Proyecto~Bazar\obj\x86\Debug\Proyecto_Bazar.Ventas.resources
+E:\Dev\Proyects\Proyecto~Bazar\Proyecto~Bazar\obj\x86\Debug\Proyecto~Bazar.exe
+E:\Dev\Proyects\Proyecto~Bazar\Proyecto~Bazar\obj\x86\Debug\Proyecto~Bazar.xml
+E:\Dev\Proyects\Proyecto~Bazar\Proyecto~Bazar\obj\x86\Debug\Proyecto~Bazar.pdb
