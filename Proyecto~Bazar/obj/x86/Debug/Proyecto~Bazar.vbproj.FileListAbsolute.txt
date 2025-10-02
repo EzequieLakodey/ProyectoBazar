@@ -1,0 +1,5 @@
+E:\Dev\Proyects\Proyecto~Bazar\Proyecto~Bazar\obj\x86\Debug\Proyecto_Bazar.Compras.resources
+E:\Dev\Proyects\Proyecto~Bazar\Proyecto~Bazar\obj\x86\Debug\Proyecto_Bazar.Inicio.resources
+E:\Dev\Proyects\Proyecto~Bazar\Proyecto~Bazar\obj\x86\Debug\Proyecto_Bazar.Resources.resources
+E:\Dev\Proyects\Proyecto~Bazar\Proyecto~Bazar\obj\x86\Debug\Proyecto~Bazar.vbproj.GenerateResource.Cache
+E:\Dev\Proyects\Proyecto~Bazar\Proyecto~Bazar\bin\Debug\Proyecto~Bazar.exe.config
