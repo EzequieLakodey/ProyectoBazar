@@ -1,23 +1,22 @@
 ﻿Public Class Productos
-    Dim confirmacion, posicion As Boolean
-    Dim idProducto As Long
+
+    Dim confirmacion As Boolean
+
+    Dim idProducto, posicion As Long
+
     Dim fila As DataRowView
 
-    Private Sub ProductosBindingNavigatorSaveItem_Click(sender As System.Object, e As System.EventArgs)
-        Me.Validate()
-        Me.ProductosBindingSource.EndEdit()
-        Me.TableAdapterManager.UpdateAll(Me.BazarDataSet)
-    End Sub
-
     Private Sub Productos_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
-        Me.ProductosTableAdapter.Fill(Me.BazarDataSet.Productos)
+
         Me.ProductosBindingSource.AddNew()
-        Me.ProductosBindingSource.MoveFirst()
+        Me.ProductosTableAdapter.Fill(Me.BazarDataSet.Productos)
+        Me.ProductosBindingSource.MoveLast()
+
     End Sub
 
     Function BuscarProducto() As Integer
 
-        idProducto = CLng(ID_ProductoTextBox.Text)
+        idProducto = CLng(TextBoxConsulta.Text)
 
         posicion = Me.ProductosBindingSource.Find("ID_Producto", idProducto)
 
@@ -34,15 +33,21 @@
     End Function
 
     Private Sub ButtonAnterior_Click(sender As System.Object, e As System.EventArgs) Handles ButtonAnterior.Click
+
         Me.ProductosBindingSource.MovePrevious()
+
     End Sub
 
     Private Sub ButtonSiguiente_Click(sender As System.Object, e As System.EventArgs) Handles ButtonSiguiente.Click
+
         Me.ProductosBindingSource.MoveNext()
+
     End Sub
 
     Private Sub ID_ProductoTextBox_TextChanged(sender As System.Object, e As System.EventArgs) Handles ID_ProductoTextBox.TextChanged
+
         TextBoxConsulta.Text = ID_ProductoTextBox.Text
+
     End Sub
 
     Private Sub ButtonBuscar_Click(sender As System.Object, e As System.EventArgs) Handles ButtonBuscar.Click
@@ -52,6 +57,7 @@
     End Sub
 
     Private Sub ButtonCrear_Click(sender As System.Object, e As System.EventArgs) Handles ButtonCrear.Click
+
         Me.ProductosBindingSource.EndEdit()
 
         Me.TableAdapterManager.UpdateAll(Me.BazarDataSet)
@@ -59,17 +65,66 @@
         Me.ProductosTableAdapter.Fill(Me.BazarDataSet.Productos)
 
         Me.ProductosBindingSource.AddNew()
+
+        Me.ProductosBindingSource.MoveLast()
+
     End Sub
 
     Private Sub ButtonModificar_Click(sender As System.Object, e As System.EventArgs) Handles ButtonModificar.Click
+
+        BuscarProducto()
+
+        Me.ProductosBindingSource.EndEdit()
+
+        Me.TableAdapterManager.UpdateAll(Me.BazarDataSet)
+
+        Me.ProductosTableAdapter.Fill(Me.BazarDataSet.Productos)
+
+        Me.ProductosBindingSource.MoveLast()
 
     End Sub
 
     Private Sub ButtonEliminar_Click(sender As System.Object, e As System.EventArgs) Handles ButtonEliminar.Click
 
+        BuscarProducto()
+
+        confirmacion = MsgBox("Esta seguro que desea eliminar el producto = " & ID_ProductoTextBox.Text & " | " & NombreTextBox.Text, MsgBoxStyle.YesNo)
+
+        If confirmacion Then
+
+            Me.ProductosBindingSource.RemoveCurrent()
+
+            Me.TableAdapterManager.UpdateAll(Me.BazarDataSet)
+
+            Me.ProductosTableAdapter.Fill(Me.BazarDataSet.Productos)
+
+            MsgBox("Registro eliminado correctamente", MsgBoxStyle.MsgBoxRight)
+
+        End If
+
+        Me.ProductosBindingSource.MoveLast()
+
     End Sub
 
     Private Sub ButtonPurgar_Click(sender As System.Object, e As System.EventArgs) Handles ButtonPurgar.Click
+
+        BuscarProducto()
+
+        confirmacion = MsgBox("Esta seguro que desea eliminar TODOS los registros de [Productos], esta accion es PERMANENTE", MsgBoxStyle.YesNo, MsgBoxStyle.Critical)
+
+        If confirmacion Then
+
+            Me.ProductosTableAdapter.Purgar()
+
+            Me.TableAdapterManager.UpdateAll(Me.BazarDataSet)
+
+            Me.ProductosTableAdapter.Fill(Me.BazarDataSet.Productos)
+
+            MsgBox("TODOS los registros fueron eliminados de [Productos]", MsgBoxStyle.MsgBoxRight)
+
+        End If
+
+        Me.ProductosBindingSource.MoveLast()
 
     End Sub
 

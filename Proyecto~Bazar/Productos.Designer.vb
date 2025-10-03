@@ -325,11 +325,16 @@ Partial Class Productos
         'ProductosDataGridView
         '
         Me.ProductosDataGridView.AllowUserToAddRows = False
+        Me.ProductosDataGridView.AllowUserToDeleteRows = False
+        Me.ProductosDataGridView.AllowUserToResizeColumns = False
+        Me.ProductosDataGridView.AllowUserToResizeRows = False
         Me.ProductosDataGridView.AutoGenerateColumns = False
+        Me.ProductosDataGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Sunken
         Me.ProductosDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.ProductosDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn2, Me.DataGridViewTextBoxColumn3, Me.DataGridViewTextBoxColumn4, Me.DataGridViewTextBoxColumn5})
         Me.ProductosDataGridView.DataSource = Me.ProductosBindingSource
         Me.ProductosDataGridView.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.ProductosDataGridView.Enabled = False
         Me.ProductosDataGridView.Location = New System.Drawing.Point(0, 0)
         Me.ProductosDataGridView.Name = "ProductosDataGridView"
         Me.ProductosDataGridView.Size = New System.Drawing.Size(631, 597)
