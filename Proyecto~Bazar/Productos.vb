@@ -9,8 +9,10 @@
     Private Sub Productos_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
 
         Me.ProductosBindingSource.AddNew()
+
+        Me.TableAdapterManager.UpdateAll(Me.BazarDataSet)
+
         Me.ProductosTableAdapter.Fill(Me.BazarDataSet.Productos)
-        Me.ProductosBindingSource.MoveLast()
 
     End Sub
 
@@ -66,6 +68,8 @@
 
         Me.ProductosBindingSource.AddNew()
 
+        Me.Refresh()
+
         Me.ProductosBindingSource.MoveLast()
 
     End Sub
@@ -80,6 +84,8 @@
 
         Me.ProductosTableAdapter.Fill(Me.BazarDataSet.Productos)
 
+        Me.Refresh()
+
         Me.ProductosBindingSource.MoveLast()
 
     End Sub
@@ -88,7 +94,7 @@
 
         BuscarProducto()
 
-        confirmacion = MsgBox("Esta seguro que desea eliminar el producto = " & ID_ProductoTextBox.Text & " | " & NombreTextBox.Text, MsgBoxStyle.YesNo)
+        confirmacion = MsgBox("Esta seguro que desea eliminar el PRODUCTO = " & ID_ProductoTextBox.Text & " | " & NombreComboBox.Text, MsgBoxStyle.YesNo)
 
         If confirmacion Then
 
@@ -101,6 +107,8 @@
             MsgBox("Registro eliminado correctamente", MsgBoxStyle.MsgBoxRight)
 
         End If
+
+        Me.Refresh()
 
         Me.ProductosBindingSource.MoveLast()
 
@@ -116,40 +124,65 @@
 
             Me.ProductosTableAdapter.Purgar()
 
-            Me.TableAdapterManager.UpdateAll(Me.BazarDataSet)
-
             Me.ProductosTableAdapter.Fill(Me.BazarDataSet.Productos)
 
             MsgBox("TODOS los registros fueron eliminados de [Productos]", MsgBoxStyle.MsgBoxRight)
 
         End If
 
+        Me.Refresh()
+
         Me.ProductosBindingSource.MoveLast()
 
     End Sub
 
     Private Sub InicioToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles InicioToolStripMenuItem.Click
+
         Me.Hide()
+
         Inicio.Show()
+
     End Sub
 
     Private Sub VentasToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles VentasToolStripMenuItem.Click
+
         Me.Hide()
+
         Ventas.Show()
+
     End Sub
 
     Private Sub ComprasToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles ComprasToolStripMenuItem.Click
+
         Me.Hide()
+
         Compras.Show()
+
     End Sub
 
     Private Sub ContactoToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles ContactoToolStripMenuItem.Click
+
         Me.Hide()
+
         Contacto.Show()
+
     End Sub
 
+
     Private Sub SalirToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles SalirToolStripMenuItem.Click
+
         End
+
+    End Sub
+
+    Private Sub FillByToolStripButton_Click(sender As System.Object, e As System.EventArgs) Handles FillByToolStripButton.Click
+
+        Try
+            Me.ProductosTableAdapter.FillBy(Me.BazarDataSet.Productos)
+        Catch ex As System.Exception
+            System.Windows.Forms.MessageBox.Show(ex.Message)
+        End Try
+
     End Sub
 
 End Class

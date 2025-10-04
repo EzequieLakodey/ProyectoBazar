@@ -25,12 +25,15 @@ Partial Class Productos
         Me.components = New System.ComponentModel.Container()
         Dim ID_ProductoLabel As System.Windows.Forms.Label
         Dim NombreLabel As System.Windows.Forms.Label
-        Dim CategoriaLabel As System.Windows.Forms.Label
         Dim StockLabel As System.Windows.Forms.Label
         Dim StockMinimoLabel As System.Windows.Forms.Label
         Dim LabelBuscar As System.Windows.Forms.Label
+        Dim CategoriaLabel As System.Windows.Forms.Label
         Me.Panel = New System.Windows.Forms.Panel()
         Me.SplitContainer1 = New System.Windows.Forms.SplitContainer()
+        Me.CategoriaComboBox = New System.Windows.Forms.ComboBox()
+        Me.ProductosBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.BazarDataSet = New Proyecto_Bazar.BazarDataSet()
         Me.ButtonSiguiente = New System.Windows.Forms.Button()
         Me.ButtonBuscar = New System.Windows.Forms.Button()
         Me.ButtonAnterior = New System.Windows.Forms.Button()
@@ -40,10 +43,6 @@ Partial Class Productos
         Me.ButtonCrear = New System.Windows.Forms.Button()
         Me.ButtonModificar = New System.Windows.Forms.Button()
         Me.ID_ProductoTextBox = New System.Windows.Forms.TextBox()
-        Me.ProductosBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.BazarDataSet = New Proyecto_Bazar.BazarDataSet()
-        Me.NombreTextBox = New System.Windows.Forms.TextBox()
-        Me.CategoriaTextBox = New System.Windows.Forms.TextBox()
         Me.StockTextBox = New System.Windows.Forms.TextBox()
         Me.StockMinimoTextBox = New System.Windows.Forms.TextBox()
         Me.ProductosDataGridView = New System.Windows.Forms.DataGridView()
@@ -61,12 +60,15 @@ Partial Class Productos
         Me.SalirToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ProductosTableAdapter = New Proyecto_Bazar.BazarDataSetTableAdapters.ProductosTableAdapter()
         Me.TableAdapterManager = New Proyecto_Bazar.BazarDataSetTableAdapters.TableAdapterManager()
+        Me.FillByToolStrip = New System.Windows.Forms.ToolStrip()
+        Me.FillByToolStripButton = New System.Windows.Forms.ToolStripButton()
+        Me.NombreComboBox = New System.Windows.Forms.ComboBox()
         ID_ProductoLabel = New System.Windows.Forms.Label()
         NombreLabel = New System.Windows.Forms.Label()
-        CategoriaLabel = New System.Windows.Forms.Label()
         StockLabel = New System.Windows.Forms.Label()
         StockMinimoLabel = New System.Windows.Forms.Label()
         LabelBuscar = New System.Windows.Forms.Label()
+        CategoriaLabel = New System.Windows.Forms.Label()
         Me.Panel.SuspendLayout()
         CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SplitContainer1.Panel1.SuspendLayout()
@@ -76,6 +78,7 @@ Partial Class Productos
         CType(Me.BazarDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ProductosDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TopMenu.SuspendLayout()
+        Me.FillByToolStrip.SuspendLayout()
         Me.SuspendLayout()
         '
         'ID_ProductoLabel
@@ -95,15 +98,6 @@ Partial Class Productos
         NombreLabel.Size = New System.Drawing.Size(75, 17)
         NombreLabel.TabIndex = 2
         NombreLabel.Text = "Nombre:"
-        '
-        'CategoriaLabel
-        '
-        CategoriaLabel.AutoSize = True
-        CategoriaLabel.Location = New System.Drawing.Point(118, 158)
-        CategoriaLabel.Name = "CategoriaLabel"
-        CategoriaLabel.Size = New System.Drawing.Size(88, 17)
-        CategoriaLabel.TabIndex = 4
-        CategoriaLabel.Text = "Categoria:"
         '
         'StockLabel
         '
@@ -134,6 +128,15 @@ Partial Class Productos
         LabelBuscar.TabIndex = 99
         LabelBuscar.Text = "Buscar Producto"
         '
+        'CategoriaLabel
+        '
+        CategoriaLabel.AutoSize = True
+        CategoriaLabel.Location = New System.Drawing.Point(118, 158)
+        CategoriaLabel.Name = "CategoriaLabel"
+        CategoriaLabel.Size = New System.Drawing.Size(88, 17)
+        CategoriaLabel.TabIndex = 4
+        CategoriaLabel.Text = "Categoria:"
+        '
         'Panel
         '
         Me.Panel.BackColor = System.Drawing.Color.DarkSlateGray
@@ -156,6 +159,8 @@ Partial Class Productos
         '
         'SplitContainer1.Panel1
         '
+        Me.SplitContainer1.Panel1.Controls.Add(Me.NombreComboBox)
+        Me.SplitContainer1.Panel1.Controls.Add(Me.CategoriaComboBox)
         Me.SplitContainer1.Panel1.Controls.Add(Me.ButtonSiguiente)
         Me.SplitContainer1.Panel1.Controls.Add(Me.ButtonBuscar)
         Me.SplitContainer1.Panel1.Controls.Add(Me.ButtonAnterior)
@@ -168,9 +173,7 @@ Partial Class Productos
         Me.SplitContainer1.Panel1.Controls.Add(ID_ProductoLabel)
         Me.SplitContainer1.Panel1.Controls.Add(Me.ID_ProductoTextBox)
         Me.SplitContainer1.Panel1.Controls.Add(NombreLabel)
-        Me.SplitContainer1.Panel1.Controls.Add(Me.NombreTextBox)
         Me.SplitContainer1.Panel1.Controls.Add(CategoriaLabel)
-        Me.SplitContainer1.Panel1.Controls.Add(Me.CategoriaTextBox)
         Me.SplitContainer1.Panel1.Controls.Add(StockLabel)
         Me.SplitContainer1.Panel1.Controls.Add(Me.StockTextBox)
         Me.SplitContainer1.Panel1.Controls.Add(StockMinimoLabel)
@@ -183,6 +186,28 @@ Partial Class Productos
         Me.SplitContainer1.Size = New System.Drawing.Size(1274, 599)
         Me.SplitContainer1.SplitterDistance = 637
         Me.SplitContainer1.TabIndex = 1
+        '
+        'CategoriaComboBox
+        '
+        Me.CategoriaComboBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ProductosBindingSource, "Categoria", True))
+        Me.CategoriaComboBox.DataSource = Me.ProductosBindingSource
+        Me.CategoriaComboBox.DisplayMember = "Categoria"
+        Me.CategoriaComboBox.FormattingEnabled = True
+        Me.CategoriaComboBox.Location = New System.Drawing.Point(241, 155)
+        Me.CategoriaComboBox.Name = "CategoriaComboBox"
+        Me.CategoriaComboBox.Size = New System.Drawing.Size(200, 25)
+        Me.CategoriaComboBox.TabIndex = 103
+        Me.CategoriaComboBox.ValueMember = "Categoria"
+        '
+        'ProductosBindingSource
+        '
+        Me.ProductosBindingSource.DataMember = "Productos"
+        Me.ProductosBindingSource.DataSource = Me.BazarDataSet
+        '
+        'BazarDataSet
+        '
+        Me.BazarDataSet.DataSetName = "BazarDataSet"
+        Me.BazarDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'ButtonSiguiente
         '
@@ -280,32 +305,6 @@ Partial Class Productos
         Me.ID_ProductoTextBox.Size = New System.Drawing.Size(200, 26)
         Me.ID_ProductoTextBox.TabIndex = 1
         '
-        'ProductosBindingSource
-        '
-        Me.ProductosBindingSource.DataMember = "Productos"
-        Me.ProductosBindingSource.DataSource = Me.BazarDataSet
-        '
-        'BazarDataSet
-        '
-        Me.BazarDataSet.DataSetName = "BazarDataSet"
-        Me.BazarDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
-        'NombreTextBox
-        '
-        Me.NombreTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ProductosBindingSource, "Nombre", True))
-        Me.NombreTextBox.Location = New System.Drawing.Point(241, 123)
-        Me.NombreTextBox.Name = "NombreTextBox"
-        Me.NombreTextBox.Size = New System.Drawing.Size(200, 26)
-        Me.NombreTextBox.TabIndex = 3
-        '
-        'CategoriaTextBox
-        '
-        Me.CategoriaTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ProductosBindingSource, "Categoria", True))
-        Me.CategoriaTextBox.Location = New System.Drawing.Point(241, 155)
-        Me.CategoriaTextBox.Name = "CategoriaTextBox"
-        Me.CategoriaTextBox.Size = New System.Drawing.Size(200, 26)
-        Me.CategoriaTextBox.TabIndex = 5
-        '
         'StockTextBox
         '
         Me.StockTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ProductosBindingSource, "Stock", True))
@@ -324,17 +323,12 @@ Partial Class Productos
         '
         'ProductosDataGridView
         '
-        Me.ProductosDataGridView.AllowUserToAddRows = False
-        Me.ProductosDataGridView.AllowUserToDeleteRows = False
-        Me.ProductosDataGridView.AllowUserToResizeColumns = False
-        Me.ProductosDataGridView.AllowUserToResizeRows = False
         Me.ProductosDataGridView.AutoGenerateColumns = False
         Me.ProductosDataGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Sunken
         Me.ProductosDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.ProductosDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn2, Me.DataGridViewTextBoxColumn3, Me.DataGridViewTextBoxColumn4, Me.DataGridViewTextBoxColumn5})
         Me.ProductosDataGridView.DataSource = Me.ProductosBindingSource
         Me.ProductosDataGridView.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.ProductosDataGridView.Enabled = False
         Me.ProductosDataGridView.Location = New System.Drawing.Point(0, 0)
         Me.ProductosDataGridView.Name = "ProductosDataGridView"
         Me.ProductosDataGridView.Size = New System.Drawing.Size(631, 597)
@@ -443,10 +437,39 @@ Partial Class Productos
         Me.TableAdapterManager.UpdateOrder = Proyecto_Bazar.BazarDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
         Me.TableAdapterManager.VentasTableAdapter = Nothing
         '
+        'FillByToolStrip
+        '
+        Me.FillByToolStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FillByToolStripButton})
+        Me.FillByToolStrip.Location = New System.Drawing.Point(0, 0)
+        Me.FillByToolStrip.Name = "FillByToolStrip"
+        Me.FillByToolStrip.Size = New System.Drawing.Size(1274, 25)
+        Me.FillByToolStrip.TabIndex = 1
+        Me.FillByToolStrip.Text = "FillByToolStrip"
+        '
+        'FillByToolStripButton
+        '
+        Me.FillByToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text
+        Me.FillByToolStripButton.Name = "FillByToolStripButton"
+        Me.FillByToolStripButton.Size = New System.Drawing.Size(39, 22)
+        Me.FillByToolStripButton.Text = "FillBy"
+        '
+        'NombreComboBox
+        '
+        Me.NombreComboBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ProductosBindingSource, "Nombre", True))
+        Me.NombreComboBox.DataSource = Me.ProductosBindingSource
+        Me.NombreComboBox.DisplayMember = "Nombre"
+        Me.NombreComboBox.FormattingEnabled = True
+        Me.NombreComboBox.Location = New System.Drawing.Point(241, 123)
+        Me.NombreComboBox.Name = "NombreComboBox"
+        Me.NombreComboBox.Size = New System.Drawing.Size(200, 25)
+        Me.NombreComboBox.TabIndex = 104
+        Me.NombreComboBox.ValueMember = "Nombre"
+        '
         'Productos
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
         Me.ClientSize = New System.Drawing.Size(1274, 691)
+        Me.Controls.Add(Me.FillByToolStrip)
         Me.Controls.Add(Me.Panel)
         Me.Font = New System.Drawing.Font("Liberation Sans", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ForeColor = System.Drawing.Color.Black
@@ -469,7 +492,10 @@ Partial Class Productos
         CType(Me.ProductosDataGridView, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TopMenu.ResumeLayout(False)
         Me.TopMenu.PerformLayout()
+        Me.FillByToolStrip.ResumeLayout(False)
+        Me.FillByToolStrip.PerformLayout()
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
     Friend WithEvents Panel As System.Windows.Forms.Panel
@@ -486,8 +512,6 @@ Partial Class Productos
     Friend WithEvents ProductosTableAdapter As Proyecto_Bazar.BazarDataSetTableAdapters.ProductosTableAdapter
     Friend WithEvents TableAdapterManager As Proyecto_Bazar.BazarDataSetTableAdapters.TableAdapterManager
     Friend WithEvents ID_ProductoTextBox As System.Windows.Forms.TextBox
-    Friend WithEvents NombreTextBox As System.Windows.Forms.TextBox
-    Friend WithEvents CategoriaTextBox As System.Windows.Forms.TextBox
     Friend WithEvents StockTextBox As System.Windows.Forms.TextBox
     Friend WithEvents StockMinimoTextBox As System.Windows.Forms.TextBox
     Friend WithEvents ProductosDataGridView As System.Windows.Forms.DataGridView
@@ -504,4 +528,8 @@ Partial Class Productos
     Friend WithEvents ButtonBuscar As System.Windows.Forms.Button
     Friend WithEvents ButtonAnterior As System.Windows.Forms.Button
     Friend WithEvents TextBoxConsulta As System.Windows.Forms.TextBox
+    Friend WithEvents CategoriaComboBox As System.Windows.Forms.ComboBox
+    Friend WithEvents FillByToolStrip As System.Windows.Forms.ToolStrip
+    Friend WithEvents FillByToolStripButton As System.Windows.Forms.ToolStripButton
+    Friend WithEvents NombreComboBox As System.Windows.Forms.ComboBox
 End Class
