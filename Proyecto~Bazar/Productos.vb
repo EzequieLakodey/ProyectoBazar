@@ -1,20 +1,54 @@
 ﻿Public Class Productos
 
+
+
+
+
+
+
+    ''''''''''''''''''''''''''''''''    Carga del Form
+
+    Private Sub Productos_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
+
+        Me.TableAdapterManager.UpdateAll(Me.BazarDataSet)
+
+        Me.ProductosTableAdapter.Fill(Me.BazarDataSet.Productos)
+
+        Me.Refresh()
+
+        Me.ProductosBindingSource.AddNew()
+
+        Me.ProductosBindingSource.MoveLast()
+
+        TextBoxConsulta.Text = ID_ProductoTextBox.Text
+
+    End Sub
+
+
+
+
+
+
+
+
+    ''''''''''''''''''''''''''''''''    Declaracion de variables
+
     Dim confirmacion As Boolean
 
     Dim idProducto, posicion As Long
 
     Dim fila As DataRowView
 
-    Private Sub Productos_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
 
-        Me.ProductosBindingSource.AddNew()
 
-        Me.TableAdapterManager.UpdateAll(Me.BazarDataSet)
 
-        Me.ProductosTableAdapter.Fill(Me.BazarDataSet.Productos)
 
-    End Sub
+
+
+
+
+
+    ''''''''''''''''''''''''''''''''    Busqueda de Productos por ID
 
     Function BuscarProducto() As Integer
 
@@ -34,15 +68,18 @@
 
     End Function
 
-    Private Sub ButtonAnterior_Click(sender As System.Object, e As System.EventArgs) Handles ButtonAnterior.Click
 
-        Me.ProductosBindingSource.MovePrevious()
 
-    End Sub
 
-    Private Sub ButtonSiguiente_Click(sender As System.Object, e As System.EventArgs) Handles ButtonSiguiente.Click
 
-        Me.ProductosBindingSource.MoveNext()
+
+
+
+    ''''''''''''''''''''''''''''''''    Eventos de Busquedas
+
+    Private Sub ButtonBuscar_Click(sender As System.Object, e As System.EventArgs) Handles ButtonBuscar.Click
+
+        BuscarProducto()
 
     End Sub
 
@@ -52,11 +89,12 @@
 
     End Sub
 
-    Private Sub ButtonBuscar_Click(sender As System.Object, e As System.EventArgs) Handles ButtonBuscar.Click
 
-        BuscarProducto()
 
-    End Sub
+
+
+
+    ''''''''''''''''''''''''''''''''    ALTAS
 
     Private Sub ButtonCrear_Click(sender As System.Object, e As System.EventArgs) Handles ButtonCrear.Click
 
@@ -66,13 +104,29 @@
 
         Me.ProductosTableAdapter.Fill(Me.BazarDataSet.Productos)
 
-        Me.ProductosBindingSource.AddNew()
+        Me.ProductosTableAdapter.Fill(Compras.BazarDataSet.Productos)
+
+        Me.ProductosTableAdapter.Fill(Ventas.BazarDataSet.Productos)
 
         Me.Refresh()
+
+        Me.ProductosBindingSource.AddNew()
 
         Me.ProductosBindingSource.MoveLast()
 
     End Sub
+
+
+
+
+
+
+
+
+
+
+
+    ''''''''''''''''''''''''''''''''    MODIFICACIONES
 
     Private Sub ButtonModificar_Click(sender As System.Object, e As System.EventArgs) Handles ButtonModificar.Click
 
@@ -84,11 +138,31 @@
 
         Me.ProductosTableAdapter.Fill(Me.BazarDataSet.Productos)
 
+        Me.ProductosTableAdapter.Fill(Compras.BazarDataSet.Productos)
+
+        Me.ProductosTableAdapter.Fill(Ventas.BazarDataSet.Productos)
+
         Me.Refresh()
 
         Me.ProductosBindingSource.MoveLast()
 
     End Sub
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    ''''''''''''''''''''''''''''''''    BAJAS POR ID
 
     Private Sub ButtonEliminar_Click(sender As System.Object, e As System.EventArgs) Handles ButtonEliminar.Click
 
@@ -104,15 +178,31 @@
 
             Me.ProductosTableAdapter.Fill(Me.BazarDataSet.Productos)
 
+            Me.ProductosTableAdapter.Fill(Compras.BazarDataSet.Productos)
+
+            Me.ProductosTableAdapter.Fill(Ventas.BazarDataSet.Productos)
+
             MsgBox("Registro eliminado correctamente", MsgBoxStyle.MsgBoxRight)
 
         End If
 
         Me.Refresh()
 
+        Me.ProductosBindingSource.AddNew()
+
         Me.ProductosBindingSource.MoveLast()
 
     End Sub
+
+
+
+
+
+
+
+
+
+    ''''''''''''''''''''''''''''''''    PURGADO TOTAL DE BD
 
     Private Sub ButtonPurgar_Click(sender As System.Object, e As System.EventArgs) Handles ButtonPurgar.Click
 
@@ -126,13 +216,40 @@
 
             Me.ProductosTableAdapter.Fill(Me.BazarDataSet.Productos)
 
+            Me.ProductosTableAdapter.Fill(Compras.BazarDataSet.Productos)
+
+            Me.ProductosTableAdapter.Fill(Ventas.BazarDataSet.Productos)
+
             MsgBox("TODOS los registros fueron eliminados de [Productos]", MsgBoxStyle.MsgBoxRight)
 
         End If
 
         Me.Refresh()
 
+        Me.ProductosBindingSource.AddNew()
+
         Me.ProductosBindingSource.MoveLast()
+
+    End Sub
+
+
+
+
+
+
+
+
+    ''''''''''''''''''''''''''''''''    Navegacion
+
+    Private Sub ButtonAnterior_Click(sender As System.Object, e As System.EventArgs) Handles ButtonAnterior.Click
+
+        Me.ProductosBindingSource.MovePrevious()
+
+    End Sub
+
+    Private Sub ButtonSiguiente_Click(sender As System.Object, e As System.EventArgs) Handles ButtonSiguiente.Click
+
+        Me.ProductosBindingSource.MoveNext()
 
     End Sub
 
@@ -172,16 +289,6 @@
     Private Sub SalirToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles SalirToolStripMenuItem.Click
 
         End
-
-    End Sub
-
-    Private Sub FillByToolStripButton_Click(sender As System.Object, e As System.EventArgs) Handles FillByToolStripButton.Click
-
-        Try
-            Me.ProductosTableAdapter.FillBy(Me.BazarDataSet.Productos)
-        Catch ex As System.Exception
-            System.Windows.Forms.MessageBox.Show(ex.Message)
-        End Try
 
     End Sub
 

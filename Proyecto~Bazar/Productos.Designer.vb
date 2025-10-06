@@ -31,9 +31,10 @@ Partial Class Productos
         Dim CategoriaLabel As System.Windows.Forms.Label
         Me.Panel = New System.Windows.Forms.Panel()
         Me.SplitContainer1 = New System.Windows.Forms.SplitContainer()
-        Me.CategoriaComboBox = New System.Windows.Forms.ComboBox()
+        Me.NombreComboBox = New System.Windows.Forms.ComboBox()
         Me.ProductosBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.BazarDataSet = New Proyecto_Bazar.BazarDataSet()
+        Me.CategoriaComboBox = New System.Windows.Forms.ComboBox()
         Me.ButtonSiguiente = New System.Windows.Forms.Button()
         Me.ButtonBuscar = New System.Windows.Forms.Button()
         Me.ButtonAnterior = New System.Windows.Forms.Button()
@@ -60,9 +61,6 @@ Partial Class Productos
         Me.SalirToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ProductosTableAdapter = New Proyecto_Bazar.BazarDataSetTableAdapters.ProductosTableAdapter()
         Me.TableAdapterManager = New Proyecto_Bazar.BazarDataSetTableAdapters.TableAdapterManager()
-        Me.FillByToolStrip = New System.Windows.Forms.ToolStrip()
-        Me.FillByToolStripButton = New System.Windows.Forms.ToolStripButton()
-        Me.NombreComboBox = New System.Windows.Forms.ComboBox()
         ID_ProductoLabel = New System.Windows.Forms.Label()
         NombreLabel = New System.Windows.Forms.Label()
         StockLabel = New System.Windows.Forms.Label()
@@ -78,13 +76,12 @@ Partial Class Productos
         CType(Me.BazarDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ProductosDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TopMenu.SuspendLayout()
-        Me.FillByToolStrip.SuspendLayout()
         Me.SuspendLayout()
         '
         'ID_ProductoLabel
         '
         ID_ProductoLabel.AutoSize = True
-        ID_ProductoLabel.Location = New System.Drawing.Point(118, 94)
+        ID_ProductoLabel.Location = New System.Drawing.Point(96, 170)
         ID_ProductoLabel.Name = "ID_ProductoLabel"
         ID_ProductoLabel.Size = New System.Drawing.Size(105, 17)
         ID_ProductoLabel.TabIndex = 0
@@ -93,7 +90,7 @@ Partial Class Productos
         'NombreLabel
         '
         NombreLabel.AutoSize = True
-        NombreLabel.Location = New System.Drawing.Point(118, 126)
+        NombreLabel.Location = New System.Drawing.Point(96, 202)
         NombreLabel.Name = "NombreLabel"
         NombreLabel.Size = New System.Drawing.Size(75, 17)
         NombreLabel.TabIndex = 2
@@ -102,7 +99,7 @@ Partial Class Productos
         'StockLabel
         '
         StockLabel.AutoSize = True
-        StockLabel.Location = New System.Drawing.Point(118, 190)
+        StockLabel.Location = New System.Drawing.Point(96, 266)
         StockLabel.Name = "StockLabel"
         StockLabel.Size = New System.Drawing.Size(58, 17)
         StockLabel.TabIndex = 6
@@ -111,7 +108,7 @@ Partial Class Productos
         'StockMinimoLabel
         '
         StockMinimoLabel.AutoSize = True
-        StockMinimoLabel.Location = New System.Drawing.Point(118, 222)
+        StockMinimoLabel.Location = New System.Drawing.Point(96, 298)
         StockMinimoLabel.Name = "StockMinimoLabel"
         StockMinimoLabel.Size = New System.Drawing.Size(117, 17)
         StockMinimoLabel.TabIndex = 8
@@ -122,7 +119,7 @@ Partial Class Productos
         LabelBuscar.AutoSize = True
         LabelBuscar.BackColor = System.Drawing.Color.Transparent
         LabelBuscar.ForeColor = System.Drawing.Color.White
-        LabelBuscar.Location = New System.Drawing.Point(269, 292)
+        LabelBuscar.Location = New System.Drawing.Point(247, 368)
         LabelBuscar.Name = "LabelBuscar"
         LabelBuscar.Size = New System.Drawing.Size(138, 17)
         LabelBuscar.TabIndex = 99
@@ -131,7 +128,7 @@ Partial Class Productos
         'CategoriaLabel
         '
         CategoriaLabel.AutoSize = True
-        CategoriaLabel.Location = New System.Drawing.Point(118, 158)
+        CategoriaLabel.Location = New System.Drawing.Point(96, 234)
         CategoriaLabel.Name = "CategoriaLabel"
         CategoriaLabel.Size = New System.Drawing.Size(88, 17)
         CategoriaLabel.TabIndex = 4
@@ -187,17 +184,17 @@ Partial Class Productos
         Me.SplitContainer1.SplitterDistance = 637
         Me.SplitContainer1.TabIndex = 1
         '
-        'CategoriaComboBox
+        'NombreComboBox
         '
-        Me.CategoriaComboBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ProductosBindingSource, "Categoria", True))
-        Me.CategoriaComboBox.DataSource = Me.ProductosBindingSource
-        Me.CategoriaComboBox.DisplayMember = "Categoria"
-        Me.CategoriaComboBox.FormattingEnabled = True
-        Me.CategoriaComboBox.Location = New System.Drawing.Point(241, 155)
-        Me.CategoriaComboBox.Name = "CategoriaComboBox"
-        Me.CategoriaComboBox.Size = New System.Drawing.Size(200, 25)
-        Me.CategoriaComboBox.TabIndex = 103
-        Me.CategoriaComboBox.ValueMember = "Categoria"
+        Me.NombreComboBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ProductosBindingSource, "Nombre", True))
+        Me.NombreComboBox.DataSource = Me.ProductosBindingSource
+        Me.NombreComboBox.DisplayMember = "Nombre"
+        Me.NombreComboBox.FormattingEnabled = True
+        Me.NombreComboBox.Location = New System.Drawing.Point(219, 199)
+        Me.NombreComboBox.Name = "NombreComboBox"
+        Me.NombreComboBox.Size = New System.Drawing.Size(200, 25)
+        Me.NombreComboBox.TabIndex = 104
+        Me.NombreComboBox.ValueMember = "Nombre"
         '
         'ProductosBindingSource
         '
@@ -209,11 +206,23 @@ Partial Class Productos
         Me.BazarDataSet.DataSetName = "BazarDataSet"
         Me.BazarDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
+        'CategoriaComboBox
+        '
+        Me.CategoriaComboBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ProductosBindingSource, "Categoria", True))
+        Me.CategoriaComboBox.DataSource = Me.ProductosBindingSource
+        Me.CategoriaComboBox.DisplayMember = "Categoria"
+        Me.CategoriaComboBox.FormattingEnabled = True
+        Me.CategoriaComboBox.Location = New System.Drawing.Point(219, 231)
+        Me.CategoriaComboBox.Name = "CategoriaComboBox"
+        Me.CategoriaComboBox.Size = New System.Drawing.Size(200, 25)
+        Me.CategoriaComboBox.TabIndex = 103
+        Me.CategoriaComboBox.ValueMember = "Categoria"
+        '
         'ButtonSiguiente
         '
         Me.ButtonSiguiente.BackColor = System.Drawing.Color.Black
         Me.ButtonSiguiente.ForeColor = System.Drawing.Color.White
-        Me.ButtonSiguiente.Location = New System.Drawing.Point(359, 344)
+        Me.ButtonSiguiente.Location = New System.Drawing.Point(337, 420)
         Me.ButtonSiguiente.Name = "ButtonSiguiente"
         Me.ButtonSiguiente.Size = New System.Drawing.Size(80, 41)
         Me.ButtonSiguiente.TabIndex = 102
@@ -224,7 +233,7 @@ Partial Class Productos
         '
         Me.ButtonBuscar.BackColor = System.Drawing.Color.Cyan
         Me.ButtonBuscar.ForeColor = System.Drawing.Color.Black
-        Me.ButtonBuscar.Location = New System.Drawing.Point(99, 303)
+        Me.ButtonBuscar.Location = New System.Drawing.Point(77, 379)
         Me.ButtonBuscar.Name = "ButtonBuscar"
         Me.ButtonBuscar.Size = New System.Drawing.Size(135, 41)
         Me.ButtonBuscar.TabIndex = 101
@@ -235,7 +244,7 @@ Partial Class Productos
         '
         Me.ButtonAnterior.BackColor = System.Drawing.Color.Black
         Me.ButtonAnterior.ForeColor = System.Drawing.Color.White
-        Me.ButtonAnterior.Location = New System.Drawing.Point(239, 344)
+        Me.ButtonAnterior.Location = New System.Drawing.Point(217, 420)
         Me.ButtonAnterior.Name = "ButtonAnterior"
         Me.ButtonAnterior.Size = New System.Drawing.Size(80, 41)
         Me.ButtonAnterior.TabIndex = 100
@@ -246,7 +255,7 @@ Partial Class Productos
         '
         Me.TextBoxConsulta.BackColor = System.Drawing.Color.White
         Me.TextBoxConsulta.ForeColor = System.Drawing.Color.Black
-        Me.TextBoxConsulta.Location = New System.Drawing.Point(239, 312)
+        Me.TextBoxConsulta.Location = New System.Drawing.Point(217, 388)
         Me.TextBoxConsulta.Name = "TextBoxConsulta"
         Me.TextBoxConsulta.Size = New System.Drawing.Size(200, 26)
         Me.TextBoxConsulta.TabIndex = 98
@@ -256,7 +265,7 @@ Partial Class Productos
         '
         Me.ButtonPurgar.BackColor = System.Drawing.Color.Magenta
         Me.ButtonPurgar.ForeColor = System.Drawing.Color.Black
-        Me.ButtonPurgar.Location = New System.Drawing.Point(460, 217)
+        Me.ButtonPurgar.Location = New System.Drawing.Point(438, 293)
         Me.ButtonPurgar.Name = "ButtonPurgar"
         Me.ButtonPurgar.Size = New System.Drawing.Size(135, 41)
         Me.ButtonPurgar.TabIndex = 82
@@ -267,7 +276,7 @@ Partial Class Productos
         '
         Me.ButtonEliminar.BackColor = System.Drawing.Color.Red
         Me.ButtonEliminar.ForeColor = System.Drawing.Color.Black
-        Me.ButtonEliminar.Location = New System.Drawing.Point(460, 170)
+        Me.ButtonEliminar.Location = New System.Drawing.Point(438, 246)
         Me.ButtonEliminar.Name = "ButtonEliminar"
         Me.ButtonEliminar.Size = New System.Drawing.Size(135, 41)
         Me.ButtonEliminar.TabIndex = 81
@@ -278,7 +287,7 @@ Partial Class Productos
         '
         Me.ButtonCrear.BackColor = System.Drawing.Color.LawnGreen
         Me.ButtonCrear.ForeColor = System.Drawing.Color.Black
-        Me.ButtonCrear.Location = New System.Drawing.Point(460, 76)
+        Me.ButtonCrear.Location = New System.Drawing.Point(438, 152)
         Me.ButtonCrear.Name = "ButtonCrear"
         Me.ButtonCrear.Size = New System.Drawing.Size(135, 41)
         Me.ButtonCrear.TabIndex = 80
@@ -289,7 +298,7 @@ Partial Class Productos
         '
         Me.ButtonModificar.BackColor = System.Drawing.Color.Yellow
         Me.ButtonModificar.ForeColor = System.Drawing.Color.Black
-        Me.ButtonModificar.Location = New System.Drawing.Point(460, 123)
+        Me.ButtonModificar.Location = New System.Drawing.Point(438, 199)
         Me.ButtonModificar.Name = "ButtonModificar"
         Me.ButtonModificar.Size = New System.Drawing.Size(135, 41)
         Me.ButtonModificar.TabIndex = 79
@@ -300,7 +309,7 @@ Partial Class Productos
         '
         Me.ID_ProductoTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ProductosBindingSource, "ID_Producto", True))
         Me.ID_ProductoTextBox.Enabled = False
-        Me.ID_ProductoTextBox.Location = New System.Drawing.Point(241, 91)
+        Me.ID_ProductoTextBox.Location = New System.Drawing.Point(219, 167)
         Me.ID_ProductoTextBox.Name = "ID_ProductoTextBox"
         Me.ID_ProductoTextBox.Size = New System.Drawing.Size(200, 26)
         Me.ID_ProductoTextBox.TabIndex = 1
@@ -308,7 +317,7 @@ Partial Class Productos
         'StockTextBox
         '
         Me.StockTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ProductosBindingSource, "Stock", True))
-        Me.StockTextBox.Location = New System.Drawing.Point(241, 187)
+        Me.StockTextBox.Location = New System.Drawing.Point(219, 263)
         Me.StockTextBox.Name = "StockTextBox"
         Me.StockTextBox.Size = New System.Drawing.Size(200, 26)
         Me.StockTextBox.TabIndex = 7
@@ -316,7 +325,7 @@ Partial Class Productos
         'StockMinimoTextBox
         '
         Me.StockMinimoTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ProductosBindingSource, "StockMinimo", True))
-        Me.StockMinimoTextBox.Location = New System.Drawing.Point(241, 219)
+        Me.StockMinimoTextBox.Location = New System.Drawing.Point(219, 295)
         Me.StockMinimoTextBox.Name = "StockMinimoTextBox"
         Me.StockMinimoTextBox.Size = New System.Drawing.Size(200, 26)
         Me.StockMinimoTextBox.TabIndex = 9
@@ -437,39 +446,10 @@ Partial Class Productos
         Me.TableAdapterManager.UpdateOrder = Proyecto_Bazar.BazarDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
         Me.TableAdapterManager.VentasTableAdapter = Nothing
         '
-        'FillByToolStrip
-        '
-        Me.FillByToolStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FillByToolStripButton})
-        Me.FillByToolStrip.Location = New System.Drawing.Point(0, 0)
-        Me.FillByToolStrip.Name = "FillByToolStrip"
-        Me.FillByToolStrip.Size = New System.Drawing.Size(1274, 25)
-        Me.FillByToolStrip.TabIndex = 1
-        Me.FillByToolStrip.Text = "FillByToolStrip"
-        '
-        'FillByToolStripButton
-        '
-        Me.FillByToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text
-        Me.FillByToolStripButton.Name = "FillByToolStripButton"
-        Me.FillByToolStripButton.Size = New System.Drawing.Size(39, 22)
-        Me.FillByToolStripButton.Text = "FillBy"
-        '
-        'NombreComboBox
-        '
-        Me.NombreComboBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ProductosBindingSource, "Nombre", True))
-        Me.NombreComboBox.DataSource = Me.ProductosBindingSource
-        Me.NombreComboBox.DisplayMember = "Nombre"
-        Me.NombreComboBox.FormattingEnabled = True
-        Me.NombreComboBox.Location = New System.Drawing.Point(241, 123)
-        Me.NombreComboBox.Name = "NombreComboBox"
-        Me.NombreComboBox.Size = New System.Drawing.Size(200, 25)
-        Me.NombreComboBox.TabIndex = 104
-        Me.NombreComboBox.ValueMember = "Nombre"
-        '
         'Productos
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
         Me.ClientSize = New System.Drawing.Size(1274, 691)
-        Me.Controls.Add(Me.FillByToolStrip)
         Me.Controls.Add(Me.Panel)
         Me.Font = New System.Drawing.Font("Liberation Sans", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ForeColor = System.Drawing.Color.Black
@@ -492,10 +472,7 @@ Partial Class Productos
         CType(Me.ProductosDataGridView, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TopMenu.ResumeLayout(False)
         Me.TopMenu.PerformLayout()
-        Me.FillByToolStrip.ResumeLayout(False)
-        Me.FillByToolStrip.PerformLayout()
         Me.ResumeLayout(False)
-        Me.PerformLayout()
 
     End Sub
     Friend WithEvents Panel As System.Windows.Forms.Panel
@@ -529,7 +506,5 @@ Partial Class Productos
     Friend WithEvents ButtonAnterior As System.Windows.Forms.Button
     Friend WithEvents TextBoxConsulta As System.Windows.Forms.TextBox
     Friend WithEvents CategoriaComboBox As System.Windows.Forms.ComboBox
-    Friend WithEvents FillByToolStrip As System.Windows.Forms.ToolStrip
-    Friend WithEvents FillByToolStripButton As System.Windows.Forms.ToolStripButton
     Friend WithEvents NombreComboBox As System.Windows.Forms.ComboBox
 End Class
