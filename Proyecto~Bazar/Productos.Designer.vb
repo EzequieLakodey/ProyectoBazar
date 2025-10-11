@@ -31,6 +31,8 @@ Partial Class Productos
         Dim CategoriaLabel As System.Windows.Forms.Label
         Me.Panel = New System.Windows.Forms.Panel()
         Me.SplitContainer1 = New System.Windows.Forms.SplitContainer()
+        Me.ButtonUltimoItem = New System.Windows.Forms.Button()
+        Me.ButtonPrimerItem = New System.Windows.Forms.Button()
         Me.NombreComboBox = New System.Windows.Forms.ComboBox()
         Me.ProductosBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.BazarDataSet = New Proyecto_Bazar.BazarDataSet()
@@ -61,6 +63,10 @@ Partial Class Productos
         Me.SalirToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ProductosTableAdapter = New Proyecto_Bazar.BazarDataSetTableAdapters.ProductosTableAdapter()
         Me.TableAdapterManager = New Proyecto_Bazar.BazarDataSetTableAdapters.TableAdapterManager()
+        Me.ComprasBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.ComprasTableAdapter = New Proyecto_Bazar.BazarDataSetTableAdapters.ComprasTableAdapter()
+        Me.VentasBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.VentasTableAdapter = New Proyecto_Bazar.BazarDataSetTableAdapters.VentasTableAdapter()
         ID_ProductoLabel = New System.Windows.Forms.Label()
         NombreLabel = New System.Windows.Forms.Label()
         StockLabel = New System.Windows.Forms.Label()
@@ -76,6 +82,8 @@ Partial Class Productos
         CType(Me.BazarDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ProductosDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TopMenu.SuspendLayout()
+        CType(Me.ComprasBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.VentasBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'ID_ProductoLabel
@@ -156,6 +164,8 @@ Partial Class Productos
         '
         'SplitContainer1.Panel1
         '
+        Me.SplitContainer1.Panel1.Controls.Add(Me.ButtonUltimoItem)
+        Me.SplitContainer1.Panel1.Controls.Add(Me.ButtonPrimerItem)
         Me.SplitContainer1.Panel1.Controls.Add(Me.NombreComboBox)
         Me.SplitContainer1.Panel1.Controls.Add(Me.CategoriaComboBox)
         Me.SplitContainer1.Panel1.Controls.Add(Me.ButtonSiguiente)
@@ -184,17 +194,41 @@ Partial Class Productos
         Me.SplitContainer1.SplitterDistance = 637
         Me.SplitContainer1.TabIndex = 1
         '
+        'ButtonUltimoItem
+        '
+        Me.ButtonUltimoItem.BackColor = System.Drawing.Color.White
+        Me.ButtonUltimoItem.ForeColor = System.Drawing.Color.Black
+        Me.ButtonUltimoItem.Location = New System.Drawing.Point(337, 467)
+        Me.ButtonUltimoItem.Name = "ButtonUltimoItem"
+        Me.ButtonUltimoItem.Size = New System.Drawing.Size(80, 41)
+        Me.ButtonUltimoItem.TabIndex = 114
+        Me.ButtonUltimoItem.Text = ">>>"
+        Me.ButtonUltimoItem.UseVisualStyleBackColor = False
+        '
+        'ButtonPrimerItem
+        '
+        Me.ButtonPrimerItem.BackColor = System.Drawing.Color.White
+        Me.ButtonPrimerItem.ForeColor = System.Drawing.Color.Black
+        Me.ButtonPrimerItem.Location = New System.Drawing.Point(217, 467)
+        Me.ButtonPrimerItem.Name = "ButtonPrimerItem"
+        Me.ButtonPrimerItem.Size = New System.Drawing.Size(80, 41)
+        Me.ButtonPrimerItem.TabIndex = 113
+        Me.ButtonPrimerItem.Text = "<<<"
+        Me.ButtonPrimerItem.UseVisualStyleBackColor = False
+        '
         'NombreComboBox
         '
+        Me.NombreComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest
+        Me.NombreComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
         Me.NombreComboBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ProductosBindingSource, "Nombre", True))
         Me.NombreComboBox.DataSource = Me.ProductosBindingSource
         Me.NombreComboBox.DisplayMember = "Nombre"
-        Me.NombreComboBox.FormattingEnabled = True
+        Me.NombreComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.NombreComboBox.Location = New System.Drawing.Point(219, 199)
         Me.NombreComboBox.Name = "NombreComboBox"
         Me.NombreComboBox.Size = New System.Drawing.Size(200, 25)
         Me.NombreComboBox.TabIndex = 104
-        Me.NombreComboBox.ValueMember = "Nombre"
+        Me.NombreComboBox.ValueMember = "ID_Producto"
         '
         'ProductosBindingSource
         '
@@ -208,15 +242,18 @@ Partial Class Productos
         '
         'CategoriaComboBox
         '
+        Me.CategoriaComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest
+        Me.CategoriaComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
         Me.CategoriaComboBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ProductosBindingSource, "Categoria", True))
         Me.CategoriaComboBox.DataSource = Me.ProductosBindingSource
         Me.CategoriaComboBox.DisplayMember = "Categoria"
+        Me.CategoriaComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.CategoriaComboBox.FormattingEnabled = True
         Me.CategoriaComboBox.Location = New System.Drawing.Point(219, 231)
         Me.CategoriaComboBox.Name = "CategoriaComboBox"
         Me.CategoriaComboBox.Size = New System.Drawing.Size(200, 25)
         Me.CategoriaComboBox.TabIndex = 103
-        Me.CategoriaComboBox.ValueMember = "Categoria"
+        Me.CategoriaComboBox.ValueMember = "ID_Producto"
         '
         'ButtonSiguiente
         '
@@ -333,11 +370,13 @@ Partial Class Productos
         'ProductosDataGridView
         '
         Me.ProductosDataGridView.AutoGenerateColumns = False
+        Me.ProductosDataGridView.BackgroundColor = System.Drawing.SystemColors.ActiveCaption
         Me.ProductosDataGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Sunken
         Me.ProductosDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.ProductosDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn2, Me.DataGridViewTextBoxColumn3, Me.DataGridViewTextBoxColumn4, Me.DataGridViewTextBoxColumn5})
         Me.ProductosDataGridView.DataSource = Me.ProductosBindingSource
         Me.ProductosDataGridView.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.ProductosDataGridView.EnableHeadersVisualStyles = False
         Me.ProductosDataGridView.Location = New System.Drawing.Point(0, 0)
         Me.ProductosDataGridView.Name = "ProductosDataGridView"
         Me.ProductosDataGridView.Size = New System.Drawing.Size(631, 597)
@@ -446,6 +485,24 @@ Partial Class Productos
         Me.TableAdapterManager.UpdateOrder = Proyecto_Bazar.BazarDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
         Me.TableAdapterManager.VentasTableAdapter = Nothing
         '
+        'ComprasBindingSource
+        '
+        Me.ComprasBindingSource.DataMember = "Compras"
+        Me.ComprasBindingSource.DataSource = Me.BazarDataSet
+        '
+        'ComprasTableAdapter
+        '
+        Me.ComprasTableAdapter.ClearBeforeFill = True
+        '
+        'VentasBindingSource
+        '
+        Me.VentasBindingSource.DataMember = "Ventas"
+        Me.VentasBindingSource.DataSource = Me.BazarDataSet
+        '
+        'VentasTableAdapter
+        '
+        Me.VentasTableAdapter.ClearBeforeFill = True
+        '
         'Productos
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
@@ -472,6 +529,8 @@ Partial Class Productos
         CType(Me.ProductosDataGridView, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TopMenu.ResumeLayout(False)
         Me.TopMenu.PerformLayout()
+        CType(Me.ComprasBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.VentasBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -507,4 +566,10 @@ Partial Class Productos
     Friend WithEvents TextBoxConsulta As System.Windows.Forms.TextBox
     Friend WithEvents CategoriaComboBox As System.Windows.Forms.ComboBox
     Friend WithEvents NombreComboBox As System.Windows.Forms.ComboBox
+    Friend WithEvents ButtonUltimoItem As System.Windows.Forms.Button
+    Friend WithEvents ButtonPrimerItem As System.Windows.Forms.Button
+    Friend WithEvents ComprasBindingSource As System.Windows.Forms.BindingSource
+    Friend WithEvents ComprasTableAdapter As Proyecto_Bazar.BazarDataSetTableAdapters.ComprasTableAdapter
+    Friend WithEvents VentasBindingSource As System.Windows.Forms.BindingSource
+    Friend WithEvents VentasTableAdapter As Proyecto_Bazar.BazarDataSetTableAdapters.VentasTableAdapter
 End Class

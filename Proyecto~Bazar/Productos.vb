@@ -9,18 +9,24 @@
     ''''''''''''''''''''''''''''''''    Carga del Form
 
     Private Sub Productos_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
+        'TODO: esta línea de código carga datos en la tabla 'BazarDataSet.Ventas' Puede moverla o quitarla según sea necesario.
+        Me.VentasTableAdapter.Fill(Me.BazarDataSet.Ventas)
+        'TODO: esta línea de código carga datos en la tabla 'BazarDataSet.Compras' Puede moverla o quitarla según sea necesario.
+        Me.ComprasTableAdapter.Fill(Me.BazarDataSet.Compras)
 
         Me.TableAdapterManager.UpdateAll(Me.BazarDataSet)
 
         Me.ProductosTableAdapter.Fill(Me.BazarDataSet.Productos)
 
-        Me.Refresh()
-
         Me.ProductosBindingSource.AddNew()
 
-        Me.ProductosBindingSource.MoveLast()
+        Me.Refresh()
+
+        Me.ProductosDataGridView.ClearSelection()
 
         TextBoxConsulta.Text = ID_ProductoTextBox.Text
+
+        Me.ProductosBindingSource.MoveLast()
 
     End Sub
 
@@ -37,7 +43,6 @@
 
     Dim idProducto, posicion As Long
 
-    Dim fila As DataRowView
 
 
 
@@ -130,8 +135,6 @@
 
     Private Sub ButtonModificar_Click(sender As System.Object, e As System.EventArgs) Handles ButtonModificar.Click
 
-        BuscarProducto()
-
         Me.ProductosBindingSource.EndEdit()
 
         Me.TableAdapterManager.UpdateAll(Me.BazarDataSet)
@@ -186,9 +189,9 @@
 
         End If
 
-        Me.Refresh()
-
         Me.ProductosBindingSource.AddNew()
+
+        Me.Refresh()
 
         Me.ProductosBindingSource.MoveLast()
 
@@ -208,9 +211,13 @@
 
         BuscarProducto()
 
-        confirmacion = MsgBox("Esta seguro que desea eliminar TODOS los registros de [Productos], esta accion es PERMANENTE", MsgBoxStyle.YesNo, MsgBoxStyle.Critical)
+        confirmacion = MsgBox("Esta seguro que desea eliminar TODOS los registros de [Productos], y las [Ventas] y [Compras] asociados a los mismos: ESTA ACCION ES PERMANENTE", MsgBoxStyle.YesNo, MsgBoxStyle.Critical)
 
         If confirmacion Then
+
+            Me.VentasTableAdapter.Purgar()
+
+            Me.ComprasTableAdapter.Purgar()
 
             Me.ProductosTableAdapter.Purgar()
 
@@ -239,11 +246,89 @@
 
 
 
+
+    ''''''''''''''''''''''''''''''''    Validaciones Campos y Tipos de Datos
+    Private Sub NombreComboBox_KeyPress(sender As System.Object, e As System.Windows.Forms.KeyPressEventArgs) Handles NombreComboBox.KeyPress
+
+        If LetrasNumerosPuntos(e) Then
+
+            e.Handled = False
+
+        Else
+
+            e.Handled = True
+
+        End If
+
+    End Sub
+
+    Private Sub CategoriaComboBox_KeyPress(sender As System.Object, e As System.Windows.Forms.KeyPressEventArgs) Handles CategoriaComboBox.KeyPress
+
+        If LetrasNumerosPuntos(e) Then
+
+            e.Handled = False
+
+        Else
+
+            e.Handled = True
+
+        End If
+
+    End Sub
+
+    Private Sub StockMinimoTextBox_KeyPress(sender As System.Object, e As System.Windows.Forms.KeyPressEventArgs) Handles StockMinimoTextBox.KeyPress
+
+        If SoloNumerosEnteros(e) Then
+
+            e.Handled = False
+
+        Else
+
+            e.Handled = True
+
+        End If
+
+    End Sub
+
+    Private Sub StockTextBox_KeyPress(sender As System.Object, e As System.Windows.Forms.KeyPressEventArgs) Handles StockTextBox.KeyPress
+
+        If SoloNumerosEnteros(e) Then
+
+            e.Handled = False
+
+        Else
+
+            e.Handled = True
+
+        End If
+
+    End Sub
+
+
+
+
+
+
+
+
+
     ''''''''''''''''''''''''''''''''    Navegacion
+
+    Private Sub ButtonUltimoItem_Click(sender As System.Object, e As System.EventArgs) Handles ButtonUltimoItem.Click
+
+        Me.ProductosBindingSource.MoveLast()
+
+    End Sub
 
     Private Sub ButtonAnterior_Click(sender As System.Object, e As System.EventArgs) Handles ButtonAnterior.Click
 
         Me.ProductosBindingSource.MovePrevious()
+
+    End Sub
+
+    Private Sub ButtonPrimerItem_Click(sender As System.Object, e As System.EventArgs) Handles ButtonPrimerItem.Click
+
+        Me.ProductosBindingSource.MoveFirst()
 
     End Sub
 
@@ -291,5 +376,7 @@
         End
 
     End Sub
+
+
 
 End Class

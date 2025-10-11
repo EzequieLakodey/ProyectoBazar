@@ -17,8 +17,6 @@
 
         Me.ComprasBindingSource.AddNew()
 
-        Me.ComprasBindingSource.MoveLast()
-
         TextBoxConsulta.Text = ID_ProveedorTextBox.Text
 
     End Sub
@@ -38,7 +36,6 @@
 
     Dim precioUnitario, subTotal, total As Decimal
 
-    Dim fila As DataRowView
 
 
 
@@ -77,7 +74,6 @@
 
 
 
-
     ''''''''''''''''''''''''''''''''    Eventos de Busquedas
 
 
@@ -88,7 +84,7 @@
     End Sub
 
 
-    Private Sub ID_ProveedorTextBox_TextChanged(sender As System.Object, e As System.EventArgs)
+    Private Sub ID_ProveedorTextBox_TextChanged(sender As System.Object, e As System.EventArgs) Handles ID_ProveedorTextBox.TextChanged
 
         TextBoxConsulta.Text = ID_ProveedorTextBox.Text
 
@@ -233,9 +229,7 @@
 
         Me.ComprasBindingSource.EndEdit()
 
-        Me.ComprasTableAdapter.Update(Me.BazarDataSet.Compras)
-
-        Me.ProductosTableAdapter.Update(Me.BazarDataSet.Productos)
+        Me.TableAdapterManager.UpdateAll(Me.BazarDataSet)
 
         Me.ProductosTableAdapter.Fill(Me.BazarDataSet.Productos)
 
@@ -246,10 +240,6 @@
         ProductosTableAdapter.Fill(Ventas.BazarDataSet.Productos)
 
         Me.ComprasBindingSource.AddNew()
-
-        Me.ComprasBindingSource.MoveLast()
-
-        Me.Refresh()
 
     End Sub
 
@@ -270,7 +260,13 @@
 
         Me.TableAdapterManager.UpdateAll(Me.BazarDataSet)
 
+        Me.ProductosTableAdapter.Fill(Me.BazarDataSet.Productos)
+
         Me.ComprasTableAdapter.Fill(Me.BazarDataSet.Compras)
+
+        ProductosTableAdapter.Fill(Productos.BazarDataSet.Productos)
+
+        ProductosTableAdapter.Fill(Ventas.BazarDataSet.Productos)
 
         Me.Refresh()
 
@@ -298,7 +294,13 @@
 
             Me.TableAdapterManager.UpdateAll(Me.BazarDataSet)
 
+            Me.ProductosTableAdapter.Fill(Me.BazarDataSet.Productos)
+
             Me.ComprasTableAdapter.Fill(Me.BazarDataSet.Compras)
+
+            ProductosTableAdapter.Fill(Productos.BazarDataSet.Productos)
+
+            ProductosTableAdapter.Fill(Ventas.BazarDataSet.Productos)
 
             MsgBox("Registro eliminado correctamente", MsgBoxStyle.MsgBoxRight)
 
@@ -307,8 +309,6 @@
         Me.Refresh()
 
         Me.ComprasBindingSource.AddNew()
-
-        Me.ComprasBindingSource.MoveLast()
 
     End Sub
 
@@ -331,7 +331,13 @@
 
             Me.ComprasTableAdapter.Purgar()
 
+            Me.ProductosTableAdapter.Fill(Me.BazarDataSet.Productos)
+
             Me.ComprasTableAdapter.Fill(Me.BazarDataSet.Compras)
+
+            ProductosTableAdapter.Fill(Productos.BazarDataSet.Productos)
+
+            ProductosTableAdapter.Fill(Ventas.BazarDataSet.Productos)
 
             MsgBox("TODOS los registros fueron eliminados de [Proveedores]", MsgBoxStyle.MsgBoxRight)
 
@@ -341,10 +347,88 @@
 
         Me.ComprasBindingSource.AddNew()
 
-        Me.ComprasBindingSource.MoveLast()
+    End Sub
+
+
+
+
+
+
+
+    ''''''''''''''''''''''''''''''''    Validaciones Campos y Tipos de Datos
+
+    Private Sub ProductoComboBox_KeyPress(sender As System.Object, e As System.Windows.Forms.KeyPressEventArgs) Handles ProductoComboBox.KeyPress
+
+        If LetrasNumerosPuntos(e) Then
+
+            e.Handled = False
+
+        Else
+
+            e.Handled = True
+
+        End If
 
     End Sub
 
+    Private Sub CategoriaComboBox_KeyPress(sender As System.Object, e As System.Windows.Forms.KeyPressEventArgs) Handles CategoriaComboBox.KeyPress
+
+        If LetrasNumerosPuntos(e) Then
+
+            e.Handled = False
+
+        Else
+
+            e.Handled = True
+
+        End If
+
+    End Sub
+
+
+    Private Sub ProveedorComboBox_KeyPress(sender As System.Object, e As System.Windows.Forms.KeyPressEventArgs) Handles ProveedorComboBox.KeyPress
+
+        If LetrasNumerosPuntos(e) Then
+
+            e.Handled = False
+
+        Else
+
+            e.Handled = True
+
+        End If
+
+    End Sub
+
+
+    Private Sub CantidadTextBox_KeyPress(sender As System.Object, e As System.Windows.Forms.KeyPressEventArgs) Handles CantidadTextBox.KeyPress
+
+        If SoloNumerosEnteros(e) Then
+
+            e.Handled = False
+
+        Else
+
+            e.Handled = True
+
+        End If
+
+    End Sub
+
+
+    Private Sub PrecioUnitarioTextBox_KeyPress(sender As System.Object, e As System.Windows.Forms.KeyPressEventArgs) Handles PrecioUnitarioTextBox.KeyPress
+
+        If SoloNumerosDecimales(e, PrecioUnitarioTextBox.Text) Then
+
+            e.Handled = False
+
+        Else
+
+            e.Handled = True
+
+        End If
+
+    End Sub
 
 
 
@@ -356,9 +440,21 @@
 
     ''''''''''''''''''''''''''''''''    Navegacion
 
+    Private Sub ButtonUltimoItem_Click(sender As System.Object, e As System.EventArgs) Handles ButtonUltimoItem.Click
+
+        Me.ComprasBindingSource.MoveLast()
+
+    End Sub
+
     Private Sub ButtonAnterior_Click(sender As System.Object, e As System.EventArgs) Handles ButtonAnterior.Click
 
-        ComprasBindingSource.MoveNext()
+        ComprasBindingSource.MovePrevious()
+
+    End Sub
+
+    Private Sub ButtonPrimerItem_Click(sender As System.Object, e As System.EventArgs) Handles ButtonPrimerItem.Click
+
+        Me.ComprasBindingSource.MoveFirst()
 
     End Sub
 
@@ -367,6 +463,7 @@
         ComprasBindingSource.MoveNext()
 
     End Sub
+
 
 
     Private Sub InicioToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles InicioToolStripMenuItem.Click
@@ -417,5 +514,5 @@
 
     End Sub
 
-    
+
 End Class
