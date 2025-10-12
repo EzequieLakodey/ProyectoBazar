@@ -2306,7 +2306,7 @@ Namespace BazarDataSetTableAdapters
             Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(2) = New Global.System.Data.SqlServerCe.SqlCeCommand()
             Me._commandCollection(2).Connection = Me.Connection
-            Me._commandCollection(2).CommandText = "DELETE FROM [Compras]"
+            Me._commandCollection(2).CommandText = "DELETE FROM Compras"
             Me._commandCollection(2).CommandType = Global.System.Data.CommandType.Text
         End Sub
         
@@ -2509,8 +2509,7 @@ Namespace BazarDataSetTableAdapters
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
-         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Delete, false)>  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
         Public Overloads Overridable Function Purgar() As Integer
             Dim command As Global.System.Data.SqlServerCe.SqlCeCommand = Me.CommandCollection(2)
             Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
@@ -2699,7 +2698,7 @@ Namespace BazarDataSetTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitCommandCollection()
-            Me._commandCollection = New Global.System.Data.SqlServerCe.SqlCeCommand(2) {}
+            Me._commandCollection = New Global.System.Data.SqlServerCe.SqlCeCommand(4) {}
             Me._commandCollection(0) = New Global.System.Data.SqlServerCe.SqlCeCommand()
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT [ID_Producto], [Nombre], [Categoria], [Stock], [StockMinimo] FROM [Product"& _ 
@@ -2712,8 +2711,16 @@ Namespace BazarDataSetTableAdapters
             Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(2) = New Global.System.Data.SqlServerCe.SqlCeCommand()
             Me._commandCollection(2).Connection = Me.Connection
-            Me._commandCollection(2).CommandText = "DELETE FROM [Productos]"
+            Me._commandCollection(2).CommandText = "SELECT DISTINCT [Categoria] FROM [Productos] WHERE [Categoria] IS NOT NULL"
             Me._commandCollection(2).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(3) = New Global.System.Data.SqlServerCe.SqlCeCommand()
+            Me._commandCollection(3).Connection = Me.Connection
+            Me._commandCollection(3).CommandText = "SELECT DISTINCT [Nombre] FROM [Productos] WHERE [Nombre] IS NOT NULL"
+            Me._commandCollection(3).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(4) = New Global.System.Data.SqlServerCe.SqlCeCommand()
+            Me._commandCollection(4).Connection = Me.Connection
+            Me._commandCollection(4).CommandText = "DELETE FROM [Productos]"
+            Me._commandCollection(4).CommandType = Global.System.Data.CommandType.Text
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -2751,6 +2758,28 @@ Namespace BazarDataSetTableAdapters
             End If
             Dim returnValue As Integer = Me.Adapter.Fill(dataTable)
             Return returnValue
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
+        Public Overloads Overridable Function GetCategoriasUnicas() As BazarDataSet.ProductosDataTable
+            Me.Adapter.SelectCommand = Me.CommandCollection(2)
+            Dim dataTable As BazarDataSet.ProductosDataTable = New BazarDataSet.ProductosDataTable()
+            Me.Adapter.Fill(dataTable)
+            Return dataTable
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
+        Public Overloads Overridable Function GetProductosUnicos() As BazarDataSet.ProductosDataTable
+            Me.Adapter.SelectCommand = Me.CommandCollection(3)
+            Dim dataTable As BazarDataSet.ProductosDataTable = New BazarDataSet.ProductosDataTable()
+            Me.Adapter.Fill(dataTable)
+            Return dataTable
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -2888,7 +2917,7 @@ Namespace BazarDataSetTableAdapters
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Delete, false)>  _
         Public Overloads Overridable Function Purgar() As Integer
-            Dim command As Global.System.Data.SqlServerCe.SqlCeCommand = Me.CommandCollection(2)
+            Dim command As Global.System.Data.SqlServerCe.SqlCeCommand = Me.CommandCollection(4)
             Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
             If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -3049,16 +3078,17 @@ Namespace BazarDataSetTableAdapters
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlServerCe.SqlCeParameter("@p1", Global.System.Data.SqlDbType.BigInt, 0, Global.System.Data.ParameterDirection.Input, true, 0, 0, "ID_Cliente", Global.System.Data.DataRowVersion.Original, Nothing))
             Me._adapter.InsertCommand = New Global.System.Data.SqlServerCe.SqlCeCommand()
             Me._adapter.InsertCommand.Connection = Me.Connection
-            Me._adapter.InsertCommand.CommandText = "INSERT INTO [Ventas] ([ID_Producto], [Cliente], [Fecha], [Cantidad], [PrecioUnita"& _ 
-                "rio], [SubTotal], [Total]) VALUES (@p1, @p2, @p3, @p4, @p5, @p6, @p7)"
+            Me._adapter.InsertCommand.CommandText = "INSERT INTO Ventas"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         (ID_Producto, Cliente, Fecha, Cantid"& _ 
+                "ad, PrecioUnitario, SubTotal, Total)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"VALUES        (@p1,@p2,@p3,@p4,@p5,@p6,@p7"& _ 
+                ")"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlServerCe.SqlCeParameter("@p1", Global.System.Data.SqlDbType.BigInt, 0, Global.System.Data.ParameterDirection.Input, true, 0, 0, "ID_Producto", Global.System.Data.DataRowVersion.Current, Nothing))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlServerCe.SqlCeParameter("@p2", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, true, 0, 0, "Cliente", Global.System.Data.DataRowVersion.Current, Nothing))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlServerCe.SqlCeParameter("@p3", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, true, 0, 0, "Fecha", Global.System.Data.DataRowVersion.Current, Nothing))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlServerCe.SqlCeParameter("@p4", Global.System.Data.SqlDbType.BigInt, 0, Global.System.Data.ParameterDirection.Input, true, 0, 0, "Cantidad", Global.System.Data.DataRowVersion.Current, Nothing))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlServerCe.SqlCeParameter("@p5", Global.System.Data.SqlDbType.Money, 0, Global.System.Data.ParameterDirection.Input, true, 0, 0, "PrecioUnitario", Global.System.Data.DataRowVersion.Current, Nothing))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlServerCe.SqlCeParameter("@p6", Global.System.Data.SqlDbType.Money, 0, Global.System.Data.ParameterDirection.Input, true, 0, 0, "SubTotal", Global.System.Data.DataRowVersion.Current, Nothing))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlServerCe.SqlCeParameter("@p7", Global.System.Data.SqlDbType.Money, 0, Global.System.Data.ParameterDirection.Input, true, 0, 0, "Total", Global.System.Data.DataRowVersion.Current, Nothing))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlServerCe.SqlCeParameter("@p1", Global.System.Data.SqlDbType.BigInt, 8, Global.System.Data.ParameterDirection.Input, true, 0, 0, "ID_Producto", Global.System.Data.DataRowVersion.Current, Nothing))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlServerCe.SqlCeParameter("@p2", Global.System.Data.SqlDbType.NVarChar, 100, Global.System.Data.ParameterDirection.Input, true, 0, 0, "Cliente", Global.System.Data.DataRowVersion.Current, Nothing))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlServerCe.SqlCeParameter("@p3", Global.System.Data.SqlDbType.DateTime, 8, Global.System.Data.ParameterDirection.Input, true, 0, 0, "Fecha", Global.System.Data.DataRowVersion.Current, Nothing))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlServerCe.SqlCeParameter("@p4", Global.System.Data.SqlDbType.BigInt, 8, Global.System.Data.ParameterDirection.Input, true, 0, 0, "Cantidad", Global.System.Data.DataRowVersion.Current, Nothing))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlServerCe.SqlCeParameter("@p5", Global.System.Data.SqlDbType.Money, 8, Global.System.Data.ParameterDirection.Input, true, 0, 0, "PrecioUnitario", Global.System.Data.DataRowVersion.Current, Nothing))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlServerCe.SqlCeParameter("@p6", Global.System.Data.SqlDbType.Money, 8, Global.System.Data.ParameterDirection.Input, true, 0, 0, "SubTotal", Global.System.Data.DataRowVersion.Current, Nothing))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlServerCe.SqlCeParameter("@p7", Global.System.Data.SqlDbType.Money, 8, Global.System.Data.ParameterDirection.Input, true, 0, 0, "Total", Global.System.Data.DataRowVersion.Current, Nothing))
             Me._adapter.UpdateCommand = New Global.System.Data.SqlServerCe.SqlCeCommand()
             Me._adapter.UpdateCommand.Connection = Me.Connection
             Me._adapter.UpdateCommand.CommandText = "UPDATE [Ventas] SET [ID_Producto] = @p1, [Cliente] = @p2, [Fecha] = @p3, [Cantida"& _ 

@@ -66,7 +66,7 @@
               <Mapping SourceColumn="Total" DataSetColumn="Total" />
             </Mappings>
             <Sources>
-              <DbSource ConnectionRef="BazarConnectionString (MySettings)" DbObjectName="Compras" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="FillBy" GenerateMethods="Fill" GenerateShortCommands="true" GeneratorSourceName="FillBy" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="FillBy">
+              <DbSource ConnectionRef="BazarConnectionString (MySettings)" DbObjectName="Compras" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="FillBy" GenerateMethods="Fill" GenerateShortCommands="true" GeneratorSourceName="FillBy" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="FillBy">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
                     <CommandText>SELECT ID_Proveedor, ID_Producto, Proveedor, Fecha, Cantidad, PrecioUnitario, SubTotal, Total FROM Compras</CommandText>
@@ -74,13 +74,19 @@
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="BazarConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="Purgar" Modifier="Public" Name="Purgar" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="Purgar">
+              <DbSource ConnectionRef="BazarConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="Purgar" Modifier="Public" Name="Purgar" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="Purgar">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>DELETE FROM [Compras]</CommandText>
                     <Parameters />
                   </DbCommand>
                 </DeleteCommand>
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>DELETE FROM Compras</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
               </DbSource>
             </Sources>
           </TableAdapter>
@@ -142,6 +148,22 @@
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
+              <DbSource ConnectionRef="BazarConnectionString (MySettings)" DbObjectName="Productos" DbObjectType="Table" GenerateMethods="Get" GenerateShortCommands="true" GeneratorGetMethodName="GetCategoriasUnicas" GeneratorSourceName="SetCategoriasUnicas" GetMethodModifier="Public" GetMethodName="GetCategoriasUnicas" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetCategoriasUnicas" UserSourceName="GetCategoriasUnicas">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT DISTINCT [Categoria] FROM [Productos] WHERE [Categoria] IS NOT NULL</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+              <DbSource ConnectionRef="BazarConnectionString (MySettings)" DbObjectName="Productos" DbObjectType="Table" GenerateMethods="Get" GenerateShortCommands="true" GeneratorGetMethodName="GetProductosUnicos" GetMethodModifier="Public" GetMethodName="GetProductosUnicos" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetProductosUnicos" UserSourceName="GetProductosUnicos">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT DISTINCT [Nombre] FROM [Productos] WHERE [Nombre] IS NOT NULL</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
               <DbSource ConnectionRef="BazarConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="Purgar" Modifier="Public" Name="Purgar" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="Purgar">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
@@ -164,16 +186,18 @@
                   </DbCommand>
                 </DeleteCommand>
                 <InsertCommand>
-                  <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>INSERT INTO [Ventas] ([ID_Producto], [Cliente], [Fecha], [Cantidad], [PrecioUnitario], [SubTotal], [Total]) VALUES (@p1, @p2, @p3, @p4, @p5, @p6, @p7)</CommandText>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>INSERT INTO Ventas
+                         (ID_Producto, Cliente, Fecha, Cantidad, PrecioUnitario, SubTotal, Total)
+VALUES        (@p1,@p2,@p3,@p4,@p5,@p6,@p7)</CommandText>
                     <Parameters>
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int64" Direction="Input" ParameterName="@p1" Precision="0" ProviderType="BigInt" Scale="0" Size="0" SourceColumn="ID_Producto" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@p2" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Cliente" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="@p3" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="Fecha" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int64" Direction="Input" ParameterName="@p4" Precision="0" ProviderType="BigInt" Scale="0" Size="0" SourceColumn="Cantidad" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Currency" Direction="Input" ParameterName="@p5" Precision="0" ProviderType="Money" Scale="0" Size="0" SourceColumn="PrecioUnitario" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Currency" Direction="Input" ParameterName="@p6" Precision="0" ProviderType="Money" Scale="0" Size="0" SourceColumn="SubTotal" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Currency" Direction="Input" ParameterName="@p7" Precision="0" ProviderType="Money" Scale="0" Size="0" SourceColumn="Total" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="p1" ColumnName="ID_Producto" DataSourceName="Ventas" DataTypeServer="bigint(8)" DbType="Int64" Direction="Input" ParameterName="@p1" Precision="0" ProviderType="BigInt" Scale="0" Size="8" SourceColumn="ID_Producto" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="p2" ColumnName="Cliente" DataSourceName="Ventas" DataTypeServer="nvarchar(100)" DbType="String" Direction="Input" ParameterName="@p2" Precision="0" ProviderType="NVarChar" Scale="0" Size="100" SourceColumn="Cliente" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="p3" ColumnName="Fecha" DataSourceName="Ventas" DataTypeServer="datetime(8)" DbType="DateTime" Direction="Input" ParameterName="@p3" Precision="0" ProviderType="DateTime" Scale="0" Size="8" SourceColumn="Fecha" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="p4" ColumnName="Cantidad" DataSourceName="Ventas" DataTypeServer="bigint(8)" DbType="Int64" Direction="Input" ParameterName="@p4" Precision="0" ProviderType="BigInt" Scale="0" Size="8" SourceColumn="Cantidad" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="p5" ColumnName="PrecioUnitario" DataSourceName="Ventas" DataTypeServer="money(8)" DbType="Currency" Direction="Input" ParameterName="@p5" Precision="0" ProviderType="Money" Scale="0" Size="8" SourceColumn="PrecioUnitario" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="p6" ColumnName="SubTotal" DataSourceName="Ventas" DataTypeServer="money(8)" DbType="Currency" Direction="Input" ParameterName="@p6" Precision="0" ProviderType="Money" Scale="0" Size="8" SourceColumn="SubTotal" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="p7" ColumnName="Total" DataSourceName="Ventas" DataTypeServer="money(8)" DbType="Currency" Direction="Input" ParameterName="@p7" Precision="0" ProviderType="Money" Scale="0" Size="8" SourceColumn="Total" SourceColumnNullMapping="false" SourceVersion="Current" />
                     </Parameters>
                   </DbCommand>
                 </InsertCommand>

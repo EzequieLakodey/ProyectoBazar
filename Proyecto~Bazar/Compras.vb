@@ -9,15 +9,46 @@
 
     Private Sub Compras_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
 
+        Me.ProductosBindingSource.EndEdit()
+
+        Me.ComprasBindingSource.EndEdit()
+
         Me.TableAdapterManager.UpdateAll(Me.BazarDataSet)
 
         Me.ProductosTableAdapter.Fill(Me.BazarDataSet.Productos)
 
         Me.ComprasTableAdapter.Fill(Me.BazarDataSet.Compras)
 
-        Me.ComprasBindingSource.AddNew()
+        Me.ComprasBindingSource.MoveLast()
 
-        TextBoxConsulta.Text = ID_ProveedorTextBox.Text
+        TextBoxID.Text = ID_ProveedorTextBox.Text
+
+        FechaDateTimePicker.Value = DateTime.Now
+
+        ' Poblacion del ComboBoxAtributo
+        CargarColumnasEnComboBox(BazarDataSet.Tables("Compras"), ComboBoxAtributo)
+
+
+
+
+
+        ''''''''''''''''''''''''''''''''''''''''''''''''''''''' CODIGO EN STANDBY:
+        ' Creamos una vista de datos
+        ' Dim vistaCompras As New DataView(Me.BazarDataSet.Ventas)
+
+        ' Creamos una tabla nueva en base a la vista, seleccionando valores unicos para el atributo "Cliente"
+        ' Dim tablaProveedoresUnicos As DataTable = vistaCompras.ToTable(True, "Proveedor")
+
+        ' Asignamos los valores unicos filtrados en la vista al ComboBox
+        ' ProveedorComboBox.DataSource = tablaProveedoresUnicos
+
+        ' Configurar el ComboBox con esta nueva fuente de datos
+        ' ProveedorComboBox.DataSource = tablaProveedoresUnicos
+        ' ProveedorComboBox.DisplayMember = "Proveedor"  ' Lo que el usuario ve
+        ' ProveedorComboBox.ValueMember = "ID_Proveedor" ' El valor único subyacente
+
+        ' Obtener los datos originales (por ejemplo, de tu DataSet)
+        ' Dim tablaVentas As DataTable = Me.BazarDataSet.Ventas
 
     End Sub
 
@@ -30,13 +61,15 @@
 
     ''''''''''''''''''''''''''''''''    Declaracion de variables
 
-    Dim confirmacion As Boolean
+    Dim confirmacion As MsgBoxResult
 
-    Dim idProveedor, cantidad, posicion As Long
+    Dim idProveedor, cantidad, posicion, stock, idProducto As Long
 
     Dim precioUnitario, subTotal, total As Decimal
 
+    Dim fecha As DateTime
 
+    Dim proveedor As String
 
 
 
@@ -54,7 +87,7 @@
 
     Function BuscarProveedor() As Integer
 
-        idProveedor = CLng(TextBoxConsulta.Text)
+        idProveedor = Val(TextBoxID.Text)
 
         If idProveedor >= 0 Then
 
@@ -83,12 +116,12 @@
 
     End Sub
 
-
     Private Sub ID_ProveedorTextBox_TextChanged(sender As System.Object, e As System.EventArgs) Handles ID_ProveedorTextBox.TextChanged
 
-        TextBoxConsulta.Text = ID_ProveedorTextBox.Text
+        TextBoxID.Text = ID_ProveedorTextBox.Text
 
     End Sub
+
 
 
 
@@ -182,7 +215,17 @@
     End Sub
 
 
+    Private Sub ID_ProductoTextBox_TextChanged(sender As System.Object, e As System.EventArgs) Handles ID_ProductoTextBox.TextChanged
 
+        Try
+
+            TextBoxStock.Text = Me.ProductosBindingSource.Current("Stock")
+
+        Catch ex As Exception
+
+        End Try
+
+    End Sub
 
 
 
@@ -199,35 +242,74 @@
 
     Private Sub ButtonCrear_Click(sender As System.Object, e As System.EventArgs) Handles ButtonCrear.Click
 
-        'Me.ProductosBindingSource.AddNew()
+        'Me.ComprasBindingSource.Current("ID_Producto") = ProductoComboBox.SelectedValue
 
-        'Me.ProductosBindingSource.Current("Nombre") = ProductoComboBox.Text
+        'Me.ComprasBindingSource.Current("Proveedor") = ProveedorTextBox.Text
 
-        'Me.ProductosBindingSource.EndEdit()
+        'Me.ComprasBindingSource.Current("Fecha") = FechaDateTimePicker.Value
 
-        'Me.ProductosTableAdapter.Update(Me.BazarDataSet.Productos)
+        'Me.ComprasBindingSource.Current("Cantidad") = Val(CantidadTextBox.Text)
 
-        'Me.ProductosTableAdapter.Fill(Me.BazarDataSet.Productos)
+        'Me.ComprasBindingSource.Current("PrecioUnitario") = Val(PrecioUnitarioTextBox.Text)
 
-        Me.ComprasBindingSource.Current("ID_Producto") = ProductoComboBox.SelectedValue
+        'Me.ComprasBindingSource.Current("SubTotal") = Val(SubTotalTextBox.Text)
 
-        Me.ComprasBindingSource.Current("Proveedor") = ProveedorComboBox.Text
+        'Me.ComprasBindingSource.Current("Total") = Val(TotalTextBox.Text)
 
-        Me.ComprasBindingSource.Current("Fecha") = FechaDateTimePicker.Value
+        'Me.ProductosBindingSource.Current("Stock") = ProductosBindingSource.Current("Stock") + Val(CantidadTextBox.Text)
 
-        Me.ComprasBindingSource.Current("Cantidad") = Val(CantidadTextBox.Text)
+        ' 1. OBTENER EL ID DEL PRODUCTO SELECCIONADO
 
-        Me.ComprasBindingSource.Current("PrecioUnitario") = Val(PrecioUnitarioTextBox.Text)
+        idProducto = Val(ProductoComboBox.SelectedValue)
 
-        Me.ComprasBindingSource.Current("SubTotal") = Val(SubTotalTextBox.Text)
+        ' 2. POSICIONAR EL BINDINGSOURCE EN EL PRODUCTO CORRECTO
 
-        Me.ComprasBindingSource.Current("Total") = Val(TotalTextBox.Text)
+        Dim posicion As Integer = Me.ProductosBindingSource.Find("ID_Producto", idProducto)
 
-        Me.ProductosBindingSource.Current("Stock") = Me.ProductosBindingSource.Current("Stock") + Val(CantidadTextBox.Text)
+        If posicion < 0 Then
+
+            MsgBox("No se pudo encontrar el producto seleccionado")
+
+            Return
+
+        End If
+
+        Me.ProductosBindingSource.Position = posicion
+
+
+
+
+        FechaDateTimePicker.Value = DateTime.Now
+
+        stock = Me.ProductosBindingSource.Current("Stock")
+
+        idProducto = Val(ProductoComboBox.SelectedValue)
+
+        proveedor = ProveedorTextBox.Text
+
+        fecha = FechaDateTimePicker.Value
+
+        cantidad = Val(CantidadTextBox.Text)
+
+        precioUnitario = Val(PrecioUnitarioTextBox.Text)
+
+        subTotal = Val(SubTotalTextBox.Text)
+
+        total = Val(TotalTextBox.Text)
+
+        Me.ComprasTableAdapter.Insert(
+        idProducto,
+        proveedor,
+        fecha,
+        cantidad,
+        precioUnitario,
+        subTotal,
+        total
+        )
+
+        Me.ProductosBindingSource.Current("Stock") = stock + cantidad
 
         Me.ProductosBindingSource.EndEdit()
-
-        Me.ComprasBindingSource.EndEdit()
 
         Me.TableAdapterManager.UpdateAll(Me.BazarDataSet)
 
@@ -239,7 +321,7 @@
 
         ProductosTableAdapter.Fill(Ventas.BazarDataSet.Productos)
 
-        Me.ComprasBindingSource.AddNew()
+        Me.ComprasBindingSource.MoveLast()
 
     End Sub
 
@@ -256,7 +338,33 @@
 
     Private Sub ButtonModificar_Click(sender As System.Object, e As System.EventArgs) Handles ButtonModificar.Click
 
+        Dim cantidadInicial As Long = Val(Convert.ToString(Me.ComprasBindingSource.Current("Cantidad")))
+
+        cantidad = Val(CantidadTextBox.Text)
+
+        stock = Me.ProductosBindingSource.Current("Stock")
+
+        Dim diferenciaCantidades As Long = cantidad - cantidadInicial
+
+        ' Validar que no quede stock negativo si se disminuye la compra
+        If diferenciaCantidades < 0 And Math.Abs(diferenciaCantidades) > stock Then
+
+            MsgBox("No se puede disminuir la compra. Stock insuficiente | Stock actual: " & stock & " | Diferencia: " & Math.Abs(diferenciaCantidades), MsgBoxStyle.Exclamation)
+
+            Return
+
+        End If
+
+        ' Aplicar la lógica de actualización de stock (INVERSA A VENTAS)
+        If diferenciaCantidades <> 0 Then
+            ' Si la nueva cantidad es mayor: SUMAR diferencia al stock
+            ' Si la nueva cantidad es menor: RESTAR diferencia al stock
+            Me.ProductosBindingSource.Current("Stock") = stock + diferenciaCantidades
+        End If
+
         Me.ComprasBindingSource.EndEdit()
+
+        Me.ProductosBindingSource.EndEdit()
 
         Me.TableAdapterManager.UpdateAll(Me.BazarDataSet)
 
@@ -264,11 +372,11 @@
 
         Me.ComprasTableAdapter.Fill(Me.BazarDataSet.Compras)
 
-        ProductosTableAdapter.Fill(Productos.BazarDataSet.Productos)
+        Me.ProductosTableAdapter.Fill(Productos.BazarDataSet.Productos)
 
-        ProductosTableAdapter.Fill(Ventas.BazarDataSet.Productos)
+        Me.ProductosTableAdapter.Fill(Ventas.BazarDataSet.Productos)
 
-        Me.Refresh()
+        Me.ComprasBindingSource.MoveLast()
 
     End Sub
 
@@ -286,9 +394,9 @@
 
         BuscarProveedor()
 
-        confirmacion = MsgBox("Esta seguro que desea eliminar el PROVEEDOR = " & ID_ProveedorTextBox.Text & " | " & ProveedorComboBox.Text, MsgBoxStyle.YesNo)
+        confirmacion = MsgBox("Esta seguro que desea eliminar el PROVEEDOR = " & ID_ProveedorTextBox.Text & " | " & ProveedorTextBox.Text, MsgBoxStyle.YesNo)
 
-        If confirmacion Then
+        If confirmacion = MsgBoxResult.Yes Then
 
             Me.ComprasBindingSource.RemoveCurrent()
 
@@ -298,17 +406,19 @@
 
             Me.ComprasTableAdapter.Fill(Me.BazarDataSet.Compras)
 
-            ProductosTableAdapter.Fill(Productos.BazarDataSet.Productos)
+            Me.ProductosTableAdapter.Fill(Productos.BazarDataSet.Productos)
 
-            ProductosTableAdapter.Fill(Ventas.BazarDataSet.Productos)
+            Me.ProductosTableAdapter.Fill(Ventas.BazarDataSet.Productos)
 
-            MsgBox("Registro eliminado correctamente", MsgBoxStyle.MsgBoxRight)
+            MsgBox("Registro eliminado correctamente!", MsgBoxStyle.MsgBoxRight)
+
+            Me.ComprasBindingSource.MoveLast()
+
+        Else : Return
 
         End If
 
-        Me.Refresh()
 
-        Me.ComprasBindingSource.AddNew()
 
     End Sub
 
@@ -325,9 +435,9 @@
 
         BuscarProveedor()
 
-        confirmacion = MsgBox("Esta seguro que desea eliminar TODOS los registros de [Proveedores], esta accion es PERMANENTE", MsgBoxStyle.YesNo, MsgBoxStyle.Critical)
+        confirmacion = MsgBox("Esta seguro que desea eliminar TODOS los registros de [Compras], esta accion es PERMANENTE", MsgBoxStyle.YesNo)
 
-        If confirmacion Then
+        If confirmacion = MsgBoxResult.Yes Then
 
             Me.ComprasTableAdapter.Purgar()
 
@@ -335,19 +445,56 @@
 
             Me.ComprasTableAdapter.Fill(Me.BazarDataSet.Compras)
 
-            ProductosTableAdapter.Fill(Productos.BazarDataSet.Productos)
+            Me.ProductosTableAdapter.Fill(Productos.BazarDataSet.Productos)
 
-            ProductosTableAdapter.Fill(Ventas.BazarDataSet.Productos)
+            Me.ProductosTableAdapter.Fill(Ventas.BazarDataSet.Productos)
 
             MsgBox("TODOS los registros fueron eliminados de [Proveedores]", MsgBoxStyle.MsgBoxRight)
 
+            Me.ComprasBindingSource.MoveLast()
+
+        Else : Return
+
         End If
 
-        Me.Refresh()
-
-        Me.ComprasBindingSource.AddNew()
 
     End Sub
+
+
+
+
+
+
+
+    ''''''''''''''''''''''''''''''''    Manejo de Grillas y Filtros
+
+    Private Sub TextBoxConsulta_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TextBoxConsulta.TextChanged
+
+        Dim vista As New DataView()
+
+        vista.Table = Me.BazarDataSet.Ventas
+
+        ' Validamos que el filtrado no sea ejecutado al estar el TextBox vacio
+        If String.IsNullOrEmpty(TextBoxConsulta.Text) Then
+
+            vista.RowFilter = ""
+
+            Me.ComprasDataGridView.DataSource = vista
+
+            Exit Sub
+
+        End If
+
+        ' Filtramos casteando a string
+        vista.RowFilter = "CONVERT(" & ComboBoxAtributo.Text & ", 'System.String') LIKE '" & TextBoxConsulta.Text & "%'"
+
+        ' Aplicamos a la grilla
+        Me.ComprasDataGridView.DataSource = vista
+
+    End Sub
+
+
+
 
 
 
@@ -371,7 +518,10 @@
 
     End Sub
 
-    Private Sub CategoriaComboBox_KeyPress(sender As System.Object, e As System.Windows.Forms.KeyPressEventArgs) Handles CategoriaComboBox.KeyPress
+
+
+
+    Private Sub CategoriaTextBox_KeyPress(sender As System.Object, e As System.Windows.Forms.KeyPressEventArgs) Handles CategoriaTextBox.KeyPress
 
         If LetrasNumerosPuntos(e) Then
 
@@ -386,7 +536,9 @@
     End Sub
 
 
-    Private Sub ProveedorComboBox_KeyPress(sender As System.Object, e As System.Windows.Forms.KeyPressEventArgs) Handles ProveedorComboBox.KeyPress
+
+
+    Private Sub ProveedorComboBox_KeyPress(sender As System.Object, e As System.Windows.Forms.KeyPressEventArgs)
 
         If LetrasNumerosPuntos(e) Then
 
@@ -399,6 +551,8 @@
         End If
 
     End Sub
+
+
 
 
     Private Sub CantidadTextBox_KeyPress(sender As System.Object, e As System.Windows.Forms.KeyPressEventArgs) Handles CantidadTextBox.KeyPress
@@ -414,6 +568,8 @@
         End If
 
     End Sub
+
+
 
 
     Private Sub PrecioUnitarioTextBox_KeyPress(sender As System.Object, e As System.Windows.Forms.KeyPressEventArgs) Handles PrecioUnitarioTextBox.KeyPress
@@ -432,6 +588,20 @@
 
 
 
+
+    Private Sub TextBoxID_KeyPress(sender As System.Object, e As System.Windows.Forms.KeyPressEventArgs) Handles TextBoxID.KeyPress
+
+        If SoloNumerosEnteros(e) Then
+
+            e.Handled = False
+
+        Else
+
+            e.Handled = True
+
+        End If
+
+    End Sub
 
 
 
@@ -460,7 +630,7 @@
 
     Private Sub ButtonSiguiente_Click(sender As System.Object, e As System.EventArgs) Handles ButtonSiguiente.Click
 
-        ComprasBindingSource.MoveNext()
+        Me.ComprasBindingSource.MoveNext()
 
     End Sub
 
@@ -468,33 +638,33 @@
 
     Private Sub InicioToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles InicioToolStripMenuItem.Click
 
-        Me.Hide()
-
         Inicio.Show()
+
+        Close()
 
     End Sub
 
     Private Sub VentasToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles VentasToolStripMenuItem.Click
 
-        Me.Hide()
-
         Ventas.Show()
+
+        Close()
 
     End Sub
 
     Private Sub ProductosToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles ProductosToolStripMenuItem.Click
 
-        Me.Hide()
-
         Productos.Show()
+
+        Close()
 
     End Sub
 
     Private Sub ContactoToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles ContactoToolStripMenuItem.Click
 
-        Me.Hide()
-
         Contacto.Show()
+
+        Close()
 
     End Sub
 
@@ -505,14 +675,6 @@
 
     End Sub
 
-    Private Sub FillByToolStripButton_Click(sender As System.Object, e As System.EventArgs)
-        Try
-            Me.ComprasTableAdapter.FillBy(Me.BazarDataSet.Compras)
-        Catch ex As System.Exception
-            System.Windows.Forms.MessageBox.Show(ex.Message)
-        End Try
-
-    End Sub
 
 
 End Class
