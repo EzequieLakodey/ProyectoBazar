@@ -31,7 +31,6 @@ Partial Class Compras
         Dim PrecioUnitarioLabel As System.Windows.Forms.Label
         Dim SubTotalLabel As System.Windows.Forms.Label
         Dim TotalLabel As System.Windows.Forms.Label
-        Dim ID_ProductoLabel As System.Windows.Forms.Label
         Dim CategoriaLabel As System.Windows.Forms.Label
         Dim StockLabel As System.Windows.Forms.Label
         Dim Label_ID As System.Windows.Forms.Label
@@ -54,7 +53,6 @@ Partial Class Compras
         Me.ButtonSiguiente = New System.Windows.Forms.Button()
         Me.ButtonBuscar = New System.Windows.Forms.Button()
         Me.ButtonAnterior = New System.Windows.Forms.Button()
-        Me.ID_ProductoTextBox = New System.Windows.Forms.TextBox()
         Me.ID_ProveedorTextBox = New System.Windows.Forms.TextBox()
         Me.FechaDateTimePicker = New System.Windows.Forms.DateTimePicker()
         Me.PrecioUnitarioTextBox = New System.Windows.Forms.TextBox()
@@ -67,6 +65,14 @@ Partial Class Compras
         Me.ButtonModificar = New System.Windows.Forms.Button()
         Me.SplitContainer2 = New System.Windows.Forms.SplitContainer()
         Me.ComprasDataGridView = New System.Windows.Forms.DataGridView()
+        Me.IDProveedorDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ID_Producto = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ProveedorDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.FechaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CantidadDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PrecioUnitarioDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.SubTotalDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.TotalDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ProductosDataGridView = New System.Windows.Forms.DataGridView()
         Me.DataGridViewTextBoxColumn10 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn11 = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -83,14 +89,6 @@ Partial Class Compras
         Me.ComprasTableAdapter = New Proyecto_Bazar.BazarDataSetTableAdapters.ComprasTableAdapter()
         Me.TableAdapterManager = New Proyecto_Bazar.BazarDataSetTableAdapters.TableAdapterManager()
         Me.ProductosTableAdapter = New Proyecto_Bazar.BazarDataSetTableAdapters.ProductosTableAdapter()
-        Me.IDProveedorDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ID_Producto = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ProveedorDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.FechaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CantidadDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.PrecioUnitarioDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.SubTotalDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.TotalDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         NombreLabel = New System.Windows.Forms.Label()
         ID_ProveedorLabel = New System.Windows.Forms.Label()
         ProveedorLabel = New System.Windows.Forms.Label()
@@ -99,7 +97,6 @@ Partial Class Compras
         PrecioUnitarioLabel = New System.Windows.Forms.Label()
         SubTotalLabel = New System.Windows.Forms.Label()
         TotalLabel = New System.Windows.Forms.Label()
-        ID_ProductoLabel = New System.Windows.Forms.Label()
         CategoriaLabel = New System.Windows.Forms.Label()
         StockLabel = New System.Windows.Forms.Label()
         Label_ID = New System.Windows.Forms.Label()
@@ -126,7 +123,7 @@ Partial Class Compras
         '
         NombreLabel.AutoSize = True
         NombreLabel.ForeColor = System.Drawing.Color.White
-        NombreLabel.Location = New System.Drawing.Point(100, 215)
+        NombreLabel.Location = New System.Drawing.Point(100, 184)
         NombreLabel.Name = "NombreLabel"
         NombreLabel.Size = New System.Drawing.Size(85, 17)
         NombreLabel.TabIndex = 92
@@ -156,7 +153,7 @@ Partial Class Compras
         '
         FechaLabel.AutoSize = True
         FechaLabel.ForeColor = System.Drawing.Color.White
-        FechaLabel.Location = New System.Drawing.Point(124, 247)
+        FechaLabel.Location = New System.Drawing.Point(124, 216)
         FechaLabel.Name = "FechaLabel"
         FechaLabel.Size = New System.Drawing.Size(61, 17)
         FechaLabel.TabIndex = 99
@@ -166,7 +163,7 @@ Partial Class Compras
         '
         CantidadLabel.AutoSize = True
         CantidadLabel.ForeColor = System.Drawing.Color.White
-        CantidadLabel.Location = New System.Drawing.Point(102, 279)
+        CantidadLabel.Location = New System.Drawing.Point(102, 248)
         CantidadLabel.Name = "CantidadLabel"
         CantidadLabel.Size = New System.Drawing.Size(83, 17)
         CantidadLabel.TabIndex = 101
@@ -176,7 +173,7 @@ Partial Class Compras
         '
         PrecioUnitarioLabel.AutoSize = True
         PrecioUnitarioLabel.ForeColor = System.Drawing.Color.White
-        PrecioUnitarioLabel.Location = New System.Drawing.Point(58, 311)
+        PrecioUnitarioLabel.Location = New System.Drawing.Point(58, 280)
         PrecioUnitarioLabel.Name = "PrecioUnitarioLabel"
         PrecioUnitarioLabel.Size = New System.Drawing.Size(127, 17)
         PrecioUnitarioLabel.TabIndex = 103
@@ -186,7 +183,7 @@ Partial Class Compras
         '
         SubTotalLabel.AutoSize = True
         SubTotalLabel.ForeColor = System.Drawing.Color.White
-        SubTotalLabel.Location = New System.Drawing.Point(99, 343)
+        SubTotalLabel.Location = New System.Drawing.Point(99, 312)
         SubTotalLabel.Name = "SubTotalLabel"
         SubTotalLabel.Size = New System.Drawing.Size(86, 17)
         SubTotalLabel.TabIndex = 105
@@ -196,27 +193,17 @@ Partial Class Compras
         '
         TotalLabel.AutoSize = True
         TotalLabel.ForeColor = System.Drawing.Color.White
-        TotalLabel.Location = New System.Drawing.Point(134, 375)
+        TotalLabel.Location = New System.Drawing.Point(134, 344)
         TotalLabel.Name = "TotalLabel"
         TotalLabel.Size = New System.Drawing.Size(51, 17)
         TotalLabel.TabIndex = 107
         TotalLabel.Text = "Total:"
         '
-        'ID_ProductoLabel
-        '
-        ID_ProductoLabel.AutoSize = True
-        ID_ProductoLabel.ForeColor = System.Drawing.Color.White
-        ID_ProductoLabel.Location = New System.Drawing.Point(80, 153)
-        ID_ProductoLabel.Name = "ID_ProductoLabel"
-        ID_ProductoLabel.Size = New System.Drawing.Size(105, 17)
-        ID_ProductoLabel.TabIndex = 95
-        ID_ProductoLabel.Text = "ID Producto:"
-        '
         'CategoriaLabel
         '
         CategoriaLabel.AutoSize = True
         CategoriaLabel.ForeColor = System.Drawing.Color.White
-        CategoriaLabel.Location = New System.Drawing.Point(97, 184)
+        CategoriaLabel.Location = New System.Drawing.Point(97, 153)
         CategoriaLabel.Name = "CategoriaLabel"
         CategoriaLabel.Size = New System.Drawing.Size(88, 17)
         CategoriaLabel.TabIndex = 109
@@ -226,7 +213,7 @@ Partial Class Compras
         '
         StockLabel.AutoSize = True
         StockLabel.ForeColor = System.Drawing.Color.White
-        StockLabel.Location = New System.Drawing.Point(396, 279)
+        StockLabel.Location = New System.Drawing.Point(396, 248)
         StockLabel.Name = "StockLabel"
         StockLabel.Size = New System.Drawing.Size(58, 17)
         StockLabel.TabIndex = 129
@@ -248,7 +235,7 @@ Partial Class Compras
         Label1.AutoSize = True
         Label1.BackColor = System.Drawing.Color.Transparent
         Label1.ForeColor = System.Drawing.Color.White
-        Label1.Location = New System.Drawing.Point(124, 462)
+        Label1.Location = New System.Drawing.Point(124, 444)
         Label1.Name = "Label1"
         Label1.Size = New System.Drawing.Size(64, 17)
         Label1.TabIndex = 151
@@ -259,7 +246,7 @@ Partial Class Compras
         LabelBuscar.AutoSize = True
         LabelBuscar.BackColor = System.Drawing.Color.Transparent
         LabelBuscar.ForeColor = System.Drawing.Color.White
-        LabelBuscar.Location = New System.Drawing.Point(89, 430)
+        LabelBuscar.Location = New System.Drawing.Point(89, 412)
         LabelBuscar.Name = "LabelBuscar"
         LabelBuscar.Size = New System.Drawing.Size(95, 17)
         LabelBuscar.TabIndex = 149
@@ -305,10 +292,8 @@ Partial Class Compras
         Me.SplitContainer1.Panel1.Controls.Add(Me.ButtonBuscar)
         Me.SplitContainer1.Panel1.Controls.Add(Me.ButtonAnterior)
         Me.SplitContainer1.Panel1.Controls.Add(CategoriaLabel)
-        Me.SplitContainer1.Panel1.Controls.Add(Me.ID_ProductoTextBox)
         Me.SplitContainer1.Panel1.Controls.Add(ID_ProveedorLabel)
         Me.SplitContainer1.Panel1.Controls.Add(Me.ID_ProveedorTextBox)
-        Me.SplitContainer1.Panel1.Controls.Add(ID_ProductoLabel)
         Me.SplitContainer1.Panel1.Controls.Add(ProveedorLabel)
         Me.SplitContainer1.Panel1.Controls.Add(FechaLabel)
         Me.SplitContainer1.Panel1.Controls.Add(Me.FechaDateTimePicker)
@@ -336,7 +321,7 @@ Partial Class Compras
         'CategoriaTextBox
         '
         Me.CategoriaTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ProductosBindingSource, "Categoria", True))
-        Me.CategoriaTextBox.Location = New System.Drawing.Point(191, 175)
+        Me.CategoriaTextBox.Location = New System.Drawing.Point(191, 144)
         Me.CategoriaTextBox.Name = "CategoriaTextBox"
         Me.CategoriaTextBox.Size = New System.Drawing.Size(199, 26)
         Me.CategoriaTextBox.TabIndex = 152
@@ -356,7 +341,7 @@ Partial Class Compras
         Me.ComboBoxAtributo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ComboBoxAtributo.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.ComboBoxAtributo.FormattingEnabled = True
-        Me.ComboBoxAtributo.Location = New System.Drawing.Point(190, 422)
+        Me.ComboBoxAtributo.Location = New System.Drawing.Point(190, 404)
         Me.ComboBoxAtributo.Name = "ComboBoxAtributo"
         Me.ComboBoxAtributo.Size = New System.Drawing.Size(200, 25)
         Me.ComboBoxAtributo.TabIndex = 150
@@ -365,7 +350,7 @@ Partial Class Compras
         '
         Me.TextBoxConsulta.BackColor = System.Drawing.Color.White
         Me.TextBoxConsulta.ForeColor = System.Drawing.Color.Black
-        Me.TextBoxConsulta.Location = New System.Drawing.Point(189, 453)
+        Me.TextBoxConsulta.Location = New System.Drawing.Point(189, 435)
         Me.TextBoxConsulta.Multiline = True
         Me.TextBoxConsulta.Name = "TextBoxConsulta"
         Me.TextBoxConsulta.Size = New System.Drawing.Size(201, 26)
@@ -386,7 +371,7 @@ Partial Class Compras
         'CantidadTextBox
         '
         Me.CantidadTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ComprasBindingSource, "Cantidad", True))
-        Me.CantidadTextBox.Location = New System.Drawing.Point(190, 270)
+        Me.CantidadTextBox.Location = New System.Drawing.Point(190, 239)
         Me.CantidadTextBox.Name = "CantidadTextBox"
         Me.CantidadTextBox.Size = New System.Drawing.Size(96, 26)
         Me.CantidadTextBox.TabIndex = 131
@@ -401,7 +386,7 @@ Partial Class Compras
         '
         Me.TextBoxStock.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ComprasBindingSource, "Cantidad", True))
         Me.TextBoxStock.Enabled = False
-        Me.TextBoxStock.Location = New System.Drawing.Point(294, 270)
+        Me.TextBoxStock.Location = New System.Drawing.Point(294, 239)
         Me.TextBoxStock.Name = "TextBoxStock"
         Me.TextBoxStock.Size = New System.Drawing.Size(96, 26)
         Me.TextBoxStock.TabIndex = 130
@@ -469,15 +454,6 @@ Partial Class Compras
         Me.ButtonAnterior.Text = "<"
         Me.ButtonAnterior.UseVisualStyleBackColor = False
         '
-        'ID_ProductoTextBox
-        '
-        Me.ID_ProductoTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ProductosBindingSource, "ID_Producto", True))
-        Me.ID_ProductoTextBox.Enabled = False
-        Me.ID_ProductoTextBox.Location = New System.Drawing.Point(191, 144)
-        Me.ID_ProductoTextBox.Name = "ID_ProductoTextBox"
-        Me.ID_ProductoTextBox.Size = New System.Drawing.Size(199, 26)
-        Me.ID_ProductoTextBox.TabIndex = 109
-        '
         'ID_ProveedorTextBox
         '
         Me.ID_ProveedorTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ComprasBindingSource, "ID_Proveedor", True))
@@ -490,7 +466,7 @@ Partial Class Compras
         'FechaDateTimePicker
         '
         Me.FechaDateTimePicker.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.ComprasBindingSource, "Fecha", True))
-        Me.FechaDateTimePicker.Location = New System.Drawing.Point(190, 238)
+        Me.FechaDateTimePicker.Location = New System.Drawing.Point(190, 207)
         Me.FechaDateTimePicker.Name = "FechaDateTimePicker"
         Me.FechaDateTimePicker.Size = New System.Drawing.Size(200, 26)
         Me.FechaDateTimePicker.TabIndex = 100
@@ -498,7 +474,7 @@ Partial Class Compras
         'PrecioUnitarioTextBox
         '
         Me.PrecioUnitarioTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ComprasBindingSource, "PrecioUnitario", True))
-        Me.PrecioUnitarioTextBox.Location = New System.Drawing.Point(190, 302)
+        Me.PrecioUnitarioTextBox.Location = New System.Drawing.Point(190, 271)
         Me.PrecioUnitarioTextBox.Name = "PrecioUnitarioTextBox"
         Me.PrecioUnitarioTextBox.Size = New System.Drawing.Size(200, 26)
         Me.PrecioUnitarioTextBox.TabIndex = 104
@@ -507,7 +483,7 @@ Partial Class Compras
         '
         Me.SubTotalTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ComprasBindingSource, "SubTotal", True))
         Me.SubTotalTextBox.Enabled = False
-        Me.SubTotalTextBox.Location = New System.Drawing.Point(190, 334)
+        Me.SubTotalTextBox.Location = New System.Drawing.Point(190, 303)
         Me.SubTotalTextBox.Name = "SubTotalTextBox"
         Me.SubTotalTextBox.Size = New System.Drawing.Size(200, 26)
         Me.SubTotalTextBox.TabIndex = 106
@@ -516,7 +492,7 @@ Partial Class Compras
         '
         Me.TotalTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ComprasBindingSource, "Total", True))
         Me.TotalTextBox.Enabled = False
-        Me.TotalTextBox.Location = New System.Drawing.Point(190, 366)
+        Me.TotalTextBox.Location = New System.Drawing.Point(190, 335)
         Me.TotalTextBox.Name = "TotalTextBox"
         Me.TotalTextBox.Size = New System.Drawing.Size(200, 26)
         Me.TotalTextBox.TabIndex = 108
@@ -530,7 +506,7 @@ Partial Class Compras
         Me.ProductoComboBox.DisplayMember = "Nombre"
         Me.ProductoComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ProductoComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.ProductoComboBox.Location = New System.Drawing.Point(190, 207)
+        Me.ProductoComboBox.Location = New System.Drawing.Point(190, 176)
         Me.ProductoComboBox.Name = "ProductoComboBox"
         Me.ProductoComboBox.Size = New System.Drawing.Size(200, 25)
         Me.ProductoComboBox.TabIndex = 93
@@ -615,6 +591,55 @@ Partial Class Compras
         Me.ComprasDataGridView.Name = "ComprasDataGridView"
         Me.ComprasDataGridView.Size = New System.Drawing.Size(692, 309)
         Me.ComprasDataGridView.TabIndex = 0
+        '
+        'IDProveedorDataGridViewTextBoxColumn
+        '
+        Me.IDProveedorDataGridViewTextBoxColumn.DataPropertyName = "ID_Proveedor"
+        Me.IDProveedorDataGridViewTextBoxColumn.HeaderText = "ID_Proveedor"
+        Me.IDProveedorDataGridViewTextBoxColumn.Name = "IDProveedorDataGridViewTextBoxColumn"
+        Me.IDProveedorDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'ID_Producto
+        '
+        Me.ID_Producto.DataPropertyName = "ID_Producto"
+        Me.ID_Producto.HeaderText = "ID_Producto"
+        Me.ID_Producto.Name = "ID_Producto"
+        '
+        'ProveedorDataGridViewTextBoxColumn
+        '
+        Me.ProveedorDataGridViewTextBoxColumn.DataPropertyName = "Proveedor"
+        Me.ProveedorDataGridViewTextBoxColumn.HeaderText = "Proveedor"
+        Me.ProveedorDataGridViewTextBoxColumn.Name = "ProveedorDataGridViewTextBoxColumn"
+        '
+        'FechaDataGridViewTextBoxColumn
+        '
+        Me.FechaDataGridViewTextBoxColumn.DataPropertyName = "Fecha"
+        Me.FechaDataGridViewTextBoxColumn.HeaderText = "Fecha"
+        Me.FechaDataGridViewTextBoxColumn.Name = "FechaDataGridViewTextBoxColumn"
+        '
+        'CantidadDataGridViewTextBoxColumn
+        '
+        Me.CantidadDataGridViewTextBoxColumn.DataPropertyName = "Cantidad"
+        Me.CantidadDataGridViewTextBoxColumn.HeaderText = "Cantidad"
+        Me.CantidadDataGridViewTextBoxColumn.Name = "CantidadDataGridViewTextBoxColumn"
+        '
+        'PrecioUnitarioDataGridViewTextBoxColumn
+        '
+        Me.PrecioUnitarioDataGridViewTextBoxColumn.DataPropertyName = "PrecioUnitario"
+        Me.PrecioUnitarioDataGridViewTextBoxColumn.HeaderText = "PrecioUnitario"
+        Me.PrecioUnitarioDataGridViewTextBoxColumn.Name = "PrecioUnitarioDataGridViewTextBoxColumn"
+        '
+        'SubTotalDataGridViewTextBoxColumn
+        '
+        Me.SubTotalDataGridViewTextBoxColumn.DataPropertyName = "SubTotal"
+        Me.SubTotalDataGridViewTextBoxColumn.HeaderText = "SubTotal"
+        Me.SubTotalDataGridViewTextBoxColumn.Name = "SubTotalDataGridViewTextBoxColumn"
+        '
+        'TotalDataGridViewTextBoxColumn
+        '
+        Me.TotalDataGridViewTextBoxColumn.DataPropertyName = "Total"
+        Me.TotalDataGridViewTextBoxColumn.HeaderText = "Total"
+        Me.TotalDataGridViewTextBoxColumn.Name = "TotalDataGridViewTextBoxColumn"
         '
         'ProductosDataGridView
         '
@@ -730,62 +755,13 @@ Partial Class Compras
         '
         Me.TableAdapterManager.BackupDataSetBeforeUpdate = False
         Me.TableAdapterManager.ComprasTableAdapter = Me.ComprasTableAdapter
-        Me.TableAdapterManager.ProductosTableAdapter = Nothing
+        Me.TableAdapterManager.ProductosTableAdapter = Me.ProductosTableAdapter
         Me.TableAdapterManager.UpdateOrder = Proyecto_Bazar.BazarDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
         Me.TableAdapterManager.VentasTableAdapter = Nothing
         '
         'ProductosTableAdapter
         '
         Me.ProductosTableAdapter.ClearBeforeFill = True
-        '
-        'IDProveedorDataGridViewTextBoxColumn
-        '
-        Me.IDProveedorDataGridViewTextBoxColumn.DataPropertyName = "ID_Proveedor"
-        Me.IDProveedorDataGridViewTextBoxColumn.HeaderText = "ID_Proveedor"
-        Me.IDProveedorDataGridViewTextBoxColumn.Name = "IDProveedorDataGridViewTextBoxColumn"
-        Me.IDProveedorDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'ID_Producto
-        '
-        Me.ID_Producto.DataPropertyName = "ID_Producto"
-        Me.ID_Producto.HeaderText = "ID_Producto"
-        Me.ID_Producto.Name = "ID_Producto"
-        '
-        'ProveedorDataGridViewTextBoxColumn
-        '
-        Me.ProveedorDataGridViewTextBoxColumn.DataPropertyName = "Proveedor"
-        Me.ProveedorDataGridViewTextBoxColumn.HeaderText = "Proveedor"
-        Me.ProveedorDataGridViewTextBoxColumn.Name = "ProveedorDataGridViewTextBoxColumn"
-        '
-        'FechaDataGridViewTextBoxColumn
-        '
-        Me.FechaDataGridViewTextBoxColumn.DataPropertyName = "Fecha"
-        Me.FechaDataGridViewTextBoxColumn.HeaderText = "Fecha"
-        Me.FechaDataGridViewTextBoxColumn.Name = "FechaDataGridViewTextBoxColumn"
-        '
-        'CantidadDataGridViewTextBoxColumn
-        '
-        Me.CantidadDataGridViewTextBoxColumn.DataPropertyName = "Cantidad"
-        Me.CantidadDataGridViewTextBoxColumn.HeaderText = "Cantidad"
-        Me.CantidadDataGridViewTextBoxColumn.Name = "CantidadDataGridViewTextBoxColumn"
-        '
-        'PrecioUnitarioDataGridViewTextBoxColumn
-        '
-        Me.PrecioUnitarioDataGridViewTextBoxColumn.DataPropertyName = "PrecioUnitario"
-        Me.PrecioUnitarioDataGridViewTextBoxColumn.HeaderText = "PrecioUnitario"
-        Me.PrecioUnitarioDataGridViewTextBoxColumn.Name = "PrecioUnitarioDataGridViewTextBoxColumn"
-        '
-        'SubTotalDataGridViewTextBoxColumn
-        '
-        Me.SubTotalDataGridViewTextBoxColumn.DataPropertyName = "SubTotal"
-        Me.SubTotalDataGridViewTextBoxColumn.HeaderText = "SubTotal"
-        Me.SubTotalDataGridViewTextBoxColumn.Name = "SubTotalDataGridViewTextBoxColumn"
-        '
-        'TotalDataGridViewTextBoxColumn
-        '
-        Me.TotalDataGridViewTextBoxColumn.DataPropertyName = "Total"
-        Me.TotalDataGridViewTextBoxColumn.HeaderText = "Total"
-        Me.TotalDataGridViewTextBoxColumn.Name = "TotalDataGridViewTextBoxColumn"
         '
         'Compras
         '
@@ -855,7 +831,6 @@ Partial Class Compras
     Friend WithEvents DataGridViewTextBoxColumn12 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn13 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn14 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents ID_ProductoTextBox As System.Windows.Forms.TextBox
     Friend WithEvents ButtonUltimoItem As System.Windows.Forms.Button
     Friend WithEvents ButtonPrimerItem As System.Windows.Forms.Button
     Friend WithEvents ButtonSiguiente As System.Windows.Forms.Button

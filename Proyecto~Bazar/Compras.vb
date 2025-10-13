@@ -28,8 +28,7 @@
         ' Poblacion del ComboBoxAtributo
         CargarColumnasEnComboBox(BazarDataSet.Tables("Compras"), ComboBoxAtributo)
 
-
-
+        BuscarProducto()
 
 
         ''''''''''''''''''''''''''''''''''''''''''''''''''''''' CODIGO EN STANDBY:
@@ -105,6 +104,28 @@
 
 
 
+    Function BuscarProducto() As Integer
+
+        Try
+
+            posicion = Me.ProductosBindingSource.Find("ID_Producto", ProductoComboBox.SelectedValue)
+
+            Me.ProductosBindingSource.Position = posicion
+
+            TextBoxStock.Text = Me.ProductosBindingSource.Current("Stock")
+
+            Return posicion
+
+        Catch ex As Exception
+
+            Return -1
+
+        End Try
+
+        Return 0
+
+    End Function
+
 
 
     ''''''''''''''''''''''''''''''''    Eventos de Busquedas
@@ -116,6 +137,7 @@
 
     End Sub
 
+
     Private Sub ID_ProveedorTextBox_TextChanged(sender As System.Object, e As System.EventArgs) Handles ID_ProveedorTextBox.TextChanged
 
         TextBoxID.Text = ID_ProveedorTextBox.Text
@@ -123,7 +145,11 @@
     End Sub
 
 
+    Private Sub ProductoComboBox_SelectedIndexChanged(sender As System.Object, e As System.EventArgs) Handles ProductoComboBox.SelectedIndexChanged
 
+        BuscarProducto()
+
+    End Sub
 
 
 
@@ -215,18 +241,6 @@
     End Sub
 
 
-    Private Sub ID_ProductoTextBox_TextChanged(sender As System.Object, e As System.EventArgs) Handles ID_ProductoTextBox.TextChanged
-
-        Try
-
-            TextBoxStock.Text = Me.ProductosBindingSource.Current("Stock")
-
-        Catch ex As Exception
-
-        End Try
-
-    End Sub
-
 
 
 
@@ -258,32 +272,11 @@
 
         'Me.ProductosBindingSource.Current("Stock") = ProductosBindingSource.Current("Stock") + Val(CantidadTextBox.Text)
 
-        ' 1. OBTENER EL ID DEL PRODUCTO SELECCIONADO
-
-        idProducto = Val(ProductoComboBox.SelectedValue)
-
-        ' 2. POSICIONAR EL BINDINGSOURCE EN EL PRODUCTO CORRECTO
-
-        Dim posicion As Integer = Me.ProductosBindingSource.Find("ID_Producto", idProducto)
-
-        If posicion < 0 Then
-
-            MsgBox("No se pudo encontrar el producto seleccionado")
-
-            Return
-
-        End If
-
-        Me.ProductosBindingSource.Position = posicion
-
-
-
-
         FechaDateTimePicker.Value = DateTime.Now
 
         stock = Me.ProductosBindingSource.Current("Stock")
 
-        idProducto = Val(ProductoComboBox.SelectedValue)
+        idProducto = ProductoComboBox.SelectedValue
 
         proveedor = ProveedorTextBox.Text
 
@@ -322,6 +315,8 @@
         ProductosTableAdapter.Fill(Ventas.BazarDataSet.Productos)
 
         Me.ComprasBindingSource.MoveLast()
+
+        BuscarProducto()
 
     End Sub
 
@@ -676,5 +671,10 @@
     End Sub
 
 
+    Private Sub ComprasBindingSource_CurrentChanged(sender As System.Object, e As System.EventArgs) Handles ComprasBindingSource.CurrentChanged
+
+        BuscarProducto()
+
+    End Sub
 
 End Class

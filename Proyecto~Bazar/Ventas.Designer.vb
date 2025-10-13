@@ -31,7 +31,6 @@ Partial Class Ventas
         Dim TotalLabel As System.Windows.Forms.Label
         Dim CategoriaLabel As System.Windows.Forms.Label
         Dim NombreLabel As System.Windows.Forms.Label
-        Dim ID_ProductoLabel As System.Windows.Forms.Label
         Dim CantidadLabel As System.Windows.Forms.Label
         Dim Label_ID As System.Windows.Forms.Label
         Dim Label1 As System.Windows.Forms.Label
@@ -58,7 +57,6 @@ Partial Class Ventas
         Me.ButtonAnterior = New System.Windows.Forms.Button()
         Me.ClienteTextBox = New System.Windows.Forms.TextBox()
         Me.VentasBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.ID_ProductoTextBox = New System.Windows.Forms.TextBox()
         Me.ProductoComboBox = New System.Windows.Forms.ComboBox()
         Me.ID_ClienteTextBox = New System.Windows.Forms.TextBox()
         Me.FechaDateTimePicker = New System.Windows.Forms.DateTimePicker()
@@ -99,7 +97,6 @@ Partial Class Ventas
         TotalLabel = New System.Windows.Forms.Label()
         CategoriaLabel = New System.Windows.Forms.Label()
         NombreLabel = New System.Windows.Forms.Label()
-        ID_ProductoLabel = New System.Windows.Forms.Label()
         CantidadLabel = New System.Windows.Forms.Label()
         Label_ID = New System.Windows.Forms.Label()
         Label1 = New System.Windows.Forms.Label()
@@ -146,7 +143,7 @@ Partial Class Ventas
         '
         FechaLabel.AutoSize = True
         FechaLabel.ForeColor = System.Drawing.Color.White
-        FechaLabel.Location = New System.Drawing.Point(118, 249)
+        FechaLabel.Location = New System.Drawing.Point(118, 218)
         FechaLabel.Name = "FechaLabel"
         FechaLabel.Size = New System.Drawing.Size(61, 17)
         FechaLabel.TabIndex = 103
@@ -156,7 +153,7 @@ Partial Class Ventas
         '
         PrecioUnitarioLabel.AutoSize = True
         PrecioUnitarioLabel.ForeColor = System.Drawing.Color.White
-        PrecioUnitarioLabel.Location = New System.Drawing.Point(52, 313)
+        PrecioUnitarioLabel.Location = New System.Drawing.Point(52, 282)
         PrecioUnitarioLabel.Name = "PrecioUnitarioLabel"
         PrecioUnitarioLabel.Size = New System.Drawing.Size(127, 17)
         PrecioUnitarioLabel.TabIndex = 107
@@ -166,7 +163,7 @@ Partial Class Ventas
         '
         SubTotalLabel.AutoSize = True
         SubTotalLabel.ForeColor = System.Drawing.Color.White
-        SubTotalLabel.Location = New System.Drawing.Point(93, 345)
+        SubTotalLabel.Location = New System.Drawing.Point(93, 314)
         SubTotalLabel.Name = "SubTotalLabel"
         SubTotalLabel.Size = New System.Drawing.Size(86, 17)
         SubTotalLabel.TabIndex = 109
@@ -176,7 +173,7 @@ Partial Class Ventas
         '
         TotalLabel.AutoSize = True
         TotalLabel.ForeColor = System.Drawing.Color.White
-        TotalLabel.Location = New System.Drawing.Point(128, 377)
+        TotalLabel.Location = New System.Drawing.Point(128, 346)
         TotalLabel.Name = "TotalLabel"
         TotalLabel.Size = New System.Drawing.Size(51, 17)
         TotalLabel.TabIndex = 111
@@ -186,7 +183,7 @@ Partial Class Ventas
         '
         CategoriaLabel.AutoSize = True
         CategoriaLabel.ForeColor = System.Drawing.Color.White
-        CategoriaLabel.Location = New System.Drawing.Point(90, 186)
+        CategoriaLabel.Location = New System.Drawing.Point(90, 155)
         CategoriaLabel.Name = "CategoriaLabel"
         CategoriaLabel.Size = New System.Drawing.Size(88, 17)
         CategoriaLabel.TabIndex = 115
@@ -196,27 +193,17 @@ Partial Class Ventas
         '
         NombreLabel.AutoSize = True
         NombreLabel.ForeColor = System.Drawing.Color.White
-        NombreLabel.Location = New System.Drawing.Point(94, 217)
+        NombreLabel.Location = New System.Drawing.Point(94, 186)
         NombreLabel.Name = "NombreLabel"
         NombreLabel.Size = New System.Drawing.Size(85, 17)
         NombreLabel.TabIndex = 113
         NombreLabel.Text = "Producto:"
         '
-        'ID_ProductoLabel
-        '
-        ID_ProductoLabel.AutoSize = True
-        ID_ProductoLabel.ForeColor = System.Drawing.Color.White
-        ID_ProductoLabel.Location = New System.Drawing.Point(74, 155)
-        ID_ProductoLabel.Name = "ID_ProductoLabel"
-        ID_ProductoLabel.Size = New System.Drawing.Size(105, 17)
-        ID_ProductoLabel.TabIndex = 116
-        ID_ProductoLabel.Text = "ID Producto:"
-        '
         'CantidadLabel
         '
         CantidadLabel.AutoSize = True
         CantidadLabel.ForeColor = System.Drawing.Color.White
-        CantidadLabel.Location = New System.Drawing.Point(96, 281)
+        CantidadLabel.Location = New System.Drawing.Point(96, 250)
         CantidadLabel.Name = "CantidadLabel"
         CantidadLabel.Size = New System.Drawing.Size(83, 17)
         CantidadLabel.TabIndex = 132
@@ -238,7 +225,7 @@ Partial Class Ventas
         Label1.AutoSize = True
         Label1.BackColor = System.Drawing.Color.Transparent
         Label1.ForeColor = System.Drawing.Color.White
-        Label1.Location = New System.Drawing.Point(119, 462)
+        Label1.Location = New System.Drawing.Point(119, 452)
         Label1.Name = "Label1"
         Label1.Size = New System.Drawing.Size(64, 17)
         Label1.TabIndex = 153
@@ -249,7 +236,7 @@ Partial Class Ventas
         LabelBuscar.AutoSize = True
         LabelBuscar.BackColor = System.Drawing.Color.Transparent
         LabelBuscar.ForeColor = System.Drawing.Color.White
-        LabelBuscar.Location = New System.Drawing.Point(84, 430)
+        LabelBuscar.Location = New System.Drawing.Point(84, 420)
         LabelBuscar.Name = "LabelBuscar"
         LabelBuscar.Size = New System.Drawing.Size(95, 17)
         LabelBuscar.TabIndex = 151
@@ -259,7 +246,7 @@ Partial Class Ventas
         '
         StockLabel.AutoSize = True
         StockLabel.ForeColor = System.Drawing.Color.White
-        StockLabel.Location = New System.Drawing.Point(390, 281)
+        StockLabel.Location = New System.Drawing.Point(390, 250)
         StockLabel.Name = "StockLabel"
         StockLabel.Size = New System.Drawing.Size(58, 17)
         StockLabel.TabIndex = 154
@@ -309,8 +296,6 @@ Partial Class Ventas
         Me.SplitContainer1.Panel1.Controls.Add(Me.ButtonAnterior)
         Me.SplitContainer1.Panel1.Controls.Add(CantidadLabel)
         Me.SplitContainer1.Panel1.Controls.Add(Me.ClienteTextBox)
-        Me.SplitContainer1.Panel1.Controls.Add(ID_ProductoLabel)
-        Me.SplitContainer1.Panel1.Controls.Add(Me.ID_ProductoTextBox)
         Me.SplitContainer1.Panel1.Controls.Add(CategoriaLabel)
         Me.SplitContainer1.Panel1.Controls.Add(NombreLabel)
         Me.SplitContainer1.Panel1.Controls.Add(Me.ProductoComboBox)
@@ -336,7 +321,7 @@ Partial Class Ventas
         'CategoriaTextBox
         '
         Me.CategoriaTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ProductosBindingSource, "Categoria", True))
-        Me.CategoriaTextBox.Location = New System.Drawing.Point(184, 177)
+        Me.CategoriaTextBox.Location = New System.Drawing.Point(184, 146)
         Me.CategoriaTextBox.Name = "CategoriaTextBox"
         Me.CategoriaTextBox.Size = New System.Drawing.Size(199, 26)
         Me.CategoriaTextBox.TabIndex = 157
@@ -353,7 +338,7 @@ Partial Class Ventas
         '
         'CantidadTextBox
         '
-        Me.CantidadTextBox.Location = New System.Drawing.Point(184, 272)
+        Me.CantidadTextBox.Location = New System.Drawing.Point(184, 241)
         Me.CantidadTextBox.Name = "CantidadTextBox"
         Me.CantidadTextBox.Size = New System.Drawing.Size(96, 26)
         Me.CantidadTextBox.TabIndex = 156
@@ -361,7 +346,7 @@ Partial Class Ventas
         'TextBoxStock
         '
         Me.TextBoxStock.Enabled = False
-        Me.TextBoxStock.Location = New System.Drawing.Point(288, 272)
+        Me.TextBoxStock.Location = New System.Drawing.Point(288, 241)
         Me.TextBoxStock.Name = "TextBoxStock"
         Me.TextBoxStock.Size = New System.Drawing.Size(96, 26)
         Me.TextBoxStock.TabIndex = 155
@@ -371,7 +356,7 @@ Partial Class Ventas
         Me.ComboBoxAtributo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ComboBoxAtributo.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.ComboBoxAtributo.FormattingEnabled = True
-        Me.ComboBoxAtributo.Location = New System.Drawing.Point(185, 422)
+        Me.ComboBoxAtributo.Location = New System.Drawing.Point(185, 412)
         Me.ComboBoxAtributo.Name = "ComboBoxAtributo"
         Me.ComboBoxAtributo.Size = New System.Drawing.Size(200, 25)
         Me.ComboBoxAtributo.TabIndex = 152
@@ -380,7 +365,7 @@ Partial Class Ventas
         '
         Me.TextBoxConsulta.BackColor = System.Drawing.Color.White
         Me.TextBoxConsulta.ForeColor = System.Drawing.Color.Black
-        Me.TextBoxConsulta.Location = New System.Drawing.Point(184, 453)
+        Me.TextBoxConsulta.Location = New System.Drawing.Point(184, 443)
         Me.TextBoxConsulta.Multiline = True
         Me.TextBoxConsulta.Name = "TextBoxConsulta"
         Me.TextBoxConsulta.Size = New System.Drawing.Size(201, 26)
@@ -510,15 +495,6 @@ Partial Class Ventas
         Me.VentasBindingSource.DataMember = "Ventas"
         Me.VentasBindingSource.DataSource = Me.BazarDataSet
         '
-        'ID_ProductoTextBox
-        '
-        Me.ID_ProductoTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ProductosBindingSource, "ID_Producto", True))
-        Me.ID_ProductoTextBox.Enabled = False
-        Me.ID_ProductoTextBox.Location = New System.Drawing.Point(184, 146)
-        Me.ID_ProductoTextBox.Name = "ID_ProductoTextBox"
-        Me.ID_ProductoTextBox.Size = New System.Drawing.Size(200, 26)
-        Me.ID_ProductoTextBox.TabIndex = 117
-        '
         'ProductoComboBox
         '
         Me.ProductoComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest
@@ -528,7 +504,7 @@ Partial Class Ventas
         Me.ProductoComboBox.DisplayMember = "Nombre"
         Me.ProductoComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ProductoComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.ProductoComboBox.Location = New System.Drawing.Point(184, 209)
+        Me.ProductoComboBox.Location = New System.Drawing.Point(184, 178)
         Me.ProductoComboBox.Name = "ProductoComboBox"
         Me.ProductoComboBox.Size = New System.Drawing.Size(200, 25)
         Me.ProductoComboBox.TabIndex = 114
@@ -546,7 +522,7 @@ Partial Class Ventas
         'FechaDateTimePicker
         '
         Me.FechaDateTimePicker.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.VentasBindingSource, "Fecha", True))
-        Me.FechaDateTimePicker.Location = New System.Drawing.Point(184, 240)
+        Me.FechaDateTimePicker.Location = New System.Drawing.Point(184, 209)
         Me.FechaDateTimePicker.Name = "FechaDateTimePicker"
         Me.FechaDateTimePicker.Size = New System.Drawing.Size(200, 26)
         Me.FechaDateTimePicker.TabIndex = 104
@@ -554,7 +530,7 @@ Partial Class Ventas
         'PrecioUnitarioTextBox
         '
         Me.PrecioUnitarioTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.VentasBindingSource, "PrecioUnitario", True))
-        Me.PrecioUnitarioTextBox.Location = New System.Drawing.Point(184, 304)
+        Me.PrecioUnitarioTextBox.Location = New System.Drawing.Point(184, 273)
         Me.PrecioUnitarioTextBox.Name = "PrecioUnitarioTextBox"
         Me.PrecioUnitarioTextBox.Size = New System.Drawing.Size(200, 26)
         Me.PrecioUnitarioTextBox.TabIndex = 108
@@ -563,7 +539,7 @@ Partial Class Ventas
         '
         Me.SubTotalTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.VentasBindingSource, "SubTotal", True))
         Me.SubTotalTextBox.Enabled = False
-        Me.SubTotalTextBox.Location = New System.Drawing.Point(184, 336)
+        Me.SubTotalTextBox.Location = New System.Drawing.Point(184, 305)
         Me.SubTotalTextBox.Name = "SubTotalTextBox"
         Me.SubTotalTextBox.Size = New System.Drawing.Size(200, 26)
         Me.SubTotalTextBox.TabIndex = 110
@@ -572,7 +548,7 @@ Partial Class Ventas
         '
         Me.TotalTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.VentasBindingSource, "Total", True))
         Me.TotalTextBox.Enabled = False
-        Me.TotalTextBox.Location = New System.Drawing.Point(184, 368)
+        Me.TotalTextBox.Location = New System.Drawing.Point(184, 337)
         Me.TotalTextBox.Name = "TotalTextBox"
         Me.TotalTextBox.Size = New System.Drawing.Size(200, 26)
         Me.TotalTextBox.TabIndex = 112
@@ -852,7 +828,6 @@ Partial Class Ventas
     Friend WithEvents SubTotalTextBox As System.Windows.Forms.TextBox
     Friend WithEvents TotalTextBox As System.Windows.Forms.TextBox
     Friend WithEvents ProductoComboBox As System.Windows.Forms.ComboBox
-    Friend WithEvents ID_ProductoTextBox As System.Windows.Forms.TextBox
     Friend WithEvents ClienteTextBox As System.Windows.Forms.TextBox
     Friend WithEvents TextBoxID As System.Windows.Forms.TextBox
     Friend WithEvents ButtonUltimoItem As System.Windows.Forms.Button

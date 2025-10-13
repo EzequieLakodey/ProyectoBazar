@@ -254,7 +254,7 @@
 
             Me.ProductosTableAdapter.Fill(Ventas.BazarDataSet.Productos)
 
-            MsgBox("TODOS los registros fueron eliminados de [Productos]", MsgBoxStyle.MsgBoxRight)
+            MsgBox("TODOS los registros fueron eliminados de [Productos] [Compras] y [Ventas]", MsgBoxStyle.MsgBoxRight)
 
             Me.ProductosBindingSource.MoveLast()
 
@@ -328,9 +328,9 @@
 
             Case DialogResult.Yes
 
-                Ventas.ID_ProductoTextBox.Text = stringIdProducto
+                Ventas.ProductoComboBox.Text = stringIdProducto
 
-                Ventas.ID_ProductoTextBox.Focus()
+                Ventas.ProductoComboBox.Focus()
 
                 Ventas.Show()
 
@@ -338,9 +338,9 @@
 
             Case DialogResult.No
 
-                Compras.ID_ProductoTextBox.Text = stringIdProducto
+                Compras.ProductoComboBox.Text = stringIdProducto
 
-                Compras.ID_ProductoTextBox.Focus()
+                Compras.ProductoComboBox.Focus()
 
                 Compras.Show()
 

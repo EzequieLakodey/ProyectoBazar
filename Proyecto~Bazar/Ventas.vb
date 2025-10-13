@@ -21,9 +21,7 @@
         CargarColumnasEnComboBox(BazarDataSet.Tables("Ventas"), ComboBoxAtributo)
 
 
-
-
-
+        BuscarProducto()
 
 
 
@@ -97,6 +95,29 @@
 
 
 
+    Function BuscarProducto() As Integer
+
+        Try
+
+            posicion = Me.ProductosBindingSource.Find("ID_Producto", ProductoComboBox.SelectedValue)
+
+            Me.ProductosBindingSource.Position = posicion
+
+            TextBoxStock.Text = Me.ProductosBindingSource.Current("Stock")
+
+            Return posicion
+
+        Catch ex As Exception
+
+            Return -1
+
+        End Try
+
+        Return 0
+
+    End Function
+
+
 
 
 
@@ -122,7 +143,11 @@
     End Sub
 
 
+    Private Sub ProductoComboBox_SelectedIndexChanged(sender As System.Object, e As System.EventArgs) Handles ProductoComboBox.SelectedIndexChanged
 
+        BuscarProducto()
+
+    End Sub
 
 
 
@@ -216,23 +241,6 @@
 
 
 
-    Private Sub ID_ProductoTextBox_TextChanged(sender As System.Object, e As System.EventArgs) Handles ID_ProductoTextBox.TextChanged
-
-        Try
-
-            If Me.ProductosBindingSource.Current("ID_Producto") >= 0 Then
-
-                TextBoxStock.Text = Me.ProductosBindingSource.Current("Stock")
-
-            End If
-
-        Catch ex As Exception
-
-        End Try
-
-    End Sub
-
-
 
 
 
@@ -263,7 +271,7 @@
 
         stock = Me.ProductosBindingSource.Current("Stock")
 
-        idProducto = Val(ProductoComboBox.SelectedValue)
+        idProducto = ProductoComboBox.SelectedValue
 
         cliente = ClienteTextBox.Text
 
@@ -653,6 +661,15 @@
     End Sub
 
 
+
+
+
+    Private Sub VentasBindingSource_CurrentChanged(sender As System.Object, e As System.EventArgs) Handles VentasBindingSource.CurrentChanged
+
+
+        BuscarProducto()
+
+    End Sub
 
 
 End Class
