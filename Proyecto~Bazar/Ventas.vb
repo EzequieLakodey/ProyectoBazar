@@ -392,7 +392,11 @@
 
         If confirmacion = MsgBoxResult.Yes Then
 
+            Me.ProductosBindingSource.Current("Stock") = Me.ProductosBindingSource.Current("Stock") + Me.VentasBindingSource.Current("Cantidad")
+
             Me.VentasBindingSource.RemoveCurrent()
+
+            Me.ProductosBindingSource.EndEdit()
 
             Me.TableAdapterManager.UpdateAll(Me.BazarDataSet)
 

@@ -400,13 +400,15 @@
 
     Private Sub ButtonEliminar_Click(sender As System.Object, e As System.EventArgs) Handles ButtonEliminar.Click
 
-        BuscarProveedor()
-
         confirmacion = MsgBox("Esta seguro que desea eliminar el PROVEEDOR = " & ID_ProveedorTextBox.Text & " | " & ProveedorTextBox.Text, MsgBoxStyle.YesNo)
 
         If confirmacion = MsgBoxResult.Yes Then
 
+            Me.ProductosBindingSource.Current("Stock") = Me.ProductosBindingSource.Current("Stock") - Me.ComprasBindingSource.Current("Cantidad")
+
             Me.ComprasBindingSource.RemoveCurrent()
+
+            Me.ProductosBindingSource.EndEdit()
 
             Me.TableAdapterManager.UpdateAll(Me.BazarDataSet)
 
