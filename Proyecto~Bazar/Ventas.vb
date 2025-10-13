@@ -661,15 +661,4 @@
     End Sub
 
 
-
-
-
-    Private Sub VentasBindingSource_CurrentChanged(sender As System.Object, e As System.EventArgs) Handles VentasBindingSource.CurrentChanged
-
-
-        BuscarProducto()
-
-    End Sub
-
-
 End Class

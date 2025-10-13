@@ -62,7 +62,7 @@
 
     Dim confirmacion As MsgBoxResult
 
-    Dim idProveedor, cantidad, posicion, stock, idProducto As Long
+    Dim idProveedor, cantidad, posicion, stock, idProducto, cantidadInicial, diferenciaCantidades As Long
 
     Dim precioUnitario, subTotal, total As Decimal
 
@@ -150,6 +150,19 @@
         BuscarProducto()
 
     End Sub
+
+
+
+    Private Sub ComprasBindingSource_CurrentChanged(sender As System.Object, e As System.EventArgs) Handles ComprasBindingSource.CurrentChanged
+
+        If Me.ComprasBindingSource.Current IsNot Nothing Then
+
+            cantidadInicial = Val(Me.ComprasBindingSource.Current("Cantidad"))
+
+        End If
+
+    End Sub
+
 
 
 
@@ -333,13 +346,11 @@
 
     Private Sub ButtonModificar_Click(sender As System.Object, e As System.EventArgs) Handles ButtonModificar.Click
 
-        Dim cantidadInicial As Long = Val(Convert.ToString(Me.ComprasBindingSource.Current("Cantidad")))
+        stock = Me.ProductosBindingSource.Current("Stock")
 
         cantidad = Val(CantidadTextBox.Text)
 
-        stock = Me.ProductosBindingSource.Current("Stock")
-
-        Dim diferenciaCantidades As Long = cantidad - cantidadInicial
+        diferenciaCantidades = cantidad - cantidadInicial
 
         ' Validar que no quede stock negativo si se disminuye la compra
         If diferenciaCantidades < 0 And Math.Abs(diferenciaCantidades) > stock Then
@@ -673,10 +684,5 @@
     End Sub
 
 
-    Private Sub ComprasBindingSource_CurrentChanged(sender As System.Object, e As System.EventArgs) Handles ComprasBindingSource.CurrentChanged
-
-        BuscarProducto()
-
-    End Sub
 
 End Class
