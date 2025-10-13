@@ -352,14 +352,16 @@
 
         ' Aplicar la lógica de actualización de stock (INVERSA A VENTAS)
         If diferenciaCantidades <> 0 Then
+
             ' Si la nueva cantidad es mayor: SUMAR diferencia al stock
             ' Si la nueva cantidad es menor: RESTAR diferencia al stock
             Me.ProductosBindingSource.Current("Stock") = stock + diferenciaCantidades
+
         End If
 
-        Me.ComprasBindingSource.EndEdit()
-
         Me.ProductosBindingSource.EndEdit()
+
+        Me.ComprasBindingSource.EndEdit()
 
         Me.TableAdapterManager.UpdateAll(Me.BazarDataSet)
 
@@ -467,7 +469,7 @@
 
         Dim vista As New DataView()
 
-        vista.Table = Me.BazarDataSet.Ventas
+        vista.Table = Me.BazarDataSet.Compras
 
         ' Validamos que el filtrado no sea ejecutado al estar el TextBox vacio
         If String.IsNullOrEmpty(TextBoxConsulta.Text) Then

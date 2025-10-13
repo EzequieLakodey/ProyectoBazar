@@ -328,7 +328,7 @@
 
             Case DialogResult.Yes
 
-                Ventas.ProductoComboBox.Text = stringIdProducto
+                Ventas.ProductoComboBox.SelectedValue = Val(stringIdProducto)
 
                 Ventas.ProductoComboBox.Focus()
 

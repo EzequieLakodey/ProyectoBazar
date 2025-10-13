@@ -60,7 +60,6 @@
     ' Char.IsControl(tecla.KeyChar) Verifica si es una tecla de control (Backspace, Enter, Tab, Escape, etc.)
     'La "c" es un carácter literal (character literal). Indica que "." es un carácter (Char) y no una cadena (String).
     Function LetrasNumerosPuntos(ByVal tecla As System.Windows.Forms.KeyPressEventArgs) As Boolean
-        ' Usar funciones built-in de VB.NET (más legible)
         If Char.IsLetter(tecla.KeyChar) Or
            Char.IsDigit(tecla.KeyChar) Or
            tecla.KeyChar = "."c Or

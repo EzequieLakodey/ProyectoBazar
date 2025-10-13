@@ -451,7 +451,7 @@
 
     ''''''''''''''''''''''''''''''''    Manejo de Grillas y Filtros
 
-    Private Sub TextBoxConsulta_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs)
+    Private Sub TextBoxConsulta_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TextBoxConsulta.TextChanged
 
         Dim vista As New DataView()
 
