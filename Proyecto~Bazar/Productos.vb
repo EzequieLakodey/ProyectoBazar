@@ -328,21 +328,21 @@
 
             Case DialogResult.Yes
 
+                Ventas.Show()
+
                 Ventas.ProductoComboBox.SelectedValue = Val(stringIdProducto)
 
                 Ventas.ProductoComboBox.Focus()
-
-                Ventas.Show()
 
                 Me.Close()
 
             Case DialogResult.No
 
+                Compras.Show()
+
                 Compras.ProductoComboBox.Text = stringIdProducto
 
                 Compras.ProductoComboBox.Focus()
-
-                Compras.Show()
 
                 Me.Close()
 
