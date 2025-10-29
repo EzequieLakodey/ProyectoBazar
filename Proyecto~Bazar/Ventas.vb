@@ -75,6 +75,7 @@
 
     ''''''''''''''''''''''''''''''''    Busqueda de Cliente por ID
 
+
     Function BuscarCliente() As Integer
 
         idCliente = CLng(TextBoxID.Text)
@@ -94,26 +95,33 @@
     End Function
 
 
-
     Function BuscarProducto() As Integer
 
         Try
 
-            posicion = Me.ProductosBindingSource.Find("ID_Producto", ProductoComboBox.SelectedValue)
+            idProducto = Val(ProductoComboBox.SelectedValue)
 
-            Me.ProductosBindingSource.Position = posicion
+            posicion = Me.ProductosBindingSource.Find("ID_Producto", idProducto)
 
-            TextBoxStock.Text = Me.ProductosBindingSource.Current("Stock")
+            If posicion >= 0 Then
 
-            Return posicion
+                Me.ProductosBindingSource.Position = posicion
+
+                TextBoxStock.Text = Me.ProductosBindingSource.Current("Stock").ToString
+
+                Return 0
+
+            Else
+
+                Return -1
+
+            End If
 
         Catch ex As Exception
 
             Return -1
 
         End Try
-
-        Return 0
 
     End Function
 
@@ -136,6 +144,8 @@
 
 
 
+
+
     Private Sub ID_ClienteTextBox_TextChanged(sender As System.Object, e As System.EventArgs) Handles ID_ClienteTextBox.TextChanged
 
         TextBoxID.Text = ID_ClienteTextBox.Text
@@ -143,11 +153,15 @@
     End Sub
 
 
+
     Private Sub ProductoComboBox_SelectedIndexChanged(sender As System.Object, e As System.EventArgs) Handles ProductoComboBox.SelectedIndexChanged
 
         BuscarProducto()
 
     End Sub
+
+
+
 
 
 
@@ -311,6 +325,8 @@
 
             ProductosTableAdapter.Fill(Compras.BazarDataSet.Productos)
 
+            BuscarProducto()
+
             Me.VentasBindingSource.MoveLast()
 
         Else
@@ -451,7 +467,7 @@
 
     ''''''''''''''''''''''''''''''''    Manejo de Grillas y Filtros
 
-    Private Sub TextBoxConsulta_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs)
+    Private Sub TextBoxConsulta_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TextBoxConsulta.TextChanged
 
         Dim vista As New DataView()
 
@@ -662,14 +678,6 @@
 
 
 
-
-
-    Private Sub VentasBindingSource_CurrentChanged(sender As System.Object, e As System.EventArgs) Handles VentasBindingSource.CurrentChanged
-
-
-        BuscarProducto()
-
-    End Sub
 
 
 End Class

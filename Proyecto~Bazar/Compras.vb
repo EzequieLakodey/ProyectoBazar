@@ -108,13 +108,23 @@
 
         Try
 
-            posicion = Me.ProductosBindingSource.Find("ID_Producto", ProductoComboBox.SelectedValue)
+            idProducto = Val(ProductoComboBox.SelectedValue)
 
-            Me.ProductosBindingSource.Position = posicion
+            posicion = Me.ProductosBindingSource.Find("ID_Producto", idProducto)
 
-            TextBoxStock.Text = Me.ProductosBindingSource.Current("Stock")
+            If posicion >= 0 Then
 
-            Return posicion
+                Me.ProductosBindingSource.Position = posicion
+
+                TextBoxStock.Text = Me.ProductosBindingSource.Current("Stock").ToString
+
+                Return 0
+
+            Else
+
+                Return -1
+
+            End If
 
         Catch ex As Exception
 
@@ -122,9 +132,9 @@
 
         End Try
 
-        Return 0
-
     End Function
+
+
 
 
 
@@ -138,11 +148,16 @@
     End Sub
 
 
+
+
     Private Sub ID_ProveedorTextBox_TextChanged(sender As System.Object, e As System.EventArgs) Handles ID_ProveedorTextBox.TextChanged
 
         TextBoxID.Text = ID_ProveedorTextBox.Text
 
     End Sub
+
+
+
 
 
     Private Sub ProductoComboBox_SelectedIndexChanged(sender As System.Object, e As System.EventArgs) Handles ProductoComboBox.SelectedIndexChanged
@@ -357,9 +372,9 @@
             Me.ProductosBindingSource.Current("Stock") = stock + diferenciaCantidades
         End If
 
-        Me.ComprasBindingSource.EndEdit()
-
         Me.ProductosBindingSource.EndEdit()
+
+        Me.ComprasBindingSource.EndEdit()
 
         Me.TableAdapterManager.UpdateAll(Me.BazarDataSet)
 
@@ -467,7 +482,7 @@
 
         Dim vista As New DataView()
 
-        vista.Table = Me.BazarDataSet.Ventas
+        vista.Table = Me.BazarDataSet.Compras
 
         ' Validamos que el filtrado no sea ejecutado al estar el TextBox vacio
         If String.IsNullOrEmpty(TextBoxConsulta.Text) Then
@@ -671,10 +686,7 @@
     End Sub
 
 
-    Private Sub ComprasBindingSource_CurrentChanged(sender As System.Object, e As System.EventArgs) Handles ComprasBindingSource.CurrentChanged
 
-        BuscarProducto()
 
-    End Sub
 
 End Class

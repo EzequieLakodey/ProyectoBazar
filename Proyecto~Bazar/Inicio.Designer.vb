@@ -61,6 +61,10 @@ Partial Class Inicio
         Me.SplitContainer1.Location = New System.Drawing.Point(0, 92)
         Me.SplitContainer1.Name = "SplitContainer1"
         '
+        'SplitContainer1.Panel1
+        '
+        Me.SplitContainer1.Panel1.AutoScroll = True
+        '
         'SplitContainer1.Panel2
         '
         Me.SplitContainer1.Panel2.Controls.Add(Me.SplitContainer2)
